@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import { ContainerScroll } from "@/components/ui/container-scroll-animation";
 
 export function HeroScroll() {
+  const [imageError, setImageError] = useState(false);
+
   return (
     <div className="flex flex-col overflow-hidden w-full">
       <ContainerScroll
@@ -23,12 +25,22 @@ export function HeroScroll() {
           </>
         }
       >
-        <img
-          src="/sanjipic.jpeg"
-          alt="Sanjeev Kadakol - AI/ML Engineer"
-          className="mx-auto rounded-2xl object-cover h-full w-full object-center"
-          draggable={false}
-        />
+        <div className="h-full w-full relative overflow-hidden rounded-2xl bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-500">
+          {!imageError ? (
+            <img
+              src="/sanjipic.jpeg"
+              alt="Sanjeev Kadakol - AI/ML Engineer"
+              className="w-full h-full object-cover object-center"
+              draggable={false}
+              onError={() => setImageError(true)}
+            />
+          ) : (
+            <div className="w-full h-full flex items-center justify-center">
+              <div className="text-white text-6xl">👨‍💻</div>
+            </div>
+          )}
+          <div className="absolute inset-0 bg-gradient-to-br from-indigo-500/10 via-purple-500/10 to-pink-500/10 pointer-events-none"></div>
+        </div>
       </ContainerScroll>
     </div>
   );
