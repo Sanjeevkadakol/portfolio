@@ -21,13 +21,13 @@ const Hero = () => {
             Passionate about applying machine learning and data science principles to combat financial crime.
           </p>
           <div className="hero-buttons">
-            <button 
+            <button
               className="btn btn-primary"
               onClick={() => scrollToSection('projects')}
             >
               View My Work
             </button>
-            <button 
+            <button
               className="btn btn-secondary"
               onClick={() => scrollToSection('contact')}
             >
@@ -38,17 +38,11 @@ const Hero = () => {
         <div className="hero-image">
           <div className="hero-avatar">
             <div className="avatar-placeholder">
-              <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <circle cx="50" cy="50" r="50" fill="url(#gradient)"/>
-                <circle cx="50" cy="40" r="15" fill="white"/>
-                <path d="M30 75 Q30 60 50 60 Q70 60 70 75" fill="white"/>
-                <defs>
-                  <linearGradient id="gradient" x1="0" y1="0" x2="100" y2="100">
-                    <stop offset="0%" stopColor="#6366f1"/>
-                    <stop offset="100%" stopColor="#8b5cf6"/>
-                  </linearGradient>
-                </defs>
-              </svg>
+              <img
+                src="/sanjipic.jpeg"
+                alt="Sanjeev Kadakol"
+                className="avatar-img"
+              />
             </div>
             <div className="floating-elements">
               <div className="floating-element element-1">🤖</div>

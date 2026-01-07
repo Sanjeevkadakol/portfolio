@@ -7,61 +7,41 @@ const Projects = () => {
   const projects = [
     {
       id: 1,
-      title: 'E-Commerce Platform',
-      description: 'A full-featured e-commerce platform with payment integration, user authentication, and admin dashboard.',
-      image: '🛒',
-      tags: ['React', 'Node.js', 'MongoDB', 'Stripe'],
-      category: 'web',
+      title: 'Hand Gesture Volume Adjuster',
+      description: 'A computer vision application that allows users to control system volume using hand gestures captured via webcam.',
+      image: '🖐️',
+      tags: ['Python', 'OpenCV', 'Computer Vision'],
+      category: 'ml',
       link: '#',
       github: '#'
     },
     {
       id: 2,
-      title: 'Task Management App',
-      description: 'A collaborative task management application with real-time updates and team collaboration features.',
-      image: '📋',
-      tags: ['React', 'Firebase', 'TypeScript'],
-      category: 'web',
+      title: 'Worm Prediction in Community Networks',
+      description: 'A machine learning model to predict the spread of worm attacks in community networks using graph data.',
+      image: '🦠',
+      tags: ['Machine Learning', 'Graph Theory', 'Python'],
+      category: 'ml',
       link: '#',
       github: '#'
     },
     {
       id: 3,
-      title: 'Weather Dashboard',
-      description: 'Beautiful weather dashboard with location-based forecasts and interactive charts.',
-      image: '🌤️',
-      tags: ['React', 'API', 'Chart.js'],
-      category: 'web',
+      title: 'Deforestation Rate Predictor',
+      description: 'An environmental analytics tool that predicts deforestation rates using historical data and regression models.',
+      image: '🌲',
+      tags: ['Data Science', 'Regression Analysis', 'Python'],
+      category: 'ml',
       link: '#',
       github: '#'
     },
     {
       id: 4,
-      title: 'Mobile Fitness App',
-      description: 'A mobile-first fitness tracking application with workout plans and progress tracking.',
-      image: '💪',
-      tags: ['React Native', 'Firebase'],
-      category: 'mobile',
-      link: '#',
-      github: '#'
-    },
-    {
-      id: 5,
-      title: 'Portfolio Website',
-      description: 'A modern, responsive portfolio website showcasing projects and skills.',
-      image: '🎨',
-      tags: ['React', 'CSS3', 'Vite'],
-      category: 'web',
-      link: '#',
-      github: '#'
-    },
-    {
-      id: 6,
-      title: 'API Integration Tool',
-      description: 'A developer tool for testing and integrating various APIs with a clean interface.',
-      image: '🔧',
-      tags: ['Node.js', 'Express', 'REST API'],
-      category: 'backend',
+      title: 'Mental Health Chatbot',
+      description: 'An AI-powered sympathetic chatbot designed to provide mental health support and conversation.',
+      image: '🤖',
+      tags: ['Gen AI', 'NLP', 'Python'],
+      category: 'ai',
       link: '#',
       github: '#'
     }
@@ -69,9 +49,8 @@ const Projects = () => {
 
   const categories = [
     { id: 'all', label: 'All Projects' },
-    { id: 'web', label: 'Web' },
-    { id: 'mobile', label: 'Mobile' },
-    { id: 'backend', label: 'Backend' }
+    { id: 'ml', label: 'Machine Learning' },
+    { id: 'ai', label: 'Gen AI' }
   ]
 
   const filteredProjects = filter === 'all' 

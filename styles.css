@@ -1,15 +1,19 @@
 :root {
-  --bg: #050816;
-  --bg-alt: #0b1020;
+  --bg: #ffffff;
+  --bg-alt: #f8fafc;
   --accent: #4f46e5;
-  --accent-soft: rgba(79, 70, 229, 0.15);
-  --text: #e5e7eb;
-  --muted: #9ca3af;
-  --card-bg: #111827;
-  --border: #1f2933;
+  --accent-soft: rgba(79, 70, 229, 0.1);
+  --text: #000000;
+  --text-primary: #000000;
+  --text-secondary: #4b5563;
+  --bg-primary: transparent;
+  --bg-secondary: rgba(255, 255, 255, 0.6);
+  --muted: #374151;
+  --card-bg: #ffffff;
+  --border: #e2e8f0;
   --radius-lg: 14px;
   --radius-md: 10px;
-  --shadow-soft: 0 18px 45px rgba(0, 0, 0, 0.7);
+  --shadow-soft: 0 10px 30px rgba(0, 0, 0, 0.05);
   --max-width: 960px;
   --transition: 0.2s ease-out;
 }
@@ -23,7 +27,7 @@
 body {
   margin: 0;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  background: radial-gradient(circle at top, #111827, #020617 55%);
+  background: transparent;
   color: var(--text);
   scroll-behavior: smooth;
 }
@@ -181,9 +185,9 @@ body {
 }
 
 .project-card {
-  background: radial-gradient(circle at top left, rgba(79, 70, 229, 0.13), #020617);
+  background: rgba(255, 255, 255, 0.8);
   border-radius: var(--radius-lg);
-  border: 1px solid rgba(31, 41, 55, 0.9);
+  border: 1px solid var(--border);
   padding: 1.3rem 1.4rem;
   box-shadow: var(--shadow-soft);
   transition: transform var(--transition), box-shadow var(--transition),
@@ -192,9 +196,9 @@ body {
 
 .project-card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 24px 60px rgba(15, 23, 42, 0.9);
-  border-color: rgba(96, 165, 250, 0.65);
-  background: radial-gradient(circle at top left, rgba(59, 130, 246, 0.28), #020617);
+  box-shadow: 0 20px 40px rgba(79, 70, 229, 0.15);
+  border-color: var(--accent);
+  background: rgba(255, 255, 255, 1);
 }
 
 .project-card h3 {
@@ -235,10 +239,10 @@ body {
   margin-top: 1.2rem;
 }
 
-.skills-grid > div {
-  background: rgba(15, 23, 42, 0.9);
+.skills-grid>div {
+  background: rgba(255, 255, 255, 0.8);
   border-radius: var(--radius-md);
-  border: 1px solid rgba(30, 64, 175, 0.8);
+  border: 1px solid var(--border);
   padding: 1.1rem 1.2rem;
 }
 
@@ -312,7 +316,8 @@ body {
 
 @media (max-width: 640px) {
   .nav-links {
-    display: none; /* simple: hide on very small screens */
+    display: none;
+    /* simple: hide on very small screens */
   }
 
   .hero {
@@ -333,4 +338,3 @@ body {
     justify-content: center;
   }
 }
-

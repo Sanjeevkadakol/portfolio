@@ -3,43 +3,42 @@ import './Skills.css'
 const Skills = () => {
   const skillCategories = [
     {
-      category: 'Web Development',
-      icon: '🎨',
-      skills: [
-        { name: 'HTML', level: 90 },
-        { name: 'CSS', level: 85 },
-        { name: 'JavaScript', level: 88 }
-      ]
-    },
-    {
-      category: 'AI/ML & Data Science',
+      category: 'AI & Machine Learning',
       icon: '🤖',
       skills: [
+        { name: 'Gen AI', level: 90 },
         { name: 'Machine Learning', level: 85 },
-        { name: 'Artificial Intelligence', level: 80 },
-        { name: 'Python', level: 90 },
-        { name: 'Data Analysis', level: 85 }
+        { name: 'Agentic AI', level: 80 },
+        { name: 'Foundations of AI', level: 85 }
       ]
     },
     {
-      category: 'Programming Languages',
-      icon: '💻',
+      category: 'Web Development',
+      icon: '🌐',
       skills: [
-        { name: 'Python', level: 90 },
-        { name: 'JavaScript', level: 88 },
-        { name: 'Java', level: 75 }
+        { name: 'HTML / CSS', level: 90 },
+        { name: 'JavaScript', level: 85 },
+        { name: 'Web Development', level: 88 }
       ]
     },
     {
-      category: 'Tools & Frameworks',
-      icon: '🛠️',
+      category: 'Design & Soft Skills',
+      icon: '🎨',
       skills: [
-        { name: 'Git', level: 85 },
-        { name: 'TensorFlow', level: 75 },
-        { name: 'Pandas', level: 80 },
-        { name: 'NumPy', level: 82 }
+        { name: 'UI/UX Design', level: 80 },
+        { name: 'Communication', level: 90 }
       ]
     }
+  ]
+
+  const techStack = [
+    { name: 'Gen AI', icon: '🧠' },
+    { name: 'Machine Learning', icon: '🤖' },
+    { name: 'Agentic AI', icon: '🕵️' },
+    { name: 'HTML/CSS', icon: '🌐' },
+    { name: 'JavaScript', icon: '📜' },
+    { name: 'UI/UX', icon: '🎨' },
+    { name: 'Communication', icon: '🗣️' }
   ]
 
   return (
@@ -65,8 +64,8 @@ const Skills = () => {
                       <span className="skill-percentage">{skill.level}%</span>
                     </div>
                     <div className="skill-bar">
-                      <div 
-                        className="skill-progress" 
+                      <div
+                        className="skill-progress"
                         style={{ width: `${skill.level}%` }}
                       ></div>
                     </div>
@@ -80,18 +79,12 @@ const Skills = () => {
         <div className="tech-stack">
           <h3 className="tech-stack-title">Tech Stack</h3>
           <div className="tech-icons">
-            <div className="tech-icon" title="HTML">🌐</div>
-            <div className="tech-icon" title="CSS">🎨</div>
-            <div className="tech-icon" title="JavaScript">📜</div>
-            <div className="tech-icon" title="Python">🐍</div>
-            <div className="tech-icon" title="Machine Learning">🤖</div>
-            <div className="tech-icon" title="Artificial Intelligence">🧠</div>
-            <div className="tech-icon" title="TensorFlow">⚡</div>
-            <div className="tech-icon" title="Pandas">🐼</div>
-            <div className="tech-icon" title="NumPy">🔢</div>
-            <div className="tech-icon" title="Git">🔀</div>
-            <div className="tech-icon" title="Data Analysis">📊</div>
-            <div className="tech-icon" title="Jupyter">📓</div>
+            {techStack.map((tech, index) => (
+              <div key={index} className="tech-item">
+                <div className="tech-icon">{tech.icon}</div>
+                <span className="tech-name">{tech.name}</span>
+              </div>
+            ))}
           </div>
         </div>
       </div>

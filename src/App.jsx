@@ -1,8 +1,11 @@
 import { useState, useEffect } from 'react'
+import { ThemeProvider } from './contexts/ThemeContext'
+import Background from './components/Background'
 import Hero from './components/Hero'
 import About from './components/About'
 import Projects from './components/Projects'
 import Skills from './components/Skills'
+import Blog from './components/Blog'
 import Contact from './components/Contact'
 import Navbar from './components/Navbar'
 import './App.css'
@@ -12,7 +15,7 @@ function App() {
 
   useEffect(() => {
     const handleScroll = () => {
-      const sections = ['home', 'about', 'projects', 'skills', 'contact']
+      const sections = ['home', 'about', 'projects', 'skills', 'blog', 'contact']
       const scrollPosition = window.scrollY + 100
 
       for (const section of sections) {
@@ -32,16 +35,20 @@ function App() {
   }, [])
 
   return (
-    <div className="App">
-      <Navbar activeSection={activeSection} />
-      <main>
-        <Hero />
-        <About />
-        <Projects />
-        <Skills />
-        <Contact />
-      </main>
-    </div>
+    <ThemeProvider>
+      <div className="App">
+        <Background />
+        <Navbar activeSection={activeSection} />
+        <main>
+          <Hero />
+          <About />
+          <Projects />
+          <Skills />
+          <Blog />
+          <Contact />
+        </main>
+      </div>
+    </ThemeProvider>
   )
 }
 
