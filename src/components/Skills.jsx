@@ -1,45 +1,55 @@
+import { useState, useEffect } from 'react'
+import { skillsAPI } from '../services/api'
 import './Skills.css'
 
 const Skills = () => {
+  const [skills, setSkills] = useState([])
+  const [loading, setLoading] = useState(true)
+  const [error, setError] = useState(null)
+
+  useEffect(() => {
+    const fetchSkills = async () => {
+      try {
+        const response = await skillsAPI.getAll()
+        if (response.data.success) {
+          setSkills(response.data.data)
+        }
+      } catch (err) {
+        console.error('Error fetching skills:', err)
+        setError('Failed to load skills')
+      } finally {
+        setLoading(false)
+      }
+    }
+    fetchSkills()
+  }, [])
+
+  // Group skills by category
   const skillCategories = [
     {
       category: 'AI & Machine Learning',
+      id: 'ai-ml',
       icon: '🤖',
-      skills: [
-        { name: 'Gen AI', level: 90 },
-        { name: 'Machine Learning', level: 85 },
-        { name: 'Agentic AI', level: 80 },
-        { name: 'Foundations of AI', level: 85 }
-      ]
+      skills: skills.filter(s => s.category === 'ai-ml')
     },
     {
       category: 'Web Development',
+      id: 'web-dev',
       icon: '🌐',
-      skills: [
-        { name: 'HTML / CSS', level: 90 },
-        { name: 'JavaScript', level: 85 },
-        { name: 'Web Development', level: 88 }
-      ]
+      skills: skills.filter(s => s.category === 'web-dev')
     },
     {
       category: 'Design & Soft Skills',
+      id: 'design',
       icon: '🎨',
-      skills: [
-        { name: 'UI/UX Design', level: 80 },
-        { name: 'Communication', level: 90 }
-      ]
+      skills: skills.filter(s => s.category === 'design')
     }
   ]
 
-  const techStack = [
-    { name: 'Gen AI', icon: '🧠' },
-    { name: 'Machine Learning', icon: '🤖' },
-    { name: 'Agentic AI', icon: '🕵️' },
-    { name: 'HTML/CSS', icon: '🌐' },
-    { name: 'JavaScript', icon: '📜' },
-    { name: 'UI/UX', icon: '🎨' },
-    { name: 'Communication', icon: '🗣️' }
-  ]
+  // Filter categories that have skills
+  const activeCategories = skillCategories.filter(cat => cat.skills.length > 0)
+
+  if (loading) return <div className="loading-container"><div className="loading-spinner"></div>Loading skills...</div>
 
   return (
     <section id="skills" className="skills">
@@ -49,40 +59,49 @@ const Skills = () => {
           <p className="section-subtitle">Technologies I work with</p>
         </div>
 
-        <div className="skills-grid">
-          {skillCategories.map((category, index) => (
-            <div key={index} className="skill-category">
-              <div className="category-header">
-                <span className="category-icon">{category.icon}</span>
-                <h3 className="category-title">{category.category}</h3>
-              </div>
-              <div className="skills-list">
-                {category.skills.map((skill, skillIndex) => (
-                  <div key={skillIndex} className="skill-item">
-                    <div className="skill-header">
-                      <span className="skill-name">{skill.name}</span>
-                      <span className="skill-percentage">{skill.level}%</span>
-                    </div>
-                    <div className="skill-bar">
-                      <div
-                        className="skill-progress"
-                        style={{ width: `${skill.level}%` }}
-                      ></div>
-                    </div>
+        {error ? (
+          <div className="error-message">{error}</div>
+        ) : (
+          <div className="skills-grid">
+            {activeCategories.length > 0 ? (
+              activeCategories.map((category, index) => (
+                <div key={index} className="skill-category">
+                  <div className="category-header">
+                    <span className="category-icon">{category.icon}</span>
+                    <h3 className="category-title">{category.category}</h3>
                   </div>
-                ))}
-              </div>
-            </div>
-          ))}
-        </div>
+                  <div className="skills-list">
+                    {category.skills.map((skill) => (
+                      <div key={skill._id} className="skill-item">
+                        <div className="skill-header">
+                          <span className="skill-name">{skill.name}</span>
+                          <span className="skill-percentage">{skill.proficiency}%</span>
+                        </div>
+                        <div className="skill-bar">
+                          <div
+                            className="skill-progress"
+                            style={{ width: `${skill.proficiency}%` }}
+                          ></div>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              ))
+            ) : (
+              <p className="no-skills">No skills added yet.</p>
+            )}
+          </div>
+        )}
 
+        {/* Tech Stack Visuals - Simplified or Fetched if needed */}
         <div className="tech-stack">
           <h3 className="tech-stack-title">Tech Stack</h3>
           <div className="tech-icons">
-            {techStack.map((tech, index) => (
-              <div key={index} className="tech-item">
-                <div className="tech-icon">{tech.icon}</div>
-                <span className="tech-name">{tech.name}</span>
+            {skills.slice(0, 8).map((skill) => (
+              <div key={skill._id} className="tech-item">
+                <div className="tech-icon">{skill.icon || '🔹'}</div>
+                <span className="tech-name">{skill.name}</span>
               </div>
             ))}
           </div>

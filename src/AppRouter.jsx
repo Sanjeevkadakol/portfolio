@@ -2,29 +2,21 @@ import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
 import PortfolioApp from './App.jsx'
 import AdminLogin from './admin/AdminLogin.jsx'
 import Dashboard from './admin/Dashboard.jsx'
+import AdminProjects from './admin/AdminProjects.jsx'
+import AdminBlog from './admin/AdminBlog.jsx'
+import AdminSkills from './admin/AdminSkills.jsx'
+import AdminSettings from './admin/AdminSettings.jsx'
 
-const PrivateRoute = ({ children }) => {
-  const token = localStorage.getItem('token')
-  return token ? children : <Navigate to="/admin/login" />
-}
+// ... existing imports ...
 
-const AppRouter = () => {
-  return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<PortfolioApp />} />
-        <Route path="/admin/login" element={<AdminLogin />} />
-        <Route
-          path="/admin/dashboard"
-          element={
-            <PrivateRoute>
-              <Dashboard />
-            </PrivateRoute>
-          }
-        />
+// ... existing code ...
+
+        <Route path="/admin/contacts" element={<PrivateRoute><AdminContacts /></PrivateRoute>} />
+        <Route path="/admin/settings" element={<PrivateRoute><AdminSettings /></PrivateRoute>} />
+
         <Route path="*" element={<Navigate to="/" />} />
-      </Routes>
-    </BrowserRouter>
+      </Routes >
+    </BrowserRouter >
   )
 }
 

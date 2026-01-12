@@ -24,8 +24,8 @@ mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/portfolio
   useNewUrlParser: true,
   useUnifiedTopology: true,
 })
-.then(() => console.log('✅ MongoDB connected successfully'))
-.catch((err) => console.error('❌ MongoDB connection error:', err));
+  .then(() => console.log('✅ MongoDB connected successfully'))
+  .catch((err) => console.error('❌ MongoDB connection error:', err));
 
 // Routes
 app.use('/api/projects', projectRoutes);
@@ -36,12 +36,16 @@ app.use('/api/contact', contactRoutes);
 app.use('/api/settings', settingsRoutes);
 
 // Health check
+app.get('/', (req, res) => {
+  res.send('Portfolio API is running. Access endpoints via /api');
+});
+
 app.get('/api/health', (req, res) => {
   const mongoStatus = mongoose.connection.readyState === 1 ? 'connected' : 'disconnected';
   const emailConfigured = !!(process.env.SMTP_USER && process.env.SMTP_PASS);
-  
-  res.json({ 
-    status: 'OK', 
+
+  res.json({
+    status: 'OK',
     message: 'Server is running',
     database: mongoStatus,
     email: emailConfigured ? 'configured' : 'not configured'
@@ -51,14 +55,18 @@ app.get('/api/health', (req, res) => {
 // Error handling middleware
 app.use((err, req, res, next) => {
   console.error(err.stack);
-  res.status(500).json({ 
-    success: false, 
-    message: 'Something went wrong!', 
-    error: process.env.NODE_ENV === 'development' ? err.message : undefined 
+  res.status(500).json({
+    success: false,
+    message: 'Something went wrong!',
+    error: process.env.NODE_ENV === 'development' ? err.message : undefined
   });
 });
 
-app.listen(PORT, () => {
-  console.log(`🚀 Server running on port ${PORT}`);
-});
+if (process.env.NODE_ENV !== 'production') {
+  app.listen(PORT, () => {
+    console.log(`🚀 Server running on port ${PORT}`);
+  });
+}
+
+export default app;
 
