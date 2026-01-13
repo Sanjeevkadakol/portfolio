@@ -1,17 +1,17 @@
-import mongoose from 'mongoose';
+import { Sequelize } from 'sequelize';
+import dotenv from 'dotenv';
 
-const connectDB = async () => {
-  try {
-    const conn = await mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/portfolio-cms', {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-    });
-    console.log(`✅ MongoDB Connected: ${conn.connection.host}`);
-  } catch (error) {
-    console.error(`❌ Error: ${error.message}`);
-    process.exit(1);
+dotenv.config();
+
+const sequelize = new Sequelize(
+  process.env.DB_NAME || 'portfolio_cms',
+  process.env.DB_USER || 'root',
+  process.env.DB_PASS || '',
+  {
+    host: process.env.DB_HOST || 'localhost',
+    dialect: 'mysql',
+    logging: false,
   }
-};
+);
 
-export default connectDB;
-
+export default sequelize;

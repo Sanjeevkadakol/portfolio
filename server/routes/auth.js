@@ -1,120 +1,94 @@
 import express from 'express';
-import User from '../models/User.js';
-import generateToken from '../utils/generateToken.js';
-import { protect, authorize } from '../middleware/auth.js';
+import jwt from 'jsonwebtoken';
+import bcrypt from 'bcryptjs';
+import { User } from '../models/index.js';
+import { protect } from '../middleware/auth.js';
 
 const router = express.Router();
 
-// @route   POST /api/auth/register
-// @desc    Register a new user
-// @access  Public
+// Register (Admin only - technically, passing 'secret' or relying on protect for subsequent ones)
+// For first run, you might need a way to create the first admin.
+// This route is often public for the first user or protected.
+// For this portfolio, we'll keep it simple: checking if any user exists?
+// OR just leave it open but warn.
 router.post('/register', async (req, res) => {
   try {
-    const { username, email, password, role } = req.body;
+    const { username, password } = req.body;
 
-    // Check if user exists
-    const userExists = await User.findOne({ $or: [{ email }, { username }] });
+    const userExists = await User.findOne({ where: { username } });
     if (userExists) {
-      return res.status(400).json({
-        success: false,
-        message: 'User already exists with this email or username',
-      });
+      return res.status(400).json({ success: false, message: 'User already exists' });
     }
 
-    // Create user
-    const user = await User.create({
-      username,
-      email,
-      password,
-      role: role || 'admin',
-    });
+    const user = await User.create({ username, password });
 
     res.status(201).json({
       success: true,
-      data: {
-        id: user._id,
-        username: user.username,
-        email: user.email,
-        role: user.role,
-        token: generateToken(user._id),
-      },
+      message: 'User registered successfully',
     });
   } catch (error) {
-    res.status(400).json({
-      success: false,
-      message: error.message,
-    });
+    res.status(500).json({ success: false, message: error.message });
   }
 });
 
-// @route   POST /api/auth/login
-// @desc    Login user
-// @access  Public
+// Login
 router.post('/login', async (req, res) => {
   try {
-    const { email, password } = req.body;
+    console.log('--- LOGIN REQUEST ---');
+    console.log('Body:', JSON.stringify(req.body));
+    console.log('Headers Content-Type:', req.headers['content-type']);
 
-    // Validate input
-    if (!email || !password) {
-      return res.status(400).json({
-        success: false,
-        message: 'Please provide email and password',
-      });
-    }
+    const { username, password } = req.body;
+    console.log(`Username: '${username}' (Type: ${typeof username}, Length: ${username?.length})`);
+    console.log(`Password: '${password}' (Type: ${typeof password}, Length: ${password?.length})`);
+    console.log('JWT_SECRET defined:', !!process.env.JWT_SECRET);
 
-    // Check for user
-    const user = await User.findOne({ email }).select('+password');
+    const user = await User.findOne({ where: { username } });
     if (!user) {
-      return res.status(401).json({
-        success: false,
-        message: 'Invalid credentials',
-      });
+      console.log('❌ User not found in DB');
+      return res.status(401).json({ success: false, message: 'Invalid credentials' });
     }
+    console.log('✅ User found in DB:', user.username);
+    console.log('Stored Hash:', user.password.substring(0, 10) + '...');
 
-    // Check if password matches
-    const isMatch = await user.comparePassword(password);
+    const isMatch = await bcrypt.compare(password, user.password);
+    console.log('Password comparison result:', isMatch);
+
     if (!isMatch) {
-      return res.status(401).json({
-        success: false,
-        message: 'Invalid credentials',
-      });
+      console.log('❌ Password mismatch');
+      return res.status(401).json({ success: false, message: 'Invalid credentials' });
     }
 
+    const token = jwt.sign({ id: user.id }, process.env.JWT_SECRET, {
+      expiresIn: '1d',
+    });
+
+    console.log('✅ Login successful, token generated');
     res.json({
       success: true,
-      data: {
-        id: user._id,
+      token,
+      user: {
+        id: user.id,
         username: user.username,
-        email: user.email,
         role: user.role,
-        token: generateToken(user._id),
       },
     });
   } catch (error) {
-    res.status(500).json({
-      success: false,
-      message: error.message,
-    });
+    console.error('Login error:', error);
+    res.status(500).json({ success: false, message: error.message });
   }
 });
 
-// @route   GET /api/auth/me
-// @desc    Get current logged in user
-// @access  Private
+// Get Current User
 router.get('/me', protect, async (req, res) => {
   try {
-    const user = await User.findById(req.user._id);
-    res.json({
-      success: true,
-      data: user,
+    const user = await User.findByPk(req.user.id, {
+      attributes: { exclude: ['password'] }
     });
+    res.json({ success: true, data: user });
   } catch (error) {
-    res.status(500).json({
-      success: false,
-      message: error.message,
-    });
+    res.status(500).json({ success: false, message: error.message });
   }
 });
 
 export default router;
-

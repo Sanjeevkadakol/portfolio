@@ -1,152 +1,86 @@
 import express from 'express';
-import Project from '../models/Project.js';
-import { protect, authorize } from '../middleware/auth.js';
+import { Project } from '../models/index.js';
+import { protect } from '../middleware/auth.js';
 
 const router = express.Router();
 
-// @route   GET /api/projects
-// @desc    Get all projects (public - only published)
-// @access  Public
+// Get all projects
 router.get('/', async (req, res) => {
   try {
-    const { category, featured } = req.query;
-    const query = { status: 'published' };
-
-    if (category) {
-      query.category = category;
-    }
-    if (featured === 'true') {
-      query.featured = true;
-    }
-
-    const projects = await Project.find(query).sort({ order: 1, createdAt: -1 });
-    res.json({
-      success: true,
-      count: projects.length,
-      data: projects,
+    const projects = await Project.findAll({
+      order: [['order', 'ASC']],
     });
+    res.json({ success: true, data: projects });
   } catch (error) {
-    res.status(500).json({
-      success: false,
-      message: error.message,
-    });
+    res.status(500).json({ success: false, message: error.message });
   }
 });
 
-// @route   GET /api/projects/:id
-// @desc    Get single project
-// @access  Public
+// Admin: Get all projects (same as above potentially, but separating for structure)
+router.get('/admin/all', protect, async (req, res) => {
+  try {
+    const projects = await Project.findAll({
+      order: [['createdAt', 'DESC']],
+    });
+    res.json({ success: true, data: projects });
+  } catch (error) {
+    res.status(500).json({ success: false, message: error.message });
+  }
+});
+
+// Get single project
 router.get('/:id', async (req, res) => {
   try {
-    const project = await Project.findById(req.params.id);
+    const project = await Project.findByPk(req.params.id);
     if (!project) {
-      return res.status(404).json({
-        success: false,
-        message: 'Project not found',
-      });
+      return res.status(404).json({ success: false, message: 'Project not found' });
     }
-    res.json({
-      success: true,
-      data: project,
-    });
+    res.json({ success: true, data: project });
   } catch (error) {
-    res.status(500).json({
-      success: false,
-      message: error.message,
-    });
+    res.status(500).json({ success: false, message: error.message });
   }
 });
 
-// @route   POST /api/projects
-// @desc    Create new project
-// @access  Private
-router.post('/', protect, authorize('admin', 'editor'), async (req, res) => {
+// Create project
+router.post('/', protect, async (req, res) => {
   try {
     const project = await Project.create(req.body);
-    res.status(201).json({
-      success: true,
-      data: project,
-    });
+    res.status(201).json({ success: true, data: project });
   } catch (error) {
-    res.status(400).json({
-      success: false,
-      message: error.message,
-    });
+    res.status(500).json({ success: false, message: error.message });
   }
 });
 
-// @route   PUT /api/projects/:id
-// @desc    Update project
-// @access  Private
-router.put('/:id', protect, authorize('admin', 'editor'), async (req, res) => {
+// Update project
+router.put('/:id', protect, async (req, res) => {
   try {
-    const project = await Project.findByIdAndUpdate(
-      req.params.id,
-      req.body,
-      { new: true, runValidators: true }
-    );
-
+    const project = await Project.findByPk(req.params.id);
     if (!project) {
-      return res.status(404).json({
-        success: false,
-        message: 'Project not found',
-      });
+      return res.status(404).json({ success: false, message: 'Project not found' });
     }
 
-    res.json({
-      success: true,
-      data: project,
-    });
+    await project.update(req.body);
+
+    res.json({ success: true, data: project });
   } catch (error) {
-    res.status(400).json({
-      success: false,
-      message: error.message,
-    });
+    res.status(500).json({ success: false, message: error.message });
   }
 });
 
-// @route   DELETE /api/projects/:id
-// @desc    Delete project
-// @access  Private
-router.delete('/:id', protect, authorize('admin'), async (req, res) => {
+// Delete project
+router.delete('/:id', protect, async (req, res) => {
   try {
-    const project = await Project.findByIdAndDelete(req.params.id);
+    const project = await Project.findByPk(req.params.id);
     if (!project) {
-      return res.status(404).json({
-        success: false,
-        message: 'Project not found',
-      });
+      return res.status(404).json({ success: false, message: 'Project not found' });
     }
-    res.json({
-      success: true,
-      message: 'Project deleted successfully',
-    });
-  } catch (error) {
-    res.status(500).json({
-      success: false,
-      message: error.message,
-    });
-  }
-});
 
-// @route   GET /api/projects/admin/all
-// @desc    Get all projects (including drafts) - Admin only
-// @access  Private
-router.get('/admin/all', protect, authorize('admin', 'editor'), async (req, res) => {
-  try {
-    const projects = await Project.find().sort({ order: 1, createdAt: -1 });
-    res.json({
-      success: true,
-      count: projects.length,
-      data: projects,
-    });
+    await project.destroy();
+
+    res.json({ success: true, message: 'Project deleted' });
   } catch (error) {
-    res.status(500).json({
-      success: false,
-      message: error.message,
-    });
+    res.status(500).json({ success: false, message: error.message });
   }
 });
 
 export default router;
-

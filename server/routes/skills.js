@@ -1,106 +1,64 @@
 import express from 'express';
-import Skill from '../models/Skill.js';
-import { protect, authorize } from '../middleware/auth.js';
+import { Skill } from '../models/index.js';
+import { protect } from '../middleware/auth.js';
 
 const router = express.Router();
 
-// @route   GET /api/skills
-// @desc    Get all skills (public - only active)
-// @access  Public
+// Get all skills
 router.get('/', async (req, res) => {
   try {
-    const { category } = req.query;
-    const query = { status: 'active' };
-
-    if (category) {
-      query.category = category;
-    }
-
-    const skills = await Skill.find(query).sort({ order: 1, name: 1 });
-    res.json({
-      success: true,
-      count: skills.length,
-      data: skills,
+    const skills = await Skill.findAll({
+      order: [
+        ['order', 'ASC'],
+        ['name', 'ASC']
+      ],
     });
+    res.json({ success: true, data: skills });
   } catch (error) {
-    res.status(500).json({
-      success: false,
-      message: error.message,
-    });
+    res.status(500).json({ success: false, message: error.message });
   }
 });
 
-// @route   POST /api/skills
-// @desc    Create new skill
-// @access  Private
-router.post('/', protect, authorize('admin', 'editor'), async (req, res) => {
+// Create skill
+router.post('/', protect, async (req, res) => {
   try {
     const skill = await Skill.create(req.body);
-    res.status(201).json({
-      success: true,
-      data: skill,
-    });
+    res.status(201).json({ success: true, data: skill });
   } catch (error) {
-    res.status(400).json({
-      success: false,
-      message: error.message,
-    });
+    res.status(500).json({ success: false, message: error.message });
   }
 });
 
-// @route   PUT /api/skills/:id
-// @desc    Update skill
-// @access  Private
-router.put('/:id', protect, authorize('admin', 'editor'), async (req, res) => {
+// Update skill
+router.put('/:id', protect, async (req, res) => {
   try {
-    const skill = await Skill.findByIdAndUpdate(
-      req.params.id,
-      req.body,
-      { new: true, runValidators: true }
-    );
-
+    const skill = await Skill.findByPk(req.params.id);
     if (!skill) {
-      return res.status(404).json({
-        success: false,
-        message: 'Skill not found',
-      });
+      return res.status(404).json({ success: false, message: 'Skill not found' });
     }
 
-    res.json({
-      success: true,
-      data: skill,
-    });
+    await skill.update(req.body);
+
+    res.json({ success: true, data: skill });
   } catch (error) {
-    res.status(400).json({
-      success: false,
-      message: error.message,
-    });
+    res.status(500).json({ success: false, message: error.message });
   }
 });
 
-// @route   DELETE /api/skills/:id
-// @desc    Delete skill
-// @access  Private
-router.delete('/:id', protect, authorize('admin'), async (req, res) => {
+// Delete skill
+router.delete('/:id', protect, async (req, res) => {
   try {
-    const skill = await Skill.findByIdAndDelete(req.params.id);
+    const skill = await Skill.findByPk(req.params.id);
     if (!skill) {
-      return res.status(404).json({
-        success: false,
-        message: 'Skill not found',
-      });
+      return res.status(404).json({ success: false, message: 'Skill not found' });
     }
-    res.json({
-      success: true,
-      message: 'Skill deleted successfully',
-    });
+
+    await skill.destroy();
+
+    res.json({ success: true, message: 'Skill deleted' });
   } catch (error) {
-    res.status(500).json({
-      success: false,
-      message: error.message,
-    });
+    res.status(500).json({ success: false, message: error.message });
   }
 });
 
 export default router;
-

@@ -5,20 +5,33 @@ import Dashboard from './admin/Dashboard.jsx'
 import AdminProjects from './admin/AdminProjects.jsx'
 import AdminBlog from './admin/AdminBlog.jsx'
 import AdminSkills from './admin/AdminSkills.jsx'
+import AdminContacts from './admin/AdminContacts.jsx'
 import AdminSettings from './admin/AdminSettings.jsx'
 
-// ... existing imports ...
+const PrivateRoute = ({ children }) => {
+  const token = localStorage.getItem('token')
+  return token ? children : <Navigate to="/admin/login" />
+}
 
-// ... existing code ...
+const AppRouter = () => {
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<PortfolioApp />} />
+        <Route path="/admin/login" element={<AdminLogin />} />
 
-        <Route path="/admin/contacts" element={<PrivateRoute><AdminContacts /></PrivateRoute>} />
-        <Route path="/admin/settings" element={<PrivateRoute><AdminSettings /></PrivateRoute>} />
+        {/* Protected Routes (Login Bypassed) */}
+        <Route path="/admin/dashboard" element={<Dashboard />} />
+        <Route path="/admin/projects" element={<AdminProjects />} />
+        <Route path="/admin/blog" element={<AdminBlog />} />
+        <Route path="/admin/skills" element={<AdminSkills />} />
+        <Route path="/admin/contacts" element={<AdminContacts />} />
+        <Route path="/admin/settings" element={<AdminSettings />} />
 
         <Route path="*" element={<Navigate to="/" />} />
-      </Routes >
-    </BrowserRouter >
+      </Routes>
+    </BrowserRouter>
   )
 }
 
 export default AppRouter
-

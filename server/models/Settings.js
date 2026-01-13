@@ -1,59 +1,26 @@
-import mongoose from 'mongoose';
+import { DataTypes } from 'sequelize';
+import sequelize from '../config/database.js';
 
-const settingsSchema = new mongoose.Schema({
+const Settings = sequelize.define('Settings', {
   siteName: {
-    type: String,
-    default: 'Portfolio',
+    type: DataTypes.STRING,
+    defaultValue: 'My Portfolio',
   },
   siteDescription: {
-    type: String,
-    default: 'Professional Portfolio Website',
-  },
-  theme: {
-    primaryColor: {
-      type: String,
-      default: '#3b82f6',
-    },
-    secondaryColor: {
-      type: String,
-      default: '#8b5cf6',
-    },
-    mode: {
-      type: String,
-      enum: ['light', 'dark', 'auto'],
-      default: 'auto',
-    },
+    type: DataTypes.TEXT,
   },
   socialLinks: {
-    github: { type: String, default: '' },
-    linkedin: { type: String, default: '' },
-    twitter: { type: String, default: '' },
-    email: { type: String, default: '' },
-    website: { type: String, default: '' },
+    type: DataTypes.JSON,
+    defaultValue: {},
   },
-  seo: {
-    metaTitle: { type: String, default: '' },
-    metaDescription: { type: String, default: '' },
-    keywords: [String],
+  theme: {
+    type: DataTypes.JSON,
+    defaultValue: {
+      primaryColor: '#3b82f6',
+      secondaryColor: '#8b5cf6',
+      mode: 'light',
+    },
   },
-  updatedAt: {
-    type: Date,
-    default: Date.now,
-  },
-}, {
-  timestamps: true,
 });
 
-// Ensure only one settings document exists
-settingsSchema.statics.getSettings = async function () {
-  let settings = await this.findOne();
-  if (!settings) {
-    settings = await this.create({});
-  }
-  return settings;
-};
-
-const Settings = mongoose.model('Settings', settingsSchema);
-
 export default Settings;
-

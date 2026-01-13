@@ -43,6 +43,12 @@ const Skills = () => {
       id: 'design',
       icon: '🎨',
       skills: skills.filter(s => s.category === 'design')
+    },
+    {
+      category: 'Certifications',
+      id: 'certification',
+      icon: '📜',
+      skills: skills.filter(s => s.category === 'certification')
     }
   ]
 
@@ -98,9 +104,15 @@ const Skills = () => {
         <div className="tech-stack">
           <h3 className="tech-stack-title">Tech Stack</h3>
           <div className="tech-icons">
-            {skills.slice(0, 8).map((skill) => (
+            {skills.filter(s => s.name !== 'Gen AI').slice(0, 8).map((skill) => (
               <div key={skill._id} className="tech-item">
-                <div className="tech-icon">{skill.icon || '🔹'}</div>
+                <div className="tech-icon">
+                  {skill.icon && skill.icon.startsWith('http') ? (
+                    <img src={skill.icon} alt={skill.name} className="w-12 h-12 object-contain" />
+                  ) : (
+                    skill.icon || '🔹'
+                  )}
+                </div>
                 <span className="tech-name">{skill.name}</span>
               </div>
             ))}

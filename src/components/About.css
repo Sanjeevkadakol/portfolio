@@ -36,7 +36,7 @@
 
 .section-subtitle {
   font-size: 1.125rem;
-  color: var(--text-secondary);
+  color: #4b5563;
   margin-top: 1rem;
 }
 
@@ -50,13 +50,13 @@
 .about-text {
   font-size: 1.125rem;
   line-height: 1.8;
-  color: var(--text-secondary);
+  color: #4b5563;
 }
 
 .about-intro {
   font-size: 1.25rem;
   font-weight: 600;
-  color: var(--text-primary);
+  color: #000000;
   margin-bottom: 1.5rem;
 }
 
@@ -181,4 +181,3 @@
     font-size: 2rem;
   }
 }
-

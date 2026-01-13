@@ -1,51 +1,106 @@
-import mongoose from 'mongoose';
+import sequelize from './config/database.js';
+import { Project, Skill, User, Settings } from './models/index.js';
 import dotenv from 'dotenv';
-import User from './models/User.js';
-import Project from './models/Project.js';
-import Skill from './models/Skill.js';
-import Blog from './models/Blog.js';
+import bcrypt from 'bcryptjs';
 
 dotenv.config();
 
-const seedData = async () => {
+const projects = [
+    {
+        title: 'Hand Gesture Volume Adjuster',
+        description: 'A CV project using OpenCV and MediaPipe to control system volume with hand gestures.',
+        techStack: ['Python', 'OpenCV', 'MediaPipe'],
+        category: 'ai',
+        link: '#',
+        github: '#',
+        featured: true,
+        order: 1
+    },
+    {
+        title: 'Worm Prediction in Community Networks',
+        description: 'An AI model to predict worm propagation in community networks for cybersecurity analysis.',
+        techStack: ['Python', 'Machine Learning', 'Network Analysis'],
+        category: 'ml',
+        link: '#',
+        github: '#',
+        featured: true,
+        order: 2
+    },
+    {
+        title: 'Deforestation Rate Predictor',
+        description: 'A machine learning model to predict deforestation rates based on environmental data.',
+        techStack: ['Python', 'Scikit-learn', 'Pandas'],
+        category: 'ml',
+        link: '#',
+        github: '#',
+        featured: true,
+        order: 3
+    },
+    {
+        title: 'Mental Health Chatbot',
+        description: 'An AI-powered chatbot designed to provide mental health support and resources.',
+        techStack: ['Python', 'NLP', 'TensorFlow', 'Flask'],
+        category: 'ai',
+        link: '#',
+        github: '#',
+        featured: true,
+        order: 4
+    }
+];
+
+const skills = [
+    { name: 'Agentic AI', category: 'ai-ml', proficiency: 80, icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg' },
+    { name: 'Gen AI', category: 'ai-ml', proficiency: 90, icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/google/google-original.svg' },
+    { name: 'Machine Learning', category: 'ai-ml', proficiency: 85, icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tensorflow/tensorflow-original.svg' },
+    { name: 'HTML / CSS', category: 'web-dev', proficiency: 95, icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg' },
+    { name: 'Javascript', category: 'web-dev', proficiency: 90, icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg' },
+    { name: 'Web Development', category: 'web-dev', proficiency: 85, icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg' },
+    { name: 'Communication', category: 'design', proficiency: 90, icon: 'https://cdn-icons-png.flaticon.com/512/1000/1000946.png' },
+    { name: 'UI/UX Design', category: 'design', proficiency: 75, icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg' },
+    // Certifications
+    { name: 'DSA Fundamentals', category: 'certification', proficiency: 100, icon: 'https://cdn-icons-png.flaticon.com/512/2490/2490419.png' },
+    { name: 'Foundations Of AI', category: 'certification', proficiency: 100, icon: 'https://cdn-icons-png.flaticon.com/512/2103/2103633.png' },
+    { name: 'Gen AI Foundations', category: 'certification', proficiency: 100, icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/google/google-original.svg' },
+    { name: 'Git Version Control', category: 'certification', proficiency: 100, icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg' },
+    { name: 'Python Fundamentals', category: 'certification', proficiency: 100, icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg' },
+    { name: 'Software Engineering', category: 'certification', proficiency: 100, icon: 'https://cdn-icons-png.flaticon.com/512/2920/2920329.png' }
+];
+
+const seedWithSequelize = async () => {
     try {
-        await mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/portfolio-cms');
-        console.log('✅ Connected to MongoDB');
+        // Sync all models (Force true drops tables)
+        await sequelize.sync({ force: true });
+        console.log('✅ Database synced (Tables recreated)');
 
-        // 1. Create Admin User
-        const adminExists = await User.findOne({ email: 'admin@example.com' });
-        if (!adminExists) {
-            await User.create({
-                username: 'admin',
-                email: 'admin@example.com',
-                password: 'password123',
-                role: 'admin'
-            });
-            console.log('👤 Admin user created: admin@example.com / password123');
-        } else {
-            console.log('ℹ️ Admin user already exists');
-        }
+        // Create Admin User
+        // Note: User hook handles hashing, but seeded pwd might bypass if using bulkCreate?
+        // No, individual create or using hooks: true needed.
+        // Let's use individual create for safety.
+        await User.create({
+            username: 'admin',
+            password: 'password123', // Will be hashed by hook
+            role: 'admin'
+        });
+        console.log('✅ Admin user created');
 
-        // 2. Sample Project (if none exist)
-        const projectCount = await Project.countDocuments();
-        if (projectCount === 0) {
-            await Project.create({
-                title: 'Portfolio Website',
-                description: 'A full-stack portfolio website with CMS.',
-                category: 'fullstack',
-                technologies: ['React', 'Node.js', 'MongoDB', 'Tailwind'],
-                featured: true,
-                status: 'published'
-            });
-            console.log('📁 Sample project created');
-        }
+        // Create Projects
+        await Project.bulkCreate(projects);
+        console.log('✅ Projects inserted');
 
-        console.log('✨ Database seeding completed!');
-        process.exit();
+        // Create Skills
+        await Skill.bulkCreate(skills);
+        console.log('✅ Skills inserted');
+
+        // Create Settings
+        await Settings.create();
+        console.log('✅ Default settings created');
+
+        console.log('✅ Seeding complete!');
+        process.exit(0);
     } catch (error) {
-        console.error('❌ Error seeding database:', error);
+        console.error('❌ Seeding failed:', error);
         process.exit(1);
     }
 };
 
-seedData();
+seedWithSequelize();

@@ -1,69 +1,43 @@
-import mongoose from 'mongoose';
+import { DataTypes } from 'sequelize';
+import sequelize from '../config/database.js';
 
-const projectSchema = new mongoose.Schema({
+const Project = sequelize.define('Project', {
   title: {
-    type: String,
-    required: [true, 'Project title is required'],
-    trim: true,
+    type: DataTypes.STRING,
+    allowNull: false,
   },
   description: {
-    type: String,
-    required: [true, 'Project description is required'],
+    type: DataTypes.TEXT,
+    allowNull: false,
   },
-  longDescription: {
-    type: String,
-    default: '',
+  techStack: {
+    type: DataTypes.JSON, // Stores array as JSON
+    defaultValue: [],
+  },
+  category: {
+    type: DataTypes.ENUM('ai', 'ml', 'web', 'fullstack'),
+    defaultValue: 'web',
   },
   image: {
-    type: String,
-    default: '',
+    type: DataTypes.STRING,
+    defaultValue: '',
   },
-  technologies: [{
-    type: String,
-    trim: true,
-  }],
-  category: {
-    type: String,
-    enum: ['web', 'mobile', 'backend', 'fullstack', 'other'],
-    required: [true, 'Project category is required'],
+  link: {
+    type: DataTypes.STRING,
+    defaultValue: '',
   },
-  liveUrl: {
-    type: String,
-    default: '',
-  },
-  githubUrl: {
-    type: String,
-    default: '',
+  github: {
+    type: DataTypes.STRING,
+    defaultValue: '',
   },
   featured: {
-    type: Boolean,
-    default: false,
+    type: DataTypes.BOOLEAN,
+    defaultValue: false,
   },
   order: {
-    type: Number,
-    default: 0,
-  },
-  status: {
-    type: String,
-    enum: ['published', 'draft'],
-    default: 'published',
-  },
-  createdAt: {
-    type: Date,
-    default: Date.now,
-  },
-  updatedAt: {
-    type: Date,
-    default: Date.now,
+    type: DataTypes.INTEGER,
+    defaultValue: 0,
   },
 });
-
-projectSchema.pre('save', function (next) {
-  this.updatedAt = Date.now();
-  next();
-});
-
-const Project = mongoose.model('Project', projectSchema);
 
 export default Project;
-

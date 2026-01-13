@@ -1,7 +1,10 @@
 import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
-import mongoose from 'mongoose';
+import sequelize from './config/database.js';
+import './models/index.js'; // Import models to initialize them
+
+// Import Routes
 import projectRoutes from './routes/projects.js';
 import blogRoutes from './routes/blog.js';
 import skillRoutes from './routes/skills.js';
@@ -20,12 +23,9 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // Database connection
-mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/portfolio-cms', {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-})
-  .then(() => console.log('✅ MongoDB connected successfully'))
-  .catch((err) => console.error('❌ MongoDB connection error:', err));
+sequelize.sync({ force: false }) // Set force: true to reset DB arrays
+  .then(() => console.log('✅ MySQL connected and synced'))
+  .catch((err) => console.error('❌ MySQL connection error:', err));
 
 // Routes
 app.use('/api/projects', projectRoutes);
@@ -40,16 +40,26 @@ app.get('/', (req, res) => {
   res.send('Portfolio API is running. Access endpoints via /api');
 });
 
-app.get('/api/health', (req, res) => {
-  const mongoStatus = mongoose.connection.readyState === 1 ? 'connected' : 'disconnected';
-  const emailConfigured = !!(process.env.SMTP_USER && process.env.SMTP_PASS);
+app.get('/api/health', async (req, res) => {
+  try {
+    await sequelize.authenticate();
+    const dbStatus = 'connected';
 
-  res.json({
-    status: 'OK',
-    message: 'Server is running',
-    database: mongoStatus,
-    email: emailConfigured ? 'configured' : 'not configured'
-  });
+    const emailConfigured = !!(process.env.SMTP_USER && process.env.SMTP_PASS);
+
+    res.json({
+      status: 'OK',
+      message: 'Server is running',
+      database: dbStatus,
+      email: emailConfigured ? 'configured' : 'not configured'
+    });
+  } catch (error) {
+    res.status(500).json({
+      status: 'ERROR',
+      message: 'Database connection failed',
+      error: error.message
+    });
+  }
 });
 
 // Error handling middleware
@@ -69,4 +79,3 @@ if (process.env.NODE_ENV !== 'production') {
 }
 
 export default app;
-

@@ -1,83 +1,41 @@
-import mongoose from 'mongoose';
+import { DataTypes } from 'sequelize';
+import sequelize from '../config/database.js';
 
-const blogSchema = new mongoose.Schema({
+const Blog = sequelize.define('Blog', {
   title: {
-    type: String,
-    required: [true, 'Blog title is required'],
-    trim: true,
+    type: DataTypes.STRING,
+    allowNull: false,
   },
   slug: {
-    type: String,
-    required: true,
+    type: DataTypes.STRING,
+    allowNull: false,
     unique: true,
-    lowercase: true,
-  },
-  excerpt: {
-    type: String,
-    required: [true, 'Blog excerpt is required'],
   },
   content: {
-    type: String,
-    required: [true, 'Blog content is required'],
+    type: DataTypes.TEXT('long'), // For larger content
+    allowNull: false,
   },
-  featuredImage: {
-    type: String,
-    default: '',
+  excerpt: {
+    type: DataTypes.TEXT,
+  },
+  coverImage: {
+    type: DataTypes.STRING,
+  },
+  tags: {
+    type: DataTypes.JSON,
+    defaultValue: [],
   },
   author: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'User',
-    required: true,
+    type: DataTypes.STRING,
+    defaultValue: 'Admin',
   },
-  tags: [{
-    type: String,
-    trim: true,
-  }],
-  category: {
-    type: String,
-    default: 'general',
+  readTime: {
+    type: DataTypes.STRING,
   },
-  views: {
-    type: Number,
-    default: 0,
-  },
-  status: {
-    type: String,
-    enum: ['published', 'draft'],
-    default: 'draft',
-  },
-  publishedAt: {
-    type: Date,
-  },
-  createdAt: {
-    type: Date,
-    default: Date.now,
-  },
-  updatedAt: {
-    type: Date,
-    default: Date.now,
+  published: {
+    type: DataTypes.BOOLEAN,
+    defaultValue: false,
   },
 });
-
-blogSchema.pre('save', function (next) {
-  // Generate slug from title if not provided
-  if (!this.slug && this.title) {
-    this.slug = this.title
-      .toLowerCase()
-      .replace(/[^a-z0-9]+/g, '-')
-      .replace(/(^-|-$)/g, '');
-  }
-  
-  // Set publishedAt when status changes to published
-  if (this.isModified('status') && this.status === 'published' && !this.publishedAt) {
-    this.publishedAt = Date.now();
-  }
-  
-  this.updatedAt = Date.now();
-  next();
-});
-
-const Blog = mongoose.model('Blog', blogSchema);
 
 export default Blog;
-

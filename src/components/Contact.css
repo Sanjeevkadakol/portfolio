@@ -22,7 +22,7 @@
   margin-bottom: 1rem;
 }
 
-.contact-info > p {
+.contact-info>p {
   font-size: 1.125rem;
   color: var(--text-secondary);
   line-height: 1.8;
@@ -59,20 +59,20 @@
 .contact-detail-item h4 {
   font-size: 1rem;
   font-weight: 600;
-  color: var(--text-primary);
+  color: #000000;
   margin-bottom: 0.25rem;
 }
 
 .contact-detail-item p {
   font-size: 0.95rem;
-  color: var(--text-secondary);
+  color: #4b5563;
   margin: 0;
 }
 
 .social-links h4 {
   font-size: 1.125rem;
   font-weight: 600;
-  color: var(--text-primary);
+  color: #000000;
   margin-bottom: 1rem;
 }
 
@@ -129,6 +129,7 @@
   font-family: inherit;
   transition: border-color 0.3s ease;
   background: var(--bg-secondary);
+  color: #000000;
 }
 
 .form-group input:focus,
@@ -208,4 +209,3 @@
     flex-wrap: wrap;
   }
 }
-

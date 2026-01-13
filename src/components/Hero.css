@@ -91,7 +91,7 @@
   font-weight: 800;
   line-height: 1.2;
   margin-bottom: 1rem;
-  color: var(--text);
+  color: #000000;
 }
 
 .gradient-text {
@@ -104,13 +104,13 @@
 .hero-subtitle {
   font-size: 2rem;
   font-weight: 600;
-  color: var(--text-secondary);
+  color: #4b5563;
   margin-bottom: 1.5rem;
 }
 
 .hero-description {
   font-size: 1.125rem;
-  color: var(--text-secondary);
+  color: #4b5563;
   line-height: 1.8;
   margin-bottom: 2rem;
   max-width: 500px;

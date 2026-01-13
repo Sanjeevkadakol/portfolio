@@ -1,51 +1,35 @@
-import mongoose from 'mongoose';
+import { DataTypes } from 'sequelize';
+import sequelize from '../config/database.js';
 
-const skillSchema = new mongoose.Schema({
+const Skill = sequelize.define('Skill', {
   name: {
-    type: String,
-    required: [true, 'Skill name is required'],
-    trim: true,
+    type: DataTypes.STRING,
+    allowNull: false,
   },
   category: {
-    type: String,
-    enum: ['frontend', 'backend', 'database', 'tools', 'other'],
-    required: [true, 'Skill category is required'],
+    type: DataTypes.ENUM('frontend', 'backend', 'tools', 'soft-skills', 'ai-ml', 'web-dev', 'design', 'certification'),
+    defaultValue: 'frontend',
   },
   proficiency: {
-    type: Number,
-    min: 0,
-    max: 100,
-    default: 50,
+    type: DataTypes.INTEGER,
+    defaultValue: 0,
+    validate: {
+      min: 0,
+      max: 100,
+    },
   },
   icon: {
-    type: String,
-    default: '',
+    type: DataTypes.STRING,
+    defaultValue: '',
   },
   order: {
-    type: Number,
-    default: 0,
+    type: DataTypes.INTEGER,
+    defaultValue: 0,
   },
   status: {
-    type: String,
-    enum: ['active', 'inactive'],
-    default: 'active',
-  },
-  createdAt: {
-    type: Date,
-    default: Date.now,
-  },
-  updatedAt: {
-    type: Date,
-    default: Date.now,
+    type: DataTypes.ENUM('active', 'inactive'),
+    defaultValue: 'active',
   },
 });
-
-skillSchema.pre('save', function (next) {
-  this.updatedAt = Date.now();
-  next();
-});
-
-const Skill = mongoose.model('Skill', skillSchema);
 
 export default Skill;
-

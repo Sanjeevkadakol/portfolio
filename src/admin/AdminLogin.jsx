@@ -5,7 +5,7 @@ import './AdminLogin.css'
 
 const AdminLogin = () => {
   const [formData, setFormData] = useState({
-    email: '',
+    username: '',
     password: '',
   })
   const [error, setError] = useState('')
@@ -45,23 +45,23 @@ const AdminLogin = () => {
         <div className="login-card">
           <h1>CMS Login</h1>
           <p>Sign in to manage your portfolio content</p>
-          
+
           {error && <div className="error-message">{error}</div>}
-          
+
           <form onSubmit={handleSubmit}>
             <div className="form-group">
-              <label htmlFor="email">Email</label>
+              <label htmlFor="username">Username</label>
               <input
-                type="email"
-                id="email"
-                name="email"
-                value={formData.email}
+                type="text"
+                id="username"
+                name="username"
+                value={formData.username}
                 onChange={handleChange}
                 required
-                placeholder="admin@example.com"
+                placeholder="admin"
               />
             </div>
-            
+
             <div className="form-group">
               <label htmlFor="password">Password</label>
               <input
@@ -74,7 +74,7 @@ const AdminLogin = () => {
                 placeholder="••••••••"
               />
             </div>
-            
+
             <button type="submit" className="btn-primary" disabled={loading}>
               {loading ? 'Signing in...' : 'Sign In'}
             </button>
