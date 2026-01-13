@@ -5,7 +5,7 @@ import path from 'path'
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd(), '');
-  const backendPort = process.env.BACKEND_PORT || env.BACKEND_PORT || 5000;
+  const backendPort = process.env.BACKEND_PORT || env.BACKEND_PORT || process.env.PORT || env.PORT || 5000;
 
   return {
     plugins: [react()],
