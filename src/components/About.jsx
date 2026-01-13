@@ -55,20 +55,36 @@ const About = () => {
           </div>
           <div className="about-stats">
             <div className="stat-card">
-              <div className="stat-number">AI/ML</div>
-              <div className="stat-label">Specialization</div>
+              <img
+                src="https://cdn-icons-png.flaticon.com/512/4712/4712035.png"
+                alt="AI/ML"
+                style={{ width: '80px', height: '80px', marginBottom: '1rem' }}
+              />
+              <div className="stat-label">AI/ML Expert</div>
             </div>
             <div className="stat-card">
-              <div className="stat-number">Python</div>
-              <div className="stat-label">Primary Language</div>
+              <img
+                src="https://cdn-icons-png.flaticon.com/512/2103/2103633.png"
+                alt="Neural Networks"
+                style={{ width: '80px', height: '80px', marginBottom: '1rem' }}
+              />
+              <div className="stat-label">Neural Networks</div>
             </div>
             <div className="stat-card">
-              <div className="stat-number">100%</div>
-              <div className="stat-label">Dedicated</div>
+              <img
+                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg"
+                alt="Python"
+                style={{ width: '80px', height: '80px', marginBottom: '1rem' }}
+              />
+              <div className="stat-label">Python Master</div>
             </div>
             <div className="stat-card">
-              <div className="stat-number">Ready</div>
-              <div className="stat-label">To Contribute</div>
+              <img
+                src="https://cdn-icons-png.flaticon.com/512/2920/2920329.png"
+                alt="Data Science"
+                style={{ width: '80px', height: '80px', marginBottom: '1rem' }}
+              />
+              <div className="stat-label">Data Science</div>
             </div>
           </div>
         </div>

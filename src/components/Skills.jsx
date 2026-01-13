@@ -43,12 +43,6 @@ const Skills = () => {
       id: 'design',
       icon: '🎨',
       skills: skills.filter(s => s.category === 'design')
-    },
-    {
-      category: 'Certifications',
-      id: 'certification',
-      icon: '📜',
-      skills: skills.filter(s => s.category === 'certification')
     }
   ]
 

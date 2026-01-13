@@ -1,0 +1,87 @@
+.certifications {
+    padding: 80px 20px;
+    background-color: var(--bg-secondary);
+    /* Alternating background */
+}
+
+.certifications-container {
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.certifications-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin-top: 3rem;
+    align-items: center;
+}
+
+.certification-item {
+    display: flex;
+    align-items: center;
+    background: white;
+    padding: 1.5rem 2rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 600px;
+    transition: transform 0.2s;
+}
+
+.certification-item:hover {
+    transform: translateX(10px);
+}
+
+.cert-icon-wrapper {
+    margin-right: 1.5rem;
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: #f3f4f6;
+}
+
+.cert-img {
+    width: 32px;
+    height: 32px;
+    object-fit: contain;
+}
+
+.cert-emoji {
+    font-size: 1.5rem;
+}
+
+.cert-details {
+    text-align: left;
+    flex-grow: 1;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.cert-name {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #1f2937;
+    margin: 0;
+}
+
+.cert-badge {
+    background-color: #dbeafe;
+    color: #2563eb;
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+/* Dark mode support if applicable via variables */
+@media (prefers-color-scheme: dark) {
+    /* Add specific overrides if strictly enforced, but assuming vars handle it usually */
+}

@@ -83,7 +83,7 @@ const Contact = () => {
   const socialLinks = [
     { name: 'GitHub', icon: '💻', url: 'https://github.com/Sanjeevkadakol' },
     { name: 'LinkedIn', icon: '💼', url: 'https://www.linkedin.com/in/sanjeev-kadakol-6a015a2a1' },
-    { name: 'Email', icon: '📧', url: 'mailto:sanjeevpkadakol1@gmail.com' }
+    { name: 'Email', icon: '📧', url: 'mailto:sanjeevpkadakol@gmail.com' }
   ]
 
   return (
@@ -107,7 +107,7 @@ const Contact = () => {
                 <span className="detail-icon">📧</span>
                 <div>
                   <h4>Email</h4>
-                  <p>sanjeevpkadakol1@gmail.com</p>
+                  <p>sanjeevpkadakol@gmail.com</p>
                 </div>
               </div>
               <div className="contact-detail-item">
