@@ -5,7 +5,7 @@ import path from 'path'
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd(), '');
-  const backendPort = env.BACKEND_PORT || 5000;
+  const backendPort = process.env.BACKEND_PORT || env.BACKEND_PORT || 5000;
 
   return {
     plugins: [react()],
@@ -17,11 +17,10 @@ export default defineConfig(({ mode }) => {
     server: {
       proxy: {
         '/api': {
-          target: `http://127.0.0.1:${backendPort}`,
+          target: `http://localhost:${backendPort}`,
           changeOrigin: true,
         },
       },
     },
   }
-})
 
