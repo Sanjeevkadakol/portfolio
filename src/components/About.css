@@ -16,7 +16,7 @@
 .section-title {
   font-size: 2.5rem;
   font-weight: 700;
-  color: var(--text-primary);
+  color: #ffffff !important;
   margin-bottom: 0.5rem;
   position: relative;
   display: inline-block;
@@ -36,7 +36,7 @@
 
 .section-subtitle {
   font-size: 1.125rem;
-  color: #4b5563;
+  color: #9ca3af;
   margin-top: 1rem;
 }
 
@@ -50,13 +50,13 @@
 .about-text {
   font-size: 1.125rem;
   line-height: 1.8;
-  color: #4b5563;
+  color: #d1d5db;
 }
 
 .about-intro {
   font-size: 1.25rem;
   font-weight: 600;
-  color: #000000;
+  color: #ffffff;
   margin-bottom: 1.5rem;
 }
 
@@ -75,7 +75,9 @@
   display: flex;
   gap: 1rem;
   padding: 1.5rem;
-  background: var(--bg-secondary);
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 12px;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
@@ -93,13 +95,13 @@
 .highlight-item h3 {
   font-size: 1.125rem;
   font-weight: 600;
-  color: var(--text-primary);
+  color: #ffffff;
   margin-bottom: 0.25rem;
 }
 
 .highlight-item p {
   font-size: 0.875rem;
-  color: var(--text-secondary);
+  color: #9ca3af;
   margin: 0;
 }
 

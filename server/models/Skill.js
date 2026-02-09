@@ -7,7 +7,7 @@ const Skill = sequelize.define('Skill', {
     allowNull: false,
   },
   category: {
-    type: DataTypes.ENUM('frontend', 'backend', 'tools', 'soft-skills', 'ai-ml', 'web-dev', 'design', 'certification'),
+    type: DataTypes.ENUM('frontend', 'backend', 'tools', 'soft-skills', 'ai-ml', 'web-dev', 'design', 'certification', 'other'),
     defaultValue: 'frontend',
   },
   proficiency: {

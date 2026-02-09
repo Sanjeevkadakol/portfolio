@@ -1,4 +1,16 @@
 import { useState, useEffect } from 'react'
+import { Dock, DockIcon, DockItem, DockLabel } from './ui/dock'
+import {
+  Home,
+  User,
+  FolderOpenDot,
+  Cpu,
+  Award,
+  MessageSquare,
+  Github,
+  Linkedin,
+  Mail
+} from 'lucide-react'
 import './Navbar.css'
 
 const Navbar = ({ activeSection }) => {
@@ -22,12 +34,12 @@ const Navbar = ({ activeSection }) => {
   }
 
   const navItems = [
-    { id: 'home', label: 'Home' },
-    { id: 'about', label: 'About' },
-    { id: 'projects', label: 'Projects' },
-    { id: 'skills', label: 'Skills' },
-    { id: 'blog', label: 'Blog' },
-    { id: 'contact', label: 'Contact' },
+    { id: 'home', label: 'Home', icon: <Home className="w-full h-full" /> },
+    { id: 'about', label: 'About', icon: <User className="w-full h-full" /> },
+    { id: 'projects', label: 'Projects', icon: <FolderOpenDot className="w-full h-full" /> },
+    { id: 'skills', label: 'Skills', icon: <Cpu className="w-full h-full" /> },
+    { id: 'certifications', label: 'Certifications', icon: <Award className="w-full h-full" /> },
+    { id: 'contact', label: 'Contact', icon: <MessageSquare className="w-full h-full" /> },
   ]
 
   return (
@@ -36,8 +48,25 @@ const Navbar = ({ activeSection }) => {
         <div className="nav-logo" onClick={() => scrollToSection('home')}>
           Portfolio
         </div>
+
+        {/* Desktop Dock Navigation */}
+        <div className="hidden md:flex flex-1 justify-end">
+          <Dock className="bg-transparent border-0 p-0 m-0 gap-6">
+            {navItems.map((item) => (
+              <DockItem
+                key={item.id}
+                onClick={() => scrollToSection(item.id)}
+                className={`aspect-square rounded-full transition-colors ${activeSection === item.id ? 'bg-[#88734C]/20 text-[#88734C]' : 'bg-transparent hover:bg-white/5 text-white/60 hover:text-[#88734C]'}`}
+              >
+                <DockLabel>{item.label}</DockLabel>
+                <DockIcon>{item.icon}</DockIcon>
+              </DockItem>
+            ))}
+          </Dock>
+        </div>
+
         <button
-          className="mobile-menu-toggle"
+          className="mobile-menu-toggle md:hidden"
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           aria-label="Toggle menu"
         >
@@ -45,7 +74,9 @@ const Navbar = ({ activeSection }) => {
           <span></span>
           <span></span>
         </button>
-        <ul className={`nav-menu ${isMobileMenuOpen ? 'active' : ''}`}>
+
+        {/* Mobile Menu */}
+        <ul className={`nav-menu md:hidden ${isMobileMenuOpen ? 'active' : ''}`}>
           {navItems.map((item) => (
             <li key={item.id}>
               <a

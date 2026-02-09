@@ -1,59 +1,60 @@
-import { useState, useEffect } from 'react'
-import { skillsAPI } from '../services/api'
-import './Certifications.css'
+import { useState, useEffect } from 'react';
+import { skillsAPI } from '../services/api';
+import SplitSectionLayout from './ui/SplitSectionLayout';
+import { Award, BookOpen, Trophy, Star, Zap } from 'lucide-react';
+import './Certifications.css';
 
 const Certifications = () => {
-    const [certs, setCerts] = useState([])
-    const [loading, setLoading] = useState(true)
+    const [certifications, setCertifications] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
 
     useEffect(() => {
-        const fetchCerts = async () => {
+        const fetchCertifications = async () => {
             try {
-                const response = await skillsAPI.getAll()
+                const response = await skillsAPI.getAll({ category: 'certification' });
                 if (response.data.success) {
-                    // Filter only certifications
-                    const allSkills = response.data.data
-                    setCerts(allSkills.filter(s => s.category === 'certification'))
+                    const certs = response.data.data.filter(skill => skill.category === 'certification');
+
+                    const formattedCerts = certs.map((cert, index) => ({
+                        title: cert.name,
+                        description: cert.description || "Professional Certification",
+                        icon: index % 2 === 0 ? <Award className="w-6 h-6" /> : <Trophy className="w-6 h-6" /> // Placeholder icons
+                    }));
+                    setCertifications(formattedCerts);
                 }
             } catch (err) {
-                console.error('Error fetching certifications:', err)
+                console.error('Error fetching certifications:', err);
+                setError('Failed to load certifications');
             } finally {
-                setLoading(false)
+                setLoading(false);
             }
-        }
-        fetchCerts()
-    }, [])
+        };
 
-    if (loading) return null // Or a small spinner, but usually fast
+        fetchCertifications();
+    }, []);
 
-    if (certs.length === 0) return null
+    const stats = [
+        { icon: <Award className="w-6 h-6" />, value: certifications.length, label: "Certifications Earned", suffix: "" },
+        { icon: <BookOpen className="w-6 h-6" />, value: 6, label: "Courses Completed", suffix: "" },
+        { icon: <Star className="w-6 h-6" />, value: 6, label: "Skills Mastered", suffix: "%" },
+    ];
+
+    if (loading) return null;
+    if (error) return null;
 
     return (
-        <section id="certifications" className="certifications">
-            <div className="certifications-container">
-                <h2 className="section-title">Certifications</h2>
-                <p className="section-subtitle">Professional Achievements</p>
+        <SplitSectionLayout
+            id="certifications"
+            title="Certifications"
+            subtitle="PROFESSIONAL QUALIFICATIONS"
+            subtitleIcon={<Zap className="w-4 h-4" />}
+            description="Continuous learning and development are key to staying ahead in the tech industry. Here are some of the certifications and milestones I've achieved."
+            items={certifications}
+            stats={stats}
+            centerImage="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?q=80&w=2940&auto=format&fit=crop"
+        />
+    );
+};
 
-                <div className="certifications-list">
-                    {certs.map((cert) => (
-                        <div key={cert._id} className="certification-item">
-                            <div className="cert-icon-wrapper">
-                                {cert.icon && cert.icon.startsWith('http') ? (
-                                    <img src={cert.icon} alt={cert.name} className="cert-img" />
-                                ) : (
-                                    <span className="cert-emoji">🏅</span>
-                                )}
-                            </div>
-                            <div className="cert-details">
-                                <h3 className="cert-name">{cert.name}</h3>
-                                <span className="cert-badge">Verified</span>
-                            </div>
-                        </div>
-                    ))}
-                </div>
-            </div>
-        </section>
-    )
-}
-
-export default Certifications
+export default Certifications;

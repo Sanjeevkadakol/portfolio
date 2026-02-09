@@ -17,20 +17,20 @@ const projects = [
         order: 1
     },
     {
-        title: 'Worm Prediction in Community Networks',
-        description: 'An AI model to predict worm propagation in community networks for cybersecurity analysis.',
-        techStack: ['Python', 'Machine Learning', 'Network Analysis'],
-        category: 'ml',
+        title: 'Voice Assistant',
+        description: 'An AI-powered voice assistant capable of performing various tasks via voice commands.',
+        techStack: ['Python', 'Speech Recognition', 'NLP'],
+        category: 'ai',
         link: '#',
         github: '#',
         featured: true,
         order: 2
     },
     {
-        title: 'Deforestation Rate Predictor',
-        description: 'A machine learning model to predict deforestation rates based on environmental data.',
-        techStack: ['Python', 'Scikit-learn', 'Pandas'],
-        category: 'ml',
+        title: 'Virtual Pen',
+        description: 'A computer vision application allowing users to draw on screen using hand gestures.',
+        techStack: ['Python', 'OpenCV', 'NumPy'],
+        category: 'ai',
         link: '#',
         github: '#',
         featured: true,
@@ -40,7 +40,7 @@ const projects = [
         title: 'Mental Health Chatbot',
         description: 'An AI-powered chatbot designed to provide mental health support and resources.',
         techStack: ['Python', 'NLP', 'TensorFlow', 'Flask'],
-        category: 'ai',
+        category: 'ml',
         link: '#',
         github: '#',
         featured: true,
@@ -49,20 +49,20 @@ const projects = [
 ];
 
 const skills = [
-    { name: 'Agentic AI', category: 'ai-ml', proficiency: 80, icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg' },
     { name: 'Gen AI', category: 'ai-ml', proficiency: 90, icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/google/google-original.svg' },
-    { name: 'Machine Learning', category: 'ai-ml', proficiency: 85, icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tensorflow/tensorflow-original.svg' },
+    { name: 'Agentic AI', category: 'ai-ml', proficiency: 85, icon: 'https://cdn-icons-png.flaticon.com/512/2103/2103633.png' },
+    { name: 'Azure ML', category: 'ai-ml', proficiency: 80, icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/azure/azure-original.svg' },
     { name: 'HTML / CSS', category: 'web-dev', proficiency: 95, icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg' },
     { name: 'Javascript', category: 'web-dev', proficiency: 90, icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg' },
-    { name: 'Web Development', category: 'web-dev', proficiency: 85, icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg' },
+    { name: 'UI/UX Design', category: 'design', proficiency: 85, icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg' },
     { name: 'Communication', category: 'design', proficiency: 90, icon: 'https://cdn-icons-png.flaticon.com/512/1000/1000946.png' },
-    { name: 'UI/UX Design', category: 'design', proficiency: 75, icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg' },
+    { name: 'Cyber Security', category: 'other', proficiency: 75, icon: 'https://cdn-icons-png.flaticon.com/512/2092/2092663.png' },
     // Certifications
-    { name: 'DSA Fundamentals', category: 'certification', proficiency: 100, icon: 'https://cdn-icons-png.flaticon.com/512/2490/2490419.png' },
-    { name: 'Foundations Of AI', category: 'certification', proficiency: 100, icon: 'https://cdn-icons-png.flaticon.com/512/2103/2103633.png' },
-    { name: 'Gen AI Foundations', category: 'certification', proficiency: 100, icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/google/google-original.svg' },
-    { name: 'Git Version Control', category: 'certification', proficiency: 100, icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg' },
     { name: 'Python Fundamentals', category: 'certification', proficiency: 100, icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg' },
+    { name: 'Cyber Security & Data Analytics', category: 'certification', proficiency: 100, icon: 'https://cdn-icons-png.flaticon.com/512/2716/2716612.png' },
+    { name: 'Gen AI Models and Tools', category: 'certification', proficiency: 100, icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/google/google-original.svg' },
+    { name: 'DSA Fundamentals', category: 'certification', proficiency: 100, icon: 'https://cdn-icons-png.flaticon.com/512/2490/2490419.png' },
+    { name: 'ML and DS with AWS', category: 'certification', proficiency: 100, icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original-wordmark.svg' },
     { name: 'Software Engineering', category: 'certification', proficiency: 100, icon: 'https://cdn-icons-png.flaticon.com/512/2920/2920329.png' }
 ];
 

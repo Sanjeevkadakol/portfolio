@@ -1,5 +1,7 @@
 import { useState, useEffect } from 'react'
 import { skillsAPI } from '../services/api'
+import SplitSectionLayout from './ui/SplitSectionLayout'
+import { Cpu, Globe, Palette, Database, Shield } from 'lucide-react'
 import './Skills.css'
 
 const Skills = () => {
@@ -29,93 +31,51 @@ const Skills = () => {
     {
       category: 'AI & Machine Learning',
       id: 'ai-ml',
-      icon: '🤖',
+      icon: <Cpu className="w-6 h-6" />,
       skills: skills.filter(s => s.category === 'ai-ml')
     },
     {
       category: 'Web Development',
       id: 'web-dev',
-      icon: '🌐',
+      icon: <Globe className="w-6 h-6" />,
       skills: skills.filter(s => s.category === 'web-dev')
     },
     {
       category: 'Design & Soft Skills',
       id: 'design',
-      icon: '🎨',
+      icon: <Palette className="w-6 h-6" />,
       skills: skills.filter(s => s.category === 'design')
+    },
+    {
+      category: 'Cyber Security and Data Analytics',
+      id: 'cyber-security',
+      icon: <Shield className="w-6 h-6" />,
+      skills: [{ name: 'Cyber Security and Data Analytics' }]
     }
   ]
 
-  // Filter categories that have skills
-  const activeCategories = skillCategories.filter(cat => cat.skills.length > 0)
+  // Filter categories that have skills and format for SplitSectionLayout
+  const items = skillCategories
+    .filter(cat => cat.skills.length > 0)
+    .map(cat => ({
+      title: cat.category,
+      description: cat.skills.map(s => s.name).join(", "), // List skills in description
+      icon: cat.icon
+    }));
 
   if (loading) return <div className="loading-container"><div className="loading-spinner"></div>Loading skills...</div>
 
   return (
-    <section id="skills" className="skills">
-      <div className="skills-container">
-        <div className="section-header">
-          <h2 className="section-title">Skills & Technologies</h2>
-          <p className="section-subtitle">Technologies I work with</p>
-        </div>
-
-        {error ? (
-          <div className="error-message">{error}</div>
-        ) : (
-          <div className="skills-grid">
-            {activeCategories.length > 0 ? (
-              activeCategories.map((category, index) => (
-                <div key={index} className="skill-category">
-                  <div className="category-header">
-                    <span className="category-icon">{category.icon}</span>
-                    <h3 className="category-title">{category.category}</h3>
-                  </div>
-                  <div className="skills-list">
-                    {category.skills.map((skill) => (
-                      <div key={skill._id} className="skill-item">
-                        <div className="skill-header">
-                          <span className="skill-name">{skill.name}</span>
-                          <span className="skill-percentage">{skill.proficiency}%</span>
-                        </div>
-                        <div className="skill-bar">
-                          <div
-                            className="skill-progress"
-                            style={{ width: `${skill.proficiency}%` }}
-                          ></div>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              ))
-            ) : (
-              <p className="no-skills">No skills added yet.</p>
-            )}
-          </div>
-        )}
-
-        {/* Tech Stack Visuals - Simplified or Fetched if needed */}
-        <div className="tech-stack">
-          <h3 className="tech-stack-title">Tech Stack</h3>
-          <div className="tech-icons">
-            {skills.filter(s => s.name !== 'Gen AI').slice(0, 8).map((skill) => (
-              <div key={skill._id} className="tech-item">
-                <div className="tech-icon">
-                  {skill.icon && skill.icon.startsWith('http') ? (
-                    <img src={skill.icon} alt={skill.name} className="w-12 h-12 object-contain" />
-                  ) : (
-                    skill.icon || '🔹'
-                  )}
-                </div>
-                <span className="tech-name">{skill.name}</span>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
-    </section>
+    <SplitSectionLayout
+      id="skills"
+      title="Skills & Technologies"
+      subtitle="TECHNICAL EXPERTISE"
+      subtitleIcon={<Database className="w-4 h-4" />}
+      description="A comprehensive toolkit of technologies and methodologies I employ to build scalable and efficient solutions."
+      items={items}
+      centerImage="https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=2940&auto=format&fit=crop"
+    />
   )
 }
 
 export default Skills
-
