@@ -1,6 +1,5 @@
 import express from 'express';
 import { Settings } from '../models/index.js';
-import { protect } from '../middleware/auth.js';
 
 const router = express.Router();
 
@@ -13,22 +12,6 @@ router.get('/', async (req, res) => {
     // If no settings exist, create default
     if (!settings) {
       settings = await Settings.create();
-    }
-
-    res.json({ success: true, data: settings });
-  } catch (error) {
-    res.status(500).json({ success: false, message: error.message });
-  }
-});
-
-// Update settings
-router.put('/', protect, async (req, res) => {
-  try {
-    let settings = await Settings.findOne();
-    if (!settings) {
-      settings = await Settings.create(req.body);
-    } else {
-      await settings.update(req.body);
     }
 
     res.json({ success: true, data: settings });

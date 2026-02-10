@@ -13,6 +13,7 @@ const AdminSkills = () => {
         name: '',
         category: 'frontend',
         icon: '',
+        link: '',
         proficiency: 50,
         status: 'active'
     })
@@ -66,6 +67,7 @@ const AdminSkills = () => {
                 name: skill.name,
                 category: skill.category,
                 icon: skill.icon || '',
+                link: skill.link || '',
                 proficiency: skill.proficiency,
                 status: skill.status || 'active'
             })
@@ -75,6 +77,7 @@ const AdminSkills = () => {
                 name: '',
                 category: 'frontend',
                 icon: '',
+                link: '',
                 proficiency: 50,
                 status: 'active'
             })
@@ -155,6 +158,7 @@ const AdminSkills = () => {
                                     <option value="mobile">Mobile</option>
                                     <option value="tools">Tools</option>
                                     <option value="soft-skills">Soft Skills</option>
+                                    <option value="certification">Certification</option>
                                 </select>
                             </div>
 
@@ -178,6 +182,18 @@ const AdminSkills = () => {
                                     onChange={e => setFormData({ ...formData, icon: e.target.value })}
                                 />
                             </div>
+
+                            <div className="form-group">
+                                <label>Certificate Link (URL or /certificates/filename.pdf)</label>
+                                <input
+                                    type="text"
+                                    value={formData.link}
+                                    onChange={e => setFormData({ ...formData, link: e.target.value })}
+                                    placeholder="https://... or /certificates/my-cert.pdf"
+                                />
+                            </div>
+
+
 
                             <div className="form-actions">
                                 <button type="button" onClick={closeModal} className="btn-secondary">Cancel</button>

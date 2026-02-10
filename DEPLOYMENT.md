@@ -1,101 +1,91 @@
-# 🚀 Vercel Deployment Guide
+# Deployment Guide for GoDaddy (cPanel)
 
-Follow these steps to deploy your portfolio to Vercel:
+This guide will help you deploy your portfolio to GoDaddy using cPanel.
 
 ## Prerequisites
-- A GitHub account
-- Your portfolio code ready to push
+- **cPanel Hosting** with **Node.js** support (usually under "Software" or "Exclusive for GoDaddy" sections).
+- **MySQL Database** limit not reached.
+- **Domain** linked to your hosting.
 
-## Step-by-Step Deployment
+## Step 1: Prepare Your Application
+1.  Open your project in the terminal.
+2.  Run the build command to create the production frontend:
+    ```bash
+    npm run build:full
+    ```
+    This creates a `dist` folder with your website files.
 
-### Method 1: Deploy via Vercel Dashboard (Recommended)
+## Step 2: Database Setup
+1.  **Export Local Database**:
+    - Open your local database tool (e.g., Workbench, phpMyAdmin).
+    - Export your `portfolio_db` (or whatever it's named) to a `.sql` file.
+2.  **Create Live Database**:
+    - Log in to **cPanel** -> **MySQL® Database Wizard**.
+    - Create a new database (e.g., `sanjeev_portfolio`).
+    - Create a new user (e.g., `sanjeev_admin`) and password. **Save these details.**
+    - Add user to database with **ALL PRIVILEGES**.
+3.  **Import Data**:
+    - Go to **phpMyAdmin** in cPanel.
+    - Select your new database.
+    - Click **Import** and upload your `.sql` file.
 
-1. **Push your code to GitHub**
-   ```bash
-   git init
-   git add .
-   git commit -m "Initial portfolio commit"
-   git branch -M main
-   git remote add origin https://github.com/YOUR_USERNAME/YOUR_REPO_NAME.git
-   git push -u origin main
-   ```
+## Step 3: Upload Files
+**Option A: Simplified (Recommended)**
+1.  Go to **File Manager** in cPanel.
+2.  Navigate to the root of your domain (usually `public_html` or a subdomain folder).
+3.  Upload the `deploy_package.zip` file I created for you.
+4.  Right-click `deploy_package.zip` and select **Extract**.
+5.  This will extract `dist`, `server`, and other files.
 
-2. **Go to Vercel**
-   - Visit [vercel.com](https://vercel.com)
-   - Sign up/Login with your GitHub account
+**Option B: Manual**
+1.  Go to **File Manager** in cPanel.
+2.  Navigate to the root of your domain (usually `public_html` or a subdomain folder).
+3.  Upload the following files/folders from your local project:
+    - `dist/` (The entire folder)
+    - `server/` (The entire folder)
+    - `public/` (For certificates)
+    - `package.json`
+    - `package-lock.json`
+    - `vite.config.ts` (Optional, but safe to keep)
+4.  **DO NOT** upload `node_modules`. We will install dependencies there.
 
-3. **Import your project**
-   - Click "Add New..." → "Project"
-   - Import your GitHub repository
-   - Select the repository containing your portfolio
+## Step 4: Configure Node.js APP
+1.  In cPanel, find **Setup Node.js App**.
+2.  Click **Create Application**.
+3.  **Node.js Version**: Select 18.x or 20.x (Recommended).
+4.  **Application Mode**: Production.
+5.  **Application Root**: The path to your uploaded files (e.g., `public_html`).
+6.  **Application URL**: Select your domain.
+7.  **Application Startup File**: `server/index.js`
+8.  Click **Create**.
 
-4. **Configure project**
-   - Framework Preset: **Vite**
-   - Root Directory: `./` (leave as default)
-   - Build Command: `npm run build` (auto-detected)
-   - Output Directory: `dist` (auto-detected)
-   - Install Command: `npm install` (auto-detected)
+## Step 5: Install Dependencies
+1.  Once created, scroll down to detect the "Virtual Environment" command.
+2.  Click **Run NPM Install**. This installs all libraries on the server.
 
-5. **Deploy**
-   - Click "Deploy"
-   - Wait for build to complete (usually 1-2 minutes)
-   - Your site will be live at `your-project-name.vercel.app`
+## Step 6: Environment Variables
+1.  In the File Manager, create a new file named `.env` in your root folder.
+2.  Add your production configuration:
+    ```ini
+    PORT=5000
+    NODE_ENV=production
+    DB_HOST=localhost
+    DB_USER=your_cpanel_db_user
+    DB_PASS=your_cpanel_db_password
+    DB_NAME=your_cpanel_db_name
+    SMTP_HOST=your_smtp_host
+    SMTP_PORT=587
+    SMTP_USER=your_email
+    SMTP_PASS=your_email_password
+    ```
+3.  Save the file.
 
-6. **Custom Domain (Optional)**
-   - Go to Project Settings → Domains
-   - Add your custom domain
-
-### Method 2: Deploy via Vercel CLI
-
-1. **Install Vercel CLI**
-   ```bash
-   npm i -g vercel
-   ```
-
-2. **Login to Vercel**
-   ```bash
-   vercel login
-   ```
-
-3. **Deploy**
-   ```bash
-   vercel
-   ```
-   - Follow the prompts
-   - For production: `vercel --prod`
-
-## Post-Deployment
-
-### Update Environment Variables (if needed)
-- Go to Project Settings → Environment Variables
-- Add any required variables
-
-### Enable Automatic Deployments
-- Every push to `main` branch will auto-deploy
-- Preview deployments for pull requests
+## Step 7: Restart
+1.  Go back to **Setup Node.js App**.
+2.  Click **Restart Application**.
+3.  Visit your website!
 
 ## Troubleshooting
-
-**Build fails?**
-- Check build logs in Vercel dashboard
-- Ensure `package.json` has correct scripts
-- Verify Node.js version compatibility
-
-**Routes not working?**
-- The `vercel.json` file handles SPA routing
-- Ensure it's in your project root
-
-**Need to update?**
-- Just push changes to GitHub
-- Vercel will auto-deploy
-
-## Your Portfolio is Live! 🎉
-
-Your portfolio will be accessible at:
-- Production: `https://your-project-name.vercel.app`
-- Preview: `https://your-project-name-git-branch.vercel.app`
-
----
-
-**Need help?** Check [Vercel Documentation](https://vercel.com/docs)
-
+- **404 Errors**: Ensure `server/index.js` is set as the startup file.
+- **Database Connection Error**: Check your `.env` credentials. The `DB_HOST` is almost always `localhost` on cPanel.
+- **White Screen**: Check the browser console or server logs (in cPanel) for errors.

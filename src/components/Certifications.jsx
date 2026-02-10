@@ -12,20 +12,21 @@ const Certifications = () => {
     useEffect(() => {
         const fetchCertifications = async () => {
             try {
-                const response = await skillsAPI.getAll({ category: 'certification' });
+                const response = await skillsAPI.getAll();
                 if (response.data.success) {
                     const certs = response.data.data.filter(skill => skill.category === 'certification');
 
                     const formattedCerts = certs.map((cert, index) => ({
                         title: cert.name,
                         description: cert.description || "Professional Certification",
-                        icon: index % 2 === 0 ? <Award className="w-6 h-6" /> : <Trophy className="w-6 h-6" /> // Placeholder icons
+                        icon: index % 2 === 0 ? <Award className="w-6 h-6" /> : <Trophy className="w-6 h-6" />, // Placeholder icons
+                        link: cert.link || '#'
                     }));
                     setCertifications(formattedCerts);
                 }
             } catch (err) {
                 console.error('Error fetching certifications:', err);
-                setError('Failed to load certifications');
+                setError(err.message || 'Failed to load certifications');
             } finally {
                 setLoading(false);
             }
@@ -40,8 +41,8 @@ const Certifications = () => {
         { icon: <Star className="w-6 h-6" />, value: 6, label: "Skills Mastered", suffix: "%" },
     ];
 
-    if (loading) return null;
-    if (error) return null;
+    if (loading) return <div className="py-20 text-center text-white">Loading Certifications...</div>;
+    if (error) return <div className="py-20 text-center text-red-500">Error: {error}</div>;
 
     return (
         <SplitSectionLayout

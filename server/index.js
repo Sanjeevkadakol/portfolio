@@ -3,12 +3,16 @@ import cors from 'cors';
 import dotenv from 'dotenv';
 import sequelize from './config/database.js';
 import './models/index.js'; // Import models to initialize them
+import path from 'path';
+import { fileURLToPath } from 'url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 // Import Routes
 import projectRoutes from './routes/projects.js';
 import blogRoutes from './routes/blog.js';
 import skillRoutes from './routes/skills.js';
-import authRoutes from './routes/auth.js';
 import contactRoutes from './routes/contact.js';
 import settingsRoutes from './routes/settings.js';
 
@@ -23,7 +27,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // Database connection
-sequelize.sync({ force: false })
+sequelize.sync({ alter: true })
   .then(() => console.log('✅ MySQL connected and synced'))
   .catch((err) => console.error('❌ MySQL connection error:', err));
 
@@ -31,14 +35,20 @@ sequelize.sync({ force: false })
 app.use('/api/projects', projectRoutes);
 app.use('/api/blog', blogRoutes);
 app.use('/api/skills', skillRoutes);
-app.use('/api/auth', authRoutes);
 app.use('/api/contact', contactRoutes);
 app.use('/api/settings', settingsRoutes);
 
 // Health check
-app.get('/', (req, res) => {
-  res.send('Portfolio API is running. Access endpoints via /api');
-});
+// Serve static files from the React app (Only for Monolith/Local)
+if (process.env.VERCEL !== '1') {
+  app.use(express.static(path.join(__dirname, '../dist')));
+
+  // The "catchall" handler: for any request that doesn't
+  // match one above, send back React's index.html file.
+  app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, '../dist/index.html'));
+  });
+}
 
 app.get('/api/health', async (req, res) => {
   try {
@@ -70,7 +80,7 @@ app.use((err, req, res, next) => {
   });
 });
 
-if (process.env.NODE_ENV !== 'production') {
+if (process.env.VERCEL !== '1') {
   app.listen(PORT, () => {
     console.log(`🚀 Server running on port ${PORT}`);
   });

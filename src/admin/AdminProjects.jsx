@@ -16,9 +16,10 @@ const AdminProjects = () => {
         description: '',
         image: '',
         technologies: '',
+        technologies: '',
         category: 'fullstack',
-        liveUrl: '',
-        githubUrl: '',
+        link: '',
+        github: '',
         featured: false,
         status: 'published'
     })
@@ -62,12 +63,12 @@ const AdminProjects = () => {
             errors.image = 'Please enter a valid image URL'
         }
 
-        if (formData.liveUrl && !validator.isURL(formData.liveUrl)) {
-            errors.liveUrl = 'Please enter a valid URL'
+        if (formData.link && !validator.isURL(formData.link)) {
+            errors.link = 'Please enter a valid URL'
         }
 
-        if (formData.githubUrl && !validator.isURL(formData.githubUrl)) {
-            errors.githubUrl = 'Please enter a valid GitHub URL'
+        if (formData.github && !validator.isURL(formData.github)) {
+            errors.github = 'Please enter a valid GitHub URL'
         }
 
         setFormErrors(errors)
@@ -111,8 +112,8 @@ const AdminProjects = () => {
                 image: project.image,
                 technologies: project.technologies.join(', '),
                 category: project.category,
-                liveUrl: project.liveUrl,
-                githubUrl: project.githubUrl,
+                link: project.link,
+                github: project.github,
                 featured: project.featured,
                 status: project.status
             })
@@ -124,8 +125,8 @@ const AdminProjects = () => {
                 image: '',
                 technologies: '',
                 category: 'fullstack',
-                liveUrl: '',
-                githubUrl: '',
+                link: '',
+                github: '',
                 featured: false,
                 status: 'published'
             })
@@ -258,6 +259,8 @@ const AdminProjects = () => {
                                         <option value="mobile">Mobile</option>
                                         <option value="backend">Backend</option>
                                         <option value="fullstack">Full Stack</option>
+                                        <option value="ai">AI</option>
+                                        <option value="ml">Machine Learning</option>
                                         <option value="other">Other</option>
                                     </select>
                                 </div>
@@ -278,22 +281,22 @@ const AdminProjects = () => {
                                     <label>Live URL</label>
                                     <input
                                         type="text"
-                                        value={formData.liveUrl}
-                                        onChange={e => setFormData({ ...formData, liveUrl: e.target.value })}
-                                        className={formErrors.liveUrl ? 'input-error' : ''}
+                                        value={formData.link}
+                                        onChange={e => setFormData({ ...formData, link: e.target.value })}
+                                        className={formErrors.link ? 'input-error' : ''}
                                     />
-                                    {formErrors.liveUrl && <span className="validation-msg">{formErrors.liveUrl}</span>}
+                                    {formErrors.link && <span className="validation-msg">{formErrors.link}</span>}
                                 </div>
 
                                 <div className="form-group">
                                     <label>GitHub URL</label>
                                     <input
                                         type="text"
-                                        value={formData.githubUrl}
-                                        onChange={e => setFormData({ ...formData, githubUrl: e.target.value })}
-                                        className={formErrors.githubUrl ? 'input-error' : ''}
+                                        value={formData.github}
+                                        onChange={e => setFormData({ ...formData, github: e.target.value })}
+                                        className={formErrors.github ? 'input-error' : ''}
                                     />
-                                    {formErrors.githubUrl && <span className="validation-msg">{formErrors.githubUrl}</span>}
+                                    {formErrors.github && <span className="validation-msg">{formErrors.github}</span>}
                                 </div>
 
                                 <div className="form-group">

@@ -18,7 +18,7 @@ const Projects = () => {
             title: project.title,
             description: project.description,
             icon: <Code className="w-6 h-6" />, // Default icon
-            link: project.link || project.githubUrl || '#'
+            link: project.link || project.github || '#'
           }));
           setProjects(formattedProjects)
         }

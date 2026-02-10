@@ -61,9 +61,9 @@ const skills = [
     { name: 'Python Fundamentals', category: 'certification', proficiency: 100, icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg' },
     { name: 'Cyber Security & Data Analytics', category: 'certification', proficiency: 100, icon: 'https://cdn-icons-png.flaticon.com/512/2716/2716612.png' },
     { name: 'Gen AI Models and Tools', category: 'certification', proficiency: 100, icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/google/google-original.svg' },
-    { name: 'DSA Fundamentals', category: 'certification', proficiency: 100, icon: 'https://cdn-icons-png.flaticon.com/512/2490/2490419.png' },
+    { name: 'Certification in DevOps with Cloud, Docker, CI CD & Ansible', category: 'certification', proficiency: 100, icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg' },
     { name: 'ML and DS with AWS', category: 'certification', proficiency: 100, icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original-wordmark.svg' },
-    { name: 'Software Engineering', category: 'certification', proficiency: 100, icon: 'https://cdn-icons-png.flaticon.com/512/2920/2920329.png' }
+    { name: 'Certification in AZURE ML', category: 'certification', proficiency: 100, icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/azure/azure-original.svg' }
 ];
 
 const seedWithSequelize = async () => {

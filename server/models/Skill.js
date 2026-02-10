@@ -22,6 +22,11 @@ const Skill = sequelize.define('Skill', {
     type: DataTypes.STRING,
     defaultValue: '',
   },
+  link: {
+    type: DataTypes.STRING,
+    defaultValue: '',
+  },
+
   order: {
     type: DataTypes.INTEGER,
     defaultValue: 0,

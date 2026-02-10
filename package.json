@@ -9,7 +9,8 @@
     "preview": "vite preview",
     "server": "node server/index.js",
     "server:dev": "nodemon server/index.js",
-    "dev:full": "concurrently \"npm run server:dev\" \"npm run dev\""
+    "dev:full": "concurrently \"npm run server:dev\" \"npm run dev\"",
+    "build:full": "npm install && npm run build"
   },
   "dependencies": {
     "@radix-ui/react-avatar": "^1.1.11",
