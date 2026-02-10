@@ -36,16 +36,18 @@ Vercel will auto-detect Vite. The default settings are mostly correct, but we ne
 - **Build Command**: `npm run build` (or `npm run build:full` - sticking to standard `npm run build` is fine for Vercel as it handles functions separately).
 
 ## Step 4: Environment Variables (Critical)
-In the Vercel project deployment screen, expand **Environment Variables**. Add the following:
+In the Vercel project deployment screen (or under Settings -> Environment Variables), add the following exactly:
 
 | Name | Value |
 |------|-------|
-| `DB_HOST` | Your Remote Database IP or Hostname |
-| `DB_USER` | Database Username |
-| `DB_PASS` | Database Password |
-| `DB_NAME` | Database Name |
-| `JWT_SECRET` | A secure random string |
-| `VERCEL` | `1` (Automatically set by Vercel usually, but good to know) |
+| `DB_HOST` | `mysql-2c1df8be-sanjeevpkadakol1-cbf1.d.aivencloud.com` |
+| `DB_PORT` | `22569` |
+| `DB_USER` | `avnadmin` |
+| `DB_PASS` | `AVNS_kFrHYJLxbKap46X2_eI` |
+| `DB_NAME` | `defaultdb` |
+| `DB_SSL` | `true` |
+| `JWT_SECRET` | `sanjeev_portfolio_secret_2026` |
+| `VERCEL` | `1` |
 
 **Note**: `PORT` is not needed on Vercel.
 
