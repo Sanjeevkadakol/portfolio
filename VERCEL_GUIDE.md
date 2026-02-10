@@ -43,7 +43,7 @@ In the Vercel project deployment screen (or under Settings -> Environment Variab
 | `DB_HOST` | `mysql-2c1df8be-sanjeevpkadakol1-cbf1.d.aivencloud.com` |
 | `DB_PORT` | `22569` |
 | `DB_USER` | `avnadmin` |
-| `DB_PASS` | `AVNS_kFrHYJLxbKap46X2_eI` |
+| `DB_PASS` | `YOUR_PASSWORD` |
 | `DB_NAME` | `defaultdb` |
 | `DB_SSL` | `true` |
 | `JWT_SECRET` | `sanjeev_portfolio_secret_2026` |

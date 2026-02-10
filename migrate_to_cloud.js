@@ -13,7 +13,7 @@ dotenv.config();
  * 3. Export data from local and import to cloud (or just sync models)
  */
 
-const CLOUD_URI = "mysql://avnadmin:AVNS_kFrHYJLxbKap46X2_eI@mysql-2c1df8be-sanjeevpkadakol1-cbf1.d.aivencloud.com:22569/defaultdb?ssl-mode=REQUIRED";
+const CLOUD_URI = "mysql://avnadmin:YOUR_PASSWORD@mysql-2c1df8be-sanjeevpkadakol1-cbf1.d.aivencloud.com:22569/defaultdb?ssl-mode=REQUIRED";
 
 const cloudSequelize = new Sequelize(CLOUD_URI, {
     dialect: 'mysql',
