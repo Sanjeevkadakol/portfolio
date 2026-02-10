@@ -84,7 +84,7 @@ const Contact = () => {
   }
 
   const socialLinks = [
-    { name: 'GitHub', icon: <Github className="w-5 h-5" />, url: 'https://github.com/sanjeev-kadakol' },
+    { name: 'GitHub', icon: <Github className="w-5 h-5" />, url: 'https://github.com/Sanjeevkadakol' },
     { name: 'LinkedIn', icon: <Linkedin className="w-5 h-5" />, url: 'https://www.linkedin.com/in/sanjeev-kadakol-6a015a2a1' },
     { name: 'Email', icon: <Mail className="w-5 h-5" />, url: 'mailto:sanjeevpkadakol1@gmail.com' },
     { name: 'Phone', icon: <div className="w-5 h-5 text-current">📞</div>, url: 'tel:+917676980166' }

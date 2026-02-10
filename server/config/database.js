@@ -12,7 +12,7 @@ const sequelize = new Sequelize(
     port: process.env.DB_PORT || 3306,
     dialect: 'mysql',
     logging: false,
-    dialectOptions: process.env.DB_SSL === 'true' ? {
+    dialectOptions: (process.env.DB_SSL === 'true' || process.env.VERCEL === '1') ? {
       ssl: {
         require: true,
         rejectUnauthorized: false
