@@ -1,21 +1,11 @@
-.App {
+/* Global layout rules - removed old fixed section constraints */
+#root {
   width: 100%;
   min-height: 100vh;
+  margin: 0;
+  padding: 0;
 }
 
 main {
   width: 100%;
 }
-
-section {
-  padding: 80px 20px;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-@media (max-width: 768px) {
-  section {
-    padding: 60px 20px;
-  }
-}
-
