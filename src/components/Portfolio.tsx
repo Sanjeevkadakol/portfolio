@@ -173,7 +173,7 @@ function HeroSection() {
             animate="visible"
           >
             <p className="text-base sm:text-lg md:text-xl text-white/40 mb-8 leading-relaxed font-light tracking-wide max-w-xl mx-auto px-4">
-              Aspiring AI/ML Engineer passionate about applying machine learning and data science principles to combat financial crime
+              B.E. in Artificial Intelligence & Machine Learning at BMSIT&M. Specialized in RAG architectures, Agentic AI, predictive modeling, and data analytics.
             </p>
           </motion.div>
         </div>
@@ -353,16 +353,20 @@ function FeaturesSection() {
 function SkillsSection() {
   const skillCategories = [
     {
-      category: "AI/ML",
-      skills: ["Gen AI", "Machine Learning", "Agentic AI"]
+      category: "Programming Languages",
+      skills: ["Python", "C", "SQL", "JavaScript", "HTML", "CSS"]
     },
     {
-      category: "Design & Development",
-      skills: ["UI/UX design", "Communication", "Web Development"]
+      category: "AI/ML & Frameworks",
+      skills: ["PyTorch", "TensorFlow", "Scikit-learn", "LangChain", "RAG", "Agentic AI"]
     },
     {
-      category: "Programming",
-      skills: ["HTML", "CSS", "Javascript"]
+      category: "Data & Databases",
+      skills: ["Pandas", "NumPy", "SQL", "NeonDB", "Pinecone", "FAISS"]
+    },
+    {
+      category: "Web & Developer Tools",
+      skills: ["React", "Next.js", "FastAPI", "Flask", "Docker", "Git / GitHub"]
     }
   ];
 
@@ -370,10 +374,10 @@ function SkillsSection() {
     <section className="py-20 bg-background">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold mb-4">Skills</h2>
+          <h2 className="text-4xl font-bold mb-4">Skills & Technologies</h2>
           <p className="text-muted-foreground text-lg">Technical proficiencies and expertise</p>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
           {skillCategories.map((item, index) => (
             <motion.div
               key={index}
@@ -403,12 +407,10 @@ function SkillsSection() {
 
 function CertificationsSection() {
   const certifications = [
-    "Python fundamentals",
-    "Git version control",
-    "Gen AI Foundations",
-    "DSA Fundamentals",
-    "Foundations Of AI",
-    "Software engineering"
+    "Python Fundamentals",
+    "Generative AI Models and Tools",
+    "Machine Learning and Data Science with AWS",
+    "Cyber Security and Data Analytics"
   ];
 
   return (
@@ -416,9 +418,9 @@ function CertificationsSection() {
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <h2 className="text-4xl font-bold mb-4">Certifications</h2>
-          <p className="text-muted-foreground text-lg">Professional certifications and achievements</p>
+          <p className="text-muted-foreground text-lg">Professional certifications and credentials</p>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 max-w-5xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 max-w-6xl mx-auto">
           {certifications.map((cert, index) => (
             <motion.div
               key={index}
@@ -446,23 +448,18 @@ function CertificationsSection() {
 function ProjectsSection() {
   const projects = [
     {
-      title: "Hand Gesture Volume Adjuster",
-      description: "AI-powered gesture control system for volume adjustment",
+      title: "AI-Powered Comprehension Learning System",
+      description: "AI-powered adaptive learning platform using RAG with voice and text responses.",
       image: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=400&h=300&fit=crop"
     },
     {
-      title: "Worm Prediction in Community Networks",
-      description: "ML model for predicting worm spread in network systems",
+      title: "NeighborNode – Geofenced Community Platform",
+      description: "Multi-tenant community management platform with GPS geofencing & RBAC.",
       image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&h=300&fit=crop"
     },
     {
-      title: "Deforestation Rate Predictor",
-      description: "Data analysis tool for environmental impact prediction",
-      image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400&h=300&fit=crop"
-    },
-    {
-      title: "Mental Health Chatbot",
-      description: "AI chatbot for mental health support and assistance",
+      title: "DocInsight AI – RAG Chatbot",
+      description: "Semantic PDF search chatbot using Retrieval-Augmented Generation & FAISS.",
       image: "https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?w=400&h=300&fit=crop"
     }
   ];
@@ -472,9 +469,9 @@ function ProjectsSection() {
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <h2 className="text-4xl font-bold mb-4">Featured Projects</h2>
-          <p className="text-muted-foreground text-lg">Some of my recent work</p>
+          <p className="text-muted-foreground text-lg">Key systems and engineering highlights</p>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {projects.map((project, index) => (
             <motion.div
               key={index}
@@ -492,8 +489,8 @@ function ProjectsSection() {
                   />
                 </div>
                 <div className="p-6">
-                  <h3 className="text-2xl font-semibold mb-2">{project.title}</h3>
-                  <p className="text-muted-foreground">{project.description}</p>
+                  <h3 className="text-xl font-semibold mb-2">{project.title}</h3>
+                  <p className="text-muted-foreground text-sm">{project.description}</p>
                 </div>
               </Card>
             </motion.div>
@@ -525,13 +522,13 @@ function ContactSection() {
               <ul className="ml-4 list-disc space-y-2">
                 <li>
                   <span className="font-bold">Email: </span>
-                  <a href="mailto:sanjeevkadakol@gmail.com" className="underline">
-                    sanjeevkadakol@gmail.com
+                  <a href="mailto:sanjeevpkadakol1@gmail.com" className="underline">
+                    sanjeevpkadakol1@gmail.com
                   </a>
                 </li>
                 <li>
                   <span className="font-bold">Phone: </span>
-                  +91 7676989166
+                  +91 7676980166
                 </li>
                 <li>
                   <span className="font-bold">Location: </span>

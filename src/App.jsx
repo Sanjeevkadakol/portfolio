@@ -1,13 +1,14 @@
 import { useState, useEffect } from 'react'
-import { ThemeProvider } from './contexts/ThemeContext'
 import Background from './components/Background'
+import Navbar from './components/Navbar'
 import Hero from './components/Hero'
 import About from './components/About'
+import Experience from './components/Experience'
 import Projects from './components/Projects'
 import Skills from './components/Skills'
 import Certifications from './components/Certifications'
 import Contact from './components/Contact'
-import Navbar from './components/Navbar'
+import Footer from './components/Footer'
 import './App.css'
 
 function App() {
@@ -15,8 +16,8 @@ function App() {
 
   useEffect(() => {
     const handleScroll = () => {
-      const sections = ['home', 'about', 'projects', 'skills', 'certifications', 'contact']
-      const scrollPosition = window.scrollY + 100
+      const sections = ['home', 'about', 'experience', 'projects', 'skills', 'certifications', 'contact']
+      const scrollPosition = window.scrollY + 120
 
       for (const section of sections) {
         const element = document.getElementById(section)
@@ -35,22 +36,21 @@ function App() {
   }, [])
 
   return (
-    <ThemeProvider>
-      <div className="App">
-        <Background />
-        <Navbar activeSection={activeSection} />
-        <main>
-          <Hero />
-          <About />
-          <Projects />
-          <Skills />
-          <Certifications />
-          <Contact />
-        </main>
-      </div>
-    </ThemeProvider>
+    <div className="min-h-screen bg-cream text-ink antialiased flex flex-col font-suisse selection:bg-lemon selection:text-ink">
+      <Background />
+      <Navbar activeSection={activeSection} />
+      <main className="flex-1 w-full">
+        <Hero />
+        <About />
+        <Experience />
+        <Projects />
+        <Skills />
+        <Certifications />
+        <Contact />
+      </main>
+      <Footer />
+    </div>
   )
 }
 
 export default App
-

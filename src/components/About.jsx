@@ -1,123 +1,159 @@
-import SectionWrapper from './ui/SectionWrapper'
-import { User, Target, Zap, Brain, Sparkles } from 'lucide-react'
 import { motion } from 'framer-motion'
-// import './About.css' // Removing old CSS to use Tailwind/SectionWrapper styles
 
 const About = () => {
-  const scrollToSection = (id) => {
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+  const pillars = [
+    {
+      title: "RAG & LLM Architectures",
+      desc: "Specializing in semantic vector indexing, chunking strategies, embeddings, FAISS, Pinecone, and LangChain orchestration."
+    },
+    {
+      title: "Predictive Analytics & ML",
+      desc: "Applying Scikit-learn, PyTorch, TensorFlow, Pandas, and NumPy for predictive scoring and end-to-end data workflows."
+    },
+    {
+      title: "Full-Stack Web Engineering",
+      desc: "Developing responsive frontend client apps in React & Next.js alongside high-throughput APIs with FastAPI and Flask."
+    },
+    {
+      title: "Core Computer Science",
+      desc: "Deep grounding in Data Structures & Algorithms, Database Management Systems, Agentic AI, and Cloud deployment."
     }
-  };
+  ]
 
   return (
-    <SectionWrapper
-      id="about"
-      title="About Me"
-      subtitle="GET TO KNOW ME"
-      subtitleIcon={<User className="w-4 h-4" />}
-    >
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-        {/* Left Column: Text Content */}
-        <div className="space-y-6 text-white/80 leading-relaxed text-lg">
-          <p>
-            Aspiring <span className="text-[#88734C] font-medium">AI/ML Engineer</span> with a solid academic background in computer science.
-            Passionate about applying machine learning and data science principles to combat financial crime.
-          </p>
-          <p>
-            Seeking an opportunity to leverage my skills in <span className="text-[#A9BBC8] font-medium">Python, Machine Learning, and Data Analysis</span> to contribute to the development of innovative anti-money laundering solutions.
-          </p>
-          <p>
-            I am an organized and dependable professional, successful at managing multiple priorities with a positive attitude. I'm always willing to take on added responsibilities to meet team goals.
-          </p>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-8">
-            <div className="bg-white/5 p-4 rounded-lg border border-white/10 hover:border-[#88734C]/50 transition-colors">
-              <div className="flex items-center gap-3 mb-2 text-[#88734C]">
-                <Target className="w-5 h-5" />
-                <h3 className="font-medium text-white">Goal-Oriented</h3>
-              </div>
-              <p className="text-sm text-white/60">Focused on combating financial crime through AI/ML</p>
-            </div>
-            <div className="bg-white/5 p-4 rounded-lg border border-white/10 hover:border-[#88734C]/50 transition-colors">
-              <div className="flex items-center gap-3 mb-2 text-[#88734C]">
-                <Brain className="w-5 h-5" />
-                <h3 className="font-medium text-white">AI/ML Enthusiast</h3>
-              </div>
-              <p className="text-sm text-white/60">Passionate about ML and Data Science</p>
-            </div>
-            <div className="bg-white/5 p-4 rounded-lg border border-white/10 hover:border-[#88734C]/50 transition-colors">
-              <div className="flex items-center gap-3 mb-2 text-[#88734C]">
-                <Zap className="w-5 h-5" />
-                <h3 className="font-medium text-white">Problem Solver</h3>
-              </div>
-              <p className="text-sm text-white/60">Applying principals to real-world challenges</p>
-            </div>
-            <div className="bg-white/5 p-4 rounded-lg border border-white/10 hover:border-[#88734C]/50 transition-colors">
-              <div className="flex items-center gap-3 mb-2 text-[#88734C]">
-                <Sparkles className="w-5 h-5" />
-                <h3 className="font-medium text-white">Team Player</h3>
-              </div>
-              <p className="text-sm text-white/60">Organized, dependable, and collaborative</p>
-            </div>
+    <section id="about" className="w-full py-24 md:py-32 px-6 md:px-12 bg-cream text-ink border-t border-ink/10 selection:bg-lemon selection:text-ink">
+      <div className="max-w-page mx-auto">
+        {/* Section Headline in 42px Prody */}
+        <div className="max-w-3xl mb-16 space-y-4">
+          <div className="inline-flex items-center gap-2">
+            <span className="w-2 h-2 rounded-full bg-lemon border border-ink" />
+            <span className="font-suisse-book text-xs uppercase tracking-widest text-ink/60">
+              01 • About & Foundation
+            </span>
           </div>
+          <h2 className="font-prody text-4xl sm:text-5xl lg:text-[42px] font-normal leading-[1.15] text-ink">
+            Academic Foundation & Engineering Vision
+          </h2>
+          <p className="font-suisse text-base text-ink/75 leading-relaxed">
+            Building intelligent software systems where data-driven machine learning models meet robust, scalable full-stack applications.
+          </p>
         </div>
 
-        {/* Right Column: Visuals/Stats */}
-        <div className="relative">
-          <div className="grid grid-cols-2 gap-4">
-            <div className="space-y-4 pt-8">
-              <StatCard
-                icon="https://cdn-icons-png.flaticon.com/512/1087/1087815.png"
-                label="4 Projects"
-                style={{ height: '100%' }}
-                onClick={() => scrollToSection('projects')}
-              />
-              <StatCard
-                icon="https://cdn-icons-png.flaticon.com/512/2991/2991148.png"
-                label="6 Certifications"
-                onClick={() => scrollToSection('certifications')}
-              />
+        {/* 37px Rounded Academic Card & Summary */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-16 items-stretch">
+          {/* Main Degree Card with 37px Radius */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="lg:col-span-5 bg-cream rounded-cards p-8 sm:p-[37px] border border-ink/15 flex flex-col justify-between"
+          >
+            <div>
+              <span className="font-suisse-book text-xs text-ink/50 uppercase tracking-wider block mb-2">
+                Degree Specification
+              </span>
+              <h3 className="font-prody text-2xl sm:text-3xl text-ink font-normal mb-2 leading-tight">
+                Bachelor of Engineering
+              </h3>
+              <p className="font-suisse text-sm font-medium text-ink/80 mb-6">
+                Artificial Intelligence & Machine Learning
+              </p>
+              
+              <div className="space-y-1 border-t border-ink/10 pt-4">
+                <span className="font-suisse-book text-xs text-ink/50 uppercase tracking-wider block">
+                  Institution
+                </span>
+                <p className="font-suisse text-base font-medium text-ink">
+                  BMS Institute of Technology & Management
+                </p>
+                <p className="font-suisse text-xs text-ink/60">Bengaluru, Karnataka, India</p>
+              </div>
             </div>
-            <div className="space-y-4">
-              <StatCard
-                icon="https://cdn-icons-png.flaticon.com/512/3406/3406828.png"
-                label="6 Courses"
-                style={{ height: '100%' }}
-                onClick={() => scrollToSection('certifications')}
-              />
-              <StatCard
-                icon="https://cdn-icons-png.flaticon.com/512/4248/4248443.png"
-                label="Skills"
-                onClick={() => scrollToSection('skills')}
-              />
+
+            <div className="grid grid-cols-2 gap-4 border-t border-ink/10 pt-6 mt-8">
+              <div>
+                <span className="font-suisse-book text-xs text-ink/50 uppercase tracking-wider block">Cumulative GPA</span>
+                <span className="font-prody text-2xl font-normal text-ink">8.10 / 10.0</span>
+              </div>
+              <div>
+                <span className="font-suisse-book text-xs text-ink/50 uppercase tracking-wider block">Graduation</span>
+                <span className="font-prody text-2xl font-normal text-ink">2027</span>
+              </div>
             </div>
-          </div>
-          {/* Decorative blob behind images */}
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-[#88734C]/5 rounded-full blur-3xl -z-10 pointer-events-none"></div>
+          </motion.div>
+
+          {/* Right Column: Bio Narrative Card */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.15 }}
+            className="lg:col-span-7 bg-cream rounded-cards p-8 sm:p-[37px] border border-ink/15 flex flex-col justify-between space-y-6"
+          >
+            <div className="space-y-4 font-suisse text-base text-ink/80 leading-relaxed">
+              <p className="font-prody text-2xl sm:text-3xl text-ink font-normal leading-snug">
+                "Combining analytical machine learning with clean, modern web engineering to create autonomous, high-impact products."
+              </p>
+              <p>
+                I am an AI & Machine Learning engineer based in Bengaluru. Across internships in data analytics, AI modeling, and full-stack web development, I’ve specialized in converting complex algorithms and data pipelines into production-ready software.
+              </p>
+              <p>
+                Having completed 4 internships across <strong className="text-ink font-medium">HEProAI</strong> (AI & ML), <strong className="text-ink font-medium">Bluestock Fintech</strong> (Data Analytics), <strong className="text-ink font-medium">Webstack Academy</strong> (Full-Stack Dev), and <strong className="text-ink font-medium">EazyByts</strong> (Web Dev), I bring a complete end-to-end development skill set.
+              </p>
+            </div>
+
+            {/* Quick Numbers Row */}
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 border-t border-ink/10 pt-6">
+              <div>
+                <span className="font-prody text-3xl text-ink block">04</span>
+                <span className="font-suisse-book text-xs text-ink/60">Internships</span>
+              </div>
+              <div>
+                <span className="font-prody text-3xl text-ink block">04</span>
+                <span className="font-suisse-book text-xs text-ink/60">Projects</span>
+              </div>
+              <div>
+                <span className="font-prody text-3xl text-ink block">06</span>
+                <span className="font-suisse-book text-xs text-ink/60">Certifications</span>
+              </div>
+              <div>
+                <span className="font-prody text-3xl text-ink block">8.10</span>
+                <span className="font-suisse-book text-xs text-ink/60">GPA</span>
+              </div>
+            </div>
+          </motion.div>
+        </div>
+
+        {/* 4 Pillars Grid (37px Radius Cards) */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          {pillars.map((pillar, idx) => (
+            <motion.div
+              key={idx}
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: idx * 0.1 }}
+              className="bg-cream rounded-cards p-7 border border-ink/15 flex flex-col justify-between hover:border-ink/40 transition-colors"
+            >
+              <div>
+                <div className="flex items-center justify-between mb-4">
+                  <span className="font-suisse-book text-xs text-ink/50">0{idx + 1}</span>
+                  <span className="w-2 h-2 rounded-full bg-lemon border border-ink" />
+                </div>
+                <h4 className="font-suisse text-lg font-semibold text-ink mb-2 leading-snug">
+                  {pillar.title}
+                </h4>
+                <p className="font-suisse text-xs text-ink/70 leading-relaxed">
+                  {pillar.desc}
+                </p>
+              </div>
+            </motion.div>
+          ))}
         </div>
       </div>
-    </SectionWrapper>
-  )
-}
-
-function StatCard({ icon, label, style, onClick }) {
-  return (
-    <motion.div
-      className={`bg-white/5 backdrop-blur-sm p-6 rounded-2xl border border-white/10 hover:bg-white/10 transition-all duration-300 flex flex-col items-center justify-center text-center gap-3 group ${onClick ? 'cursor-pointer' : ''}`}
-      whileHover={{ y: -5 }}
-      whileTap={onClick ? { scale: 0.95 } : {}}
-      style={style}
-      onClick={onClick}
-    >
-      <div className="w-16 h-16 p-3 bg-white/5 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-        <img src={icon} alt={label} className="w-full h-full object-contain" />
-      </div>
-      <span className="font-medium text-white group-hover:text-[#88734C] transition-colors">{label}</span>
-    </motion.div>
+    </section>
   )
 }
 
 export default About
-

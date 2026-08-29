@@ -35,53 +35,65 @@ sequelize.sync({ alter: true })
 const professionalProjects = [
   {
     id: 1,
-    title: 'Hand Gesture Volume Adjuster',
-    description: 'Engineered a real-time computer vision system using MediaPipe and OpenCV to interpret hand gestures for seamless system volume control. Optimized for low-latency processing and high accuracy.',
-    techStack: ['Python', 'OpenCV', 'MediaPipe', 'NumPy'],
-    category: 'ai', featured: true, order: 1,
-    github: 'https://github.com/Sanjeevkadakol/virtualpen'
+    title: 'AI-Powered Comprehension Learning System',
+    description: 'Built an AI-powered adaptive learning platform using Retrieval-Augmented Generation (RAG) to generate personalized explanations from voice and text responses. Integrated LLM-based learning workflows with semantic retrieval to provide context-aware and personalized educational content.',
+    techStack: ['Python', 'FastAPI', 'React', 'LangChain', 'Pinecone', 'RAG'],
+    category: 'ai-ml', featured: true, order: 1,
+    github: 'https://github.com/Sanjeevkadakol'
   },
   {
     id: 2,
-    title: 'Voice Assistant',
-    description: 'Developed a sophisticated AI voice assistant with NLP capabilities for task automation. Features custom wake-word detection, speech-to-text processing, and intelligent information retrieval.',
-    techStack: ['Python', 'NLP', 'SpeechRecognition', 'Pyttsx3'],
-    category: 'ai', featured: true, order: 2,
-    github: 'https://github.com/Sanjeevkadakol/voiceassistant'
+    title: 'NeighborNode – Secure Geofenced Community Platform',
+    description: 'Built a secure multi-tenant community management platform with GPS-based geofencing and role-based access control. Developed backend APIs and responsive frontend components for secure community management and location-aware access.',
+    techStack: ['Flask', 'React', 'Next.js', 'SQLAlchemy', 'SQLite'],
+    category: 'web-dev', featured: true, order: 2,
+    github: 'https://github.com/Sanjeevkadakol'
   },
   {
     id: 3,
-    title: 'Virtual Pen',
-    description: 'Created an innovative Computer Vision application that enables users to draw or annotate directly on-screen through hand tracking. Simulates a digital canvas using real-time motion analysis.',
-    techStack: ['Python', 'OpenCV', 'Hand-Tracking', 'NumPy'],
-    category: 'ai', featured: true, order: 3,
-    github: 'https://github.com/Sanjeevkadakol/virtualpen'
-  },
-  {
-    id: 4,
-    title: 'Mental Health Chatbot',
-    description: 'Designed a transformer-based chatbot architecture for empathetic user support. Leverages Sentiment Analysis and TensorFlow to provide relevant resources and guidance for mental well-being.',
-    techStack: ['Python', 'TensorFlow', 'NLP', 'Flask'],
-    category: 'ml', featured: true, order: 4,
-    github: 'https://github.com/Sanjeevkadakol/facemask'
+    title: 'DocInsight AI – RAG Chatbot',
+    description: 'Developed a semantic PDF search chatbot using Retrieval-Augmented Generation for intelligent document querying and contextual responses. Integrated vector databases and OpenAI APIs to enable efficient document retrieval and natural-language interaction.',
+    techStack: ['Python', 'FastAPI', 'React', 'LangChain', 'FAISS', 'Pinecone'],
+    category: 'ai-ml', featured: true, order: 3,
+    github: 'https://github.com/Sanjeevkadakol'
   }
 ];
 
 const professionalSkills = [
-  { name: 'Gen AI', category: 'ai-ml', proficiency: 90 },
-  { name: 'Agentic AI', category: 'ai-ml', proficiency: 85 },
-  { name: 'Azure ML', category: 'ai-ml', proficiency: 80 },
-  { name: 'HTML / CSS', category: 'web-dev', proficiency: 95 },
-  { name: 'Javascript', category: 'web-dev', proficiency: 90 },
-  { name: 'UI/UX Design', category: 'design', proficiency: 85 },
-  { name: 'Cyber Security', category: 'cyber-security', proficiency: 75 },
+  // Programming Languages
+  { name: 'Python', category: 'languages', proficiency: 95 },
+  { name: 'C', category: 'languages', proficiency: 85 },
+  { name: 'SQL', category: 'languages', proficiency: 90 },
+  { name: 'JavaScript', category: 'languages', proficiency: 90 },
+  { name: 'HTML / CSS', category: 'languages', proficiency: 95 },
+  // AI/ML & Frameworks
+  { name: 'PyTorch', category: 'ai-ml', proficiency: 90 },
+  { name: 'TensorFlow', category: 'ai-ml', proficiency: 85 },
+  { name: 'Scikit-learn', category: 'ai-ml', proficiency: 92 },
+  { name: 'RAG & LangChain', category: 'ai-ml', proficiency: 90 },
+  { name: 'Agentic AI', category: 'ai-ml', proficiency: 88 },
+  // Data & Databases
+  { name: 'Pandas & NumPy', category: 'data-db', proficiency: 95 },
+  { name: 'SQL & NeonDB', category: 'data-db', proficiency: 90 },
+  { name: 'Pinecone & FAISS', category: 'data-db', proficiency: 92 },
+  // Web Development
+  { name: 'React & Next.js', category: 'web-dev', proficiency: 90 },
+  { name: 'FastAPI & Flask', category: 'web-dev', proficiency: 90 },
+  { name: 'REST APIs', category: 'web-dev', proficiency: 92 },
+  // Developer Tools
+  { name: 'Git & GitHub', category: 'tools', proficiency: 95 },
+  { name: 'Docker', category: 'tools', proficiency: 85 },
+  { name: 'Vercel', category: 'tools', proficiency: 90 },
+  { name: 'Jupyter Notebook', category: 'tools', proficiency: 95 },
+  // Core Concepts
+  { name: 'DSA & DBMS', category: 'core', proficiency: 90 },
+  { name: 'Software Engineering', category: 'core', proficiency: 90 },
+  { name: 'Cloud Computing', category: 'core', proficiency: 85 },
   // Certifications
-  { name: 'Python Fundamentals', category: 'certification', proficiency: 100, description: 'Comprehensive mastery of Python programming, from data structures to advanced algorithms.' },
-  { name: 'Cyber Security & Data Analytics', category: 'certification', proficiency: 100, description: 'Advanced certification in threat detection, network security, and data-driven security analysis.' },
-  { name: 'Gen AI Models and Tools', category: 'certification', proficiency: 100, description: 'Expertise in Large Language Models (LLMs), prompt engineering, and building generative AI applications.' },
-  { name: 'DevOps & CI/CD', category: 'certification', proficiency: 100, description: 'Professional certification in automated deployment pipelines, containerization (Docker/K8s), and cloud infrastructure.' },
-  { name: 'ML & DS with AWS', category: 'certification', proficiency: 100, description: 'Cloud-native machine learning implementation using Amazon Web Services (SageMaker, S3, Lambda).' },
-  { name: 'Azure ML', category: 'certification', proficiency: 100, description: 'Microsoft Certified: Azure AI Fundamentals and Machine Learning Associate level expertise.' }
+  { name: 'Python Fundamentals', category: 'certification', proficiency: 100, description: 'Comprehensive mastery of Python programming, core data structures, and algorithmic principles.' },
+  { name: 'Generative AI Models and Tools', category: 'certification', proficiency: 100, description: 'Specialized expertise in LLMs, Prompt Engineering, LangChain, and Generative AI application development.' },
+  { name: 'Machine Learning and Data Science with AWS', category: 'certification', proficiency: 100, description: 'Cloud-native machine learning pipelines and scalable data science workflows on AWS.' },
+  { name: 'Cyber Security and Data Analytics', category: 'certification', proficiency: 100, description: 'Threat analysis, security architectures, and data-driven analytical approaches to security.' }
 ];
 
 // Routes

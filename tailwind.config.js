@@ -7,62 +7,41 @@ export default {
   theme: {
     extend: {
       colors: {
-        border: "var(--border)",
-        input: "var(--input)",
-        ring: "var(--ring)",
-        background: "var(--background)",
-        foreground: "var(--foreground)",
-        primary: {
-          DEFAULT: "var(--primary)",
-          foreground: "var(--primary-foreground)",
-        },
-        secondary: {
-          DEFAULT: "var(--secondary)",
-          foreground: "var(--secondary-foreground)",
-        },
-        destructive: {
-          DEFAULT: "var(--destructive)",
-          foreground: "var(--destructive-foreground)",
-        },
-        muted: {
-          DEFAULT: "var(--muted)",
-          foreground: "var(--muted-foreground)",
-        },
-        accent: {
-          DEFAULT: "var(--accent)",
-          foreground: "var(--accent-foreground)",
-        },
-        popover: {
-          DEFAULT: "var(--popover)",
-          foreground: "var(--popover-foreground)",
-        },
-        card: {
-          DEFAULT: "var(--card)",
-          foreground: "var(--card-foreground)",
-        },
+        'parchment-cream': '#f7f6e3',
+        'cream': '#f7f6e3',
+        'ink-black': '#262d29',
+        'ink': '#262d29',
+        'electric-lemon': '#ffff48',
+        'lemon': '#ffff48',
+      },
+      fontFamily: {
+        prody: ['"Playfair Display"', '"Cormorant Garamond"', 'Georgia', 'serif'],
+        suisse: ['"Inter"', '-apple-system', 'BlinkMacSystemFont', '"Segoe UI"', 'Roboto', 'sans-serif'],
+        'suisse-book': ['"Inter"', '-apple-system', 'BlinkMacSystemFont', '"Segoe UI"', 'Roboto', 'sans-serif'],
       },
       borderRadius: {
-        lg: "var(--radius)",
-        md: "calc(var(--radius) - 2px)",
-        sm: "calc(var(--radius) - 4px)",
+        cards: '37px',
+        buttons: '18px',
+        pills: '9999px',
+        nav: '8px',
+        inputs: '8px',
+        '3xl': '37px',
       },
-      keyframes: {
-        marquee: {
-          "0%": { transform: "translateX(0%)" },
-          "100%": { transform: "translateX(-100%)" },
-        },
-        "fade-in-up": {
-          "0%": { opacity: "0", transform: "translateY(10px)" },
-          "100%": { opacity: "1", transform: "translateY(0)" },
-        },
+      spacing: {
+        '8': '8px',
+        '12': '12px',
+        '20': '20px',
+        '28': '28px',
+        '37': '37px',
+        '112': '112px',
       },
-      animation: {
-        marquee: "marquee var(--duration, 40s) linear infinite",
-        "fade-in-up": "fade-in-up 0.5s ease-out forwards",
+      maxWidth: {
+        'page': '1280px',
       },
+      lineHeight: {
+        tight: '1.15',
+      }
     },
   },
   plugins: [],
-  darkMode: 'class',
 }
-
