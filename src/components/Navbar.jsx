@@ -49,16 +49,16 @@ const Navbar = ({ activeSection }) => {
         </button>
 
         {/* Center/Right: Clean Helvetica Now Links + Black Pill Button */}
-        <div className="hidden md:flex items-center gap-6">
-          <nav className="flex items-center gap-5">
+        <div className="hidden md:flex items-center gap-7">
+          <nav className="flex items-center gap-6">
             {navItems.map((item) => (
               <button
                 key={item.id}
                 onClick={() => scrollToSection(item.id)}
-                className={`font-helvetica text-xs transition-colors hover:underline underline-offset-4 focus:outline-none ${
+                className={`font-helvetica text-xs transition-colors hover:underline underline-offset-4 focus:outline-none py-1 flex items-center leading-none ${
                   activeSection === item.id
-                    ? 'text-ink font-medium underline'
-                    : 'text-graphite hover:text-ink'
+                    ? 'text-ink font-semibold underline'
+                    : 'text-graphite hover:text-ink font-normal'
                 }`}
               >
                 {item.label}
@@ -68,7 +68,7 @@ const Navbar = ({ activeSection }) => {
 
           <button
             onClick={() => scrollToSection('contact')}
-            className="btn-pill-black ml-2"
+            className="btn-pill-black"
           >
             Get In Touch
           </button>
