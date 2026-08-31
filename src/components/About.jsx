@@ -26,146 +26,150 @@ const About = () => {
   ]
 
   return (
-    <section id="about" className="w-full py-20 md:py-28 px-6 md:px-12 bg-putty text-ink border-b border-vellum selection:bg-ink selection:text-paper">
-      <div className="max-w-page mx-auto">
-        {/* Section Header */}
-        <div className="max-w-3xl mb-14 space-y-3">
-          <span className="font-helvetica text-[11px] uppercase tracking-widest text-graphite block">
-            01 • Profile & Background
-          </span>
-          <h2 className="font-davinci text-3xl sm:text-4xl md:text-[43px] font-normal leading-[1.1] tracking-[-0.215px] text-ink">
-            Academic Foundation & Philosophy
-          </h2>
-          <p className="font-helvetica text-sm text-graphite leading-relaxed">
-            AI & Machine Learning engineer combining predictive model development with robust, full-stack software systems.
-          </p>
-        </div>
+    <section id="about" className="w-full bg-putty text-ink border-b border-vellum selection:bg-paper selection:text-ink">
+      {/* 1. Classical Renaissance Painting Exhibit Panel with Floating Notched Cards */}
+      <div className="relative w-full min-h-[90vh] flex items-center justify-center overflow-hidden py-24 px-6 md:px-12 border-b border-vellum">
+        {/* Full-Bleed Renaissance Landscape Oil Painting */}
+        <div 
+          className="absolute inset-0 bg-cover bg-center pointer-events-none"
+          style={{
+            backgroundImage: `url('https://images.unsplash.com/photo-1579783900882-c0d3dad7b119?q=80&w=2808&auto=format&fit=crop')`,
+          }}
+        />
 
-        {/* Profile Grid: Left Bio & Stats (Bone Cards) + Right Portrait Photo */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 mb-12 items-stretch">
-          {/* Left Column (8 Cols): Academic Specs, Bio, Stats, & Resume CTA */}
+        {/* Warm Glaze & Vignette Overlays */}
+        <div className="absolute inset-0 bg-putty/20 mix-blend-multiply pointer-events-none" />
+        <div className="absolute inset-0 bg-black/40 pointer-events-none" />
+
+        {/* Floating Exhibit Cards Container */}
+        <div className="relative z-10 max-w-page mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
+          {/* Left Column (7 Cols): Notched Manifesto & Academic Foundation Card */}
           <motion.div
-            initial={{ opacity: 0, y: 15 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0, scale: 0.97, y: 20 }}
+            whileInView={{ opacity: 1, scale: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="lg:col-span-8 bg-bone rounded-cards p-7 sm:p-8 border border-vellum flex flex-col justify-between space-y-6"
+            transition={{ duration: 0.7 }}
+            className="lg:col-span-7 bg-[#000000] text-paper p-8 sm:p-10 rounded-cards border border-[#333333] shadow-2xl flex flex-col justify-between"
+            style={{
+              clipPath: 'polygon(0 0, 100% 0, 100% calc(100% - 14px), calc(100% - 14px) 100%, 0 100%)'
+            }}
           >
-            <div className="space-y-5">
-              {/* Degree Header */}
-              <div className="border-b border-vellum pb-5 flex flex-col sm:flex-row sm:items-baseline justify-between gap-3">
-                <div>
-                  <span className="font-helvetica text-[10px] text-graphite uppercase tracking-wider block mb-1">
-                    B.E. DEGREE • 2023 – 2027
-                  </span>
-                  <h3 className="font-davinci text-xl sm:text-2xl text-ink font-normal leading-snug">
-                    Bachelor of Engineering — Artificial Intelligence & Machine Learning
-                  </h3>
-                  <p className="font-helvetica text-xs text-graphite mt-1">
-                    BMS Institute of Technology & Management • Bengaluru, India
-                  </p>
-                </div>
-                <div className="sm:text-right shrink-0">
-                  <span className="font-helvetica text-[10px] text-graphite uppercase tracking-wider block">CGPA</span>
-                  <span className="font-davinci text-2xl font-normal text-ink">8.10 / 10.0</span>
-                </div>
+            <div className="space-y-6">
+              {/* Header Badge */}
+              <div className="flex items-center justify-between border-b border-[#222222] pb-4">
+                <span className="font-helvetica text-[10px] uppercase tracking-widest text-ash">
+                  01 • FOUNDATION & VISION
+                </span>
+                <span className="font-helvetica text-[10px] text-ash font-mono">
+                  BMSIT&M • 2023–2027
+                </span>
               </div>
 
-              {/* Bio Narrative in Structured Editorial Voice */}
-              <div className="space-y-3 font-helvetica text-xs sm:text-sm text-graphite leading-relaxed">
-                <p className="font-davinci text-lg sm:text-xl text-ink font-normal italic leading-snug">
-                  "Combining analytical machine learning with clean, modern full stack development to build autonomous, high-impact software."
+              {/* Manifesto Headline in Davinci Serif */}
+              <h3 className="font-davinci text-2xl sm:text-3xl md:text-4xl text-paper font-normal leading-[1.12] tracking-[-0.3px]">
+                Combining intelligent machine learning with clean full stack engineering
+              </h3>
+
+              <div className="space-y-3 font-helvetica text-xs sm:text-sm text-ash leading-relaxed">
+                <p>
+                  I am an AI & Machine Learning engineer based in Bengaluru. Across internships spanning data analytics, predictive modeling, and full-stack web development, I’ve specialized in converting complex algorithms and data pipelines into production-ready software.
                 </p>
                 <p>
-                  I am an AI & Machine Learning engineer based in Bengaluru. Across internships in data analytics, AI modeling, and full-stack engineering, I’ve specialized in converting complex algorithms and data pipelines into production-ready software.
+                  Experience across <strong className="text-paper font-medium">HEProAI</strong>, <strong className="text-paper font-medium">Bluestock Fintech</strong>, <strong className="text-paper font-medium">Webstack Academy</strong>, and <strong className="text-paper font-medium">EazyByts</strong>.
                 </p>
-                <p>
-                  Experience completed across <strong className="text-ink font-medium">HEProAI</strong> (AI & ML), <strong className="text-ink font-medium">Bluestock Fintech</strong> (Data Analytics), <strong className="text-ink font-medium">Webstack Academy</strong> (Full-Stack Dev), and <strong className="text-ink font-medium">EazyByts</strong> (Web Dev).
-                </p>
+              </div>
+
+              {/* Stats Row */}
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-4 border-t border-[#222222]">
+                <div>
+                  <span className="font-davinci text-2xl text-paper block">04</span>
+                  <span className="font-helvetica text-[10px] text-ash">Internships Done</span>
+                </div>
+                <div>
+                  <span className="font-davinci text-2xl text-paper block">04</span>
+                  <span className="font-helvetica text-[10px] text-ash">Projects Shipped</span>
+                </div>
+                <div>
+                  <span className="font-davinci text-2xl text-paper block">06</span>
+                  <span className="font-helvetica text-[10px] text-ash">Certifications</span>
+                </div>
+                <div>
+                  <span className="font-davinci text-2xl text-paper block">8.10</span>
+                  <span className="font-helvetica text-[10px] text-ash">CGPA</span>
+                </div>
               </div>
             </div>
 
-            {/* Stats Row & Resume Download Button */}
-            <div className="pt-5 border-t border-vellum space-y-5">
-              <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
-                <div>
-                  <span className="font-davinci text-2xl sm:text-3xl text-ink block">04</span>
-                  <span className="font-helvetica text-[11px] text-graphite">Internships Done</span>
-                </div>
-                <div>
-                  <span className="font-davinci text-2xl sm:text-3xl text-ink block">04</span>
-                  <span className="font-helvetica text-[11px] text-graphite">Projects Shipped</span>
-                </div>
-                <div>
-                  <span className="font-davinci text-2xl sm:text-3xl text-ink block">06</span>
-                  <span className="font-helvetica text-[11px] text-graphite">Certifications</span>
-                </div>
-                <div>
-                  <span className="font-davinci text-2xl sm:text-3xl text-ink block">8.10</span>
-                  <span className="font-helvetica text-[11px] text-graphite">CGPA</span>
-                </div>
+            {/* Bottom Action Row with 'SCROLL' and Resume CTA */}
+            <div className="pt-6 border-t border-[#222222] mt-6 flex flex-wrap items-center justify-between gap-4">
+              <div className="flex items-center gap-3">
+                <span className="font-helvetica text-[10px] uppercase tracking-[0.25em] text-paper font-medium">
+                  SCROLL
+                </span>
+                <span className="text-ash text-xs tracking-widest">— — —</span>
               </div>
 
-              <div className="flex items-center gap-4 pt-1">
-                <a
-                  href="/resume.pdf"
-                  download="Sanjeev_Kadakol_Resume.pdf"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="btn-pill-black"
-                >
-                  <Download className="w-3.5 h-3.5" />
-                  <span>Download Resume (PDF)</span>
-                </a>
-              </div>
+              <a
+                href="/resume.pdf"
+                download="Sanjeev_Kadakol_Resume.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-pill-white"
+              >
+                <Download className="w-3.5 h-3.5" />
+                <span>Download Resume (PDF)</span>
+              </a>
             </div>
           </motion.div>
 
-          {/* Right Column (4 Cols): Portrait Photo in 9px Bone Card */}
+          {/* Right Column (5 Cols): Notched Portrait Photo Card */}
           <motion.div
-            initial={{ opacity: 0, y: 15 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0, scale: 0.97, y: 20 }}
+            whileInView={{ opacity: 1, scale: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.15 }}
-            className="lg:col-span-4 bg-bone rounded-cards p-6 border border-vellum flex flex-col justify-between"
+            transition={{ duration: 0.7, delay: 0.15 }}
+            className="lg:col-span-5 bg-[#000000] text-paper p-8 rounded-cards border border-[#333333] shadow-2xl flex flex-col justify-between"
+            style={{
+              clipPath: 'polygon(0 0, 100% 0, 100% calc(100% - 14px), calc(100% - 14px) 100%, 0 100%)'
+            }}
           >
             <div>
-              {/* 9px Framed Photo */}
-              <div className="relative w-full h-64 sm:h-72 rounded-cards overflow-hidden border border-vellum bg-ash/20 mb-5">
+              {/* Photo Frame */}
+              <div className="relative w-full h-64 sm:h-72 rounded-[9px] overflow-hidden border border-[#333333] bg-[#111111] mb-5">
                 <img
                   src="/sanjeev.jpg"
                   alt="Sanjeev Kadakol"
-                  className="w-full h-full object-cover object-top filter grayscale-[20%] hover:grayscale-0 transition-all duration-500"
+                  className="w-full h-full object-cover object-top filter contrast-105 hover:scale-105 transition-transform duration-500"
                 />
               </div>
 
-              {/* ID Details */}
+              {/* Profile Details */}
               <div className="space-y-1">
-                <h4 className="font-davinci text-xl font-normal text-ink">
+                <h4 className="font-davinci text-2xl font-normal text-paper">
                   Sanjeev Kadakol
                 </h4>
-                <p className="font-helvetica text-xs text-graphite">
+                <p className="font-helvetica text-xs text-ash">
                   AI/ML & Full Stack Developer
                 </p>
-                <p className="font-helvetica text-[11px] text-graphite/70">
+                <p className="font-helvetica text-[11px] text-ash/70">
                   BMSIT&M • Bengaluru, India
                 </p>
               </div>
             </div>
 
-            {/* Status & Social Links */}
-            <div className="pt-4 border-t border-vellum mt-5 space-y-3">
-              <div className="flex items-center gap-2 font-helvetica text-xs text-ink font-medium">
-                <span className="w-1.5 h-1.5 rounded-full bg-ink" />
-                <span>Open for Opportunities</span>
+            {/* Status & Social Networks */}
+            <div className="pt-4 border-t border-[#222222] mt-6 flex items-center justify-between">
+              <div className="flex items-center gap-2 font-helvetica text-xs text-paper">
+                <span className="w-1.5 h-1.5 rounded-full bg-paper animate-pulse" />
+                <span>Open for Roles</span>
               </div>
 
-              <div className="flex items-center gap-3 text-ink">
+              <div className="flex items-center gap-2 text-paper">
                 <a
                   href="https://github.com/Sanjeevkadakol"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="p-1.5 rounded-cards border border-vellum hover:border-ink transition-colors"
+                  className="p-2 rounded-cards border border-[#333333] hover:border-paper hover:bg-[#161616] transition-colors"
                   aria-label="GitHub"
                 >
                   <Github className="w-3.5 h-3.5" />
@@ -174,14 +178,14 @@ const About = () => {
                   href="https://www.linkedin.com/in/sanjeev-kadakol"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="p-1.5 rounded-cards border border-vellum hover:border-ink transition-colors"
+                  className="p-2 rounded-cards border border-[#333333] hover:border-paper hover:bg-[#161616] transition-colors"
                   aria-label="LinkedIn"
                 >
                   <Linkedin className="w-3.5 h-3.5" />
                 </a>
                 <a
                   href="mailto:sanjeevpkadakol1@gmail.com"
-                  className="p-1.5 rounded-cards border border-vellum hover:border-ink transition-colors"
+                  className="p-2 rounded-cards border border-[#333333] hover:border-paper hover:bg-[#161616] transition-colors"
                   aria-label="Email"
                 >
                   <Mail className="w-3.5 h-3.5" />
@@ -190,8 +194,19 @@ const About = () => {
             </div>
           </motion.div>
         </div>
+      </div>
 
-        {/* 4 Pillars Grid (9px Bone Cards) */}
+      {/* 2. 4 Foundation Pillars Grid on Putty Canvas */}
+      <div className="py-20 md:py-24 px-6 md:px-12 max-w-page mx-auto">
+        <div className="mb-10">
+          <span className="font-helvetica text-[11px] uppercase tracking-widest text-graphite block mb-2">
+            CORE CAPABILITIES
+          </span>
+          <h4 className="font-davinci text-2xl sm:text-3xl text-ink font-normal">
+            Engineering Pillars & Focus Areas
+          </h4>
+        </div>
+
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
           {pillars.map((pillar, idx) => (
             <motion.div
@@ -206,9 +221,9 @@ const About = () => {
                 <span className="font-helvetica text-[11px] text-graphite/60 font-mono block mb-3">
                   {pillar.num}
                 </span>
-                <h4 className="font-davinci text-lg text-ink font-normal mb-2 leading-snug">
+                <h5 className="font-davinci text-lg text-ink font-normal mb-2 leading-snug">
                   {pillar.title}
-                </h4>
+                </h5>
                 <p className="font-helvetica text-xs text-graphite leading-relaxed">
                   {pillar.desc}
                 </p>
