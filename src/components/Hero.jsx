@@ -24,7 +24,7 @@ const Hero = () => {
         >
           <span className="w-2 h-2 rounded-full bg-lemon border border-ink" />
           <span className="font-suisse-book text-xs tracking-wider text-ink">
-            AI/ML & Software Development • Bengaluru, India
+            AI/ML & Full Stack Development • Bengaluru, India
           </span>
         </motion.div>
 
@@ -46,7 +46,7 @@ const Hero = () => {
           className="space-y-1.5 max-w-[720px] mb-8 font-suisse"
         >
           <p className="text-lg sm:text-[21px] text-ink font-medium tracking-tight">
-            AI/ML & Software Development Engineer
+            AI/ML & Full Stack Developer
           </p>
           <p className="text-sm sm:text-base text-ink/70 font-normal">
             B.E. in AIML from BMS Institute of Technology & Management

@@ -28,7 +28,7 @@ const skillCategories = [
   },
   {
     name: "Core Concepts",
-    skills: ["DSA", "DBMS", "Software Engineering", "Agentic AI", "Cloud Computing"],
+    skills: ["DSA", "DBMS", "Full Stack Development", "Agentic AI", "Cloud Computing"],
     description: "Algorithmic problem solving, database normalization, system design principles, and cloud deployments."
   }
 ]

@@ -31,7 +31,7 @@ const certifications = [
   },
   {
     title: "Python Fundamentals",
-    issuer: "Software Engineering Core",
+    issuer: "Full Stack Development Core",
     category: "Algorithms & Modular Software",
     date: "2025",
     image: "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?q=80&w=400&auto=format&fit=crop",
@@ -75,7 +75,7 @@ const Certifications = () => {
               Certifications & Qualifications
             </h2>
             <p className="font-suisse text-base text-ink/75 leading-relaxed">
-              Verified credentials from AWS, IBM Developer Skills Network, and specialized engineering programs.
+              Verified credentials from AWS, IBM Developer Skills Network, and specialized full stack development programs.
             </p>
           </div>
 
