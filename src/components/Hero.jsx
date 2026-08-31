@@ -12,7 +12,7 @@ const Hero = () => {
   return (
     <section
       id="home"
-      className="relative w-full pt-32 pb-24 md:pt-40 md:pb-32 px-6 md:px-12 bg-cream text-ink flex flex-col items-center justify-center text-center selection:bg-lemon selection:text-ink"
+      className="relative w-full pt-32 pb-24 md:pt-40 md:pb-32 px-6 md:px-12 bg-transparent text-ink flex flex-col items-center justify-center text-center selection:bg-lemon selection:text-ink"
     >
       <div className="max-w-[960px] mx-auto flex flex-col items-center">
         {/* Subtle Category Tag */}

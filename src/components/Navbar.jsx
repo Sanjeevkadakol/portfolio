@@ -31,7 +31,7 @@ const Navbar = ({ activeSection }) => {
   ]
 
   return (
-    <header className={`fixed top-0 left-0 right-0 z-50 transition-colors duration-200 ${isScrolled ? 'bg-cream/95 backdrop-blur-sm border-b border-ink/10' : 'bg-cream'}`}>
+    <header className={`fixed top-0 left-0 right-0 z-50 transition-colors duration-200 ${isScrolled ? 'bg-[#f7f6e3]/90 backdrop-blur-md border-b border-ink/10 shadow-sm' : 'bg-transparent'}`}>
       <div className="max-w-page mx-auto px-6 md:px-12 h-20 flex items-center justify-between">
         {/* Left: Wordmark in SuisseIntl ~21px */}
         <button

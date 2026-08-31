@@ -22,7 +22,7 @@ const About = () => {
   ]
 
   return (
-    <section id="about" className="w-full py-24 md:py-32 px-6 md:px-12 bg-cream text-ink border-t border-ink/10 selection:bg-lemon selection:text-ink">
+    <section id="about" className="w-full py-24 md:py-32 px-6 md:px-12 bg-transparent text-ink border-t border-ink/10 selection:bg-lemon selection:text-ink">
       <div className="max-w-page mx-auto">
         {/* Section Headline in 42px Prody */}
         <div className="max-w-3xl mb-16 space-y-4">

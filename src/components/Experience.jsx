@@ -58,7 +58,7 @@ const experiences = [
 
 const Experience = () => {
   return (
-    <section id="experience" className="w-full py-24 md:py-32 px-6 md:px-12 bg-cream text-ink border-t border-ink/10 selection:bg-lemon selection:text-ink">
+    <section id="experience" className="w-full py-24 md:py-32 px-6 md:px-12 bg-transparent text-ink border-t border-ink/10 selection:bg-lemon selection:text-ink">
       <div className="max-w-page mx-auto">
         {/* Section Header in Prody */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">

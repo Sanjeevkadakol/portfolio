@@ -4,7 +4,7 @@ const Footer = () => {
   }
 
   return (
-    <footer className="w-full bg-cream text-ink py-12 px-6 md:px-12 border-t border-ink/10 font-suisse-book text-xs selection:bg-lemon selection:text-ink">
+    <footer className="w-full bg-transparent text-ink py-12 px-6 md:px-12 border-t border-ink/10 font-suisse-book text-xs selection:bg-lemon selection:text-ink">
       <div className="max-w-page mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
         {/* Left: Minimal Wordmark */}
         <div className="flex items-center gap-2">
