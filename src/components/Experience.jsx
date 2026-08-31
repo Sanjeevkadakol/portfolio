@@ -59,7 +59,7 @@ const Experience = () => {
         {/* Section Header in Davinci Display */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-14 gap-6">
           <div className="max-w-2xl space-y-3">
-            <span className="font-helvetica text-[11px] uppercase tracking-widest text-graphite block">
+            <span className="font-helvetica text-[11px] uppercase tracking-widest text-graphite block font-medium">
               02 • Trajectory & Industry Roles
             </span>
             <h2 className="font-davinci text-3xl sm:text-4xl md:text-[43px] font-normal leading-[1.1] tracking-[-0.215px] text-ink">
@@ -71,7 +71,7 @@ const Experience = () => {
           </div>
 
           <div className="text-right hidden md:block">
-            <span className="font-helvetica text-xs text-graphite uppercase tracking-widest">
+            <span className="font-helvetica text-xs text-graphite uppercase tracking-widest font-medium">
               04 Positions
             </span>
           </div>
@@ -85,26 +85,23 @@ const Experience = () => {
               initial={{ opacity: 0, y: 15 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: idx * 0.08 }}
-              className="bg-bone rounded-cards p-7 border border-vellum flex flex-col justify-between hover:border-graphite transition-colors"
+              transition={{ duration: 0.5 }}
+              className="bg-bone rounded-cards p-7 border border-vellum flex flex-col justify-between hover:border-graphite transition-colors shadow-sm"
             >
               <div>
-                {/* Header Meta */}
+                {/* Clean Header Tag without micro INDEX */}
                 <div className="flex items-center justify-between pb-4 border-b border-vellum mb-5">
-                  <span className="font-helvetica text-[10px] uppercase tracking-wider text-graphite font-mono">
-                    INDEX // 0{idx + 1}
+                  <span className="font-helvetica text-xs text-ink font-medium tracking-wide">
+                    {exp.company}
                   </span>
-                  <span className="font-helvetica text-[11px] px-2.5 py-0.5 rounded-cards border border-vellum bg-putty/40 text-graphite">
+                  <span className="font-helvetica text-[11px] px-3 py-1 rounded-full border border-vellum bg-putty/50 text-ink font-medium">
                     {exp.tag}
                   </span>
                 </div>
 
-                <h3 className="font-davinci text-xl sm:text-2xl text-ink font-normal mb-1">
+                <h3 className="font-davinci text-xl sm:text-2xl text-ink font-normal mb-2 leading-snug">
                   {exp.role}
                 </h3>
-                <h4 className="font-helvetica text-sm text-ink/85 font-medium mb-3">
-                  {exp.company}
-                </h4>
 
                 <div className="flex flex-wrap items-center gap-4 text-xs font-helvetica text-graphite mb-5">
                   <div className="flex items-center gap-1.5">
@@ -122,7 +119,7 @@ const Experience = () => {
                 <ul className="space-y-2 mb-6">
                   {exp.bullets.map((bullet, bIdx) => (
                     <li key={bIdx} className="font-helvetica text-xs text-graphite leading-relaxed flex items-start gap-2">
-                      <span className="text-ink/40 mt-0.5">—</span>
+                      <span className="text-ink mt-0.5">•</span>
                       <span>{bullet}</span>
                     </li>
                   ))}
@@ -134,7 +131,7 @@ const Experience = () => {
                 {exp.skills.map((skill, sIdx) => (
                   <span
                     key={sIdx}
-                    className="font-helvetica text-[11px] px-2.5 py-0.5 rounded-cards border border-vellum bg-putty/30 text-graphite"
+                    className="font-helvetica text-[11px] px-2.5 py-0.5 rounded-cards border border-vellum bg-putty/30 text-graphite font-medium"
                   >
                     {skill}
                   </span>

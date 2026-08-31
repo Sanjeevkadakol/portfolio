@@ -302,16 +302,13 @@ const Contributions = () => {
                   >
                     <div>
                       <div className="flex items-center justify-between mb-3">
-                        <span className="font-helvetica text-[10px] text-[#7d8590] font-mono">
-                          REPO // 0{idx + 1}
+                        <span className="font-helvetica text-xs font-semibold text-[#58a6ff] group-hover:underline line-clamp-1">
+                          {repo.name}
                         </span>
                         <span className="font-helvetica text-[10px] px-2 py-0.5 rounded-full border border-[#30363d] bg-[#161b22] text-[#7d8590]">
                           Public
                         </span>
                       </div>
-                      <h4 className="font-helvetica text-sm font-semibold text-[#58a6ff] group-hover:underline mb-2 line-clamp-1">
-                        {repo.name}
-                      </h4>
                       <p className="font-helvetica text-xs text-[#7d8590] leading-relaxed mb-4 line-clamp-2">
                         {repo.desc}
                       </p>

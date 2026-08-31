@@ -51,7 +51,7 @@ const Projects = () => {
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-14 gap-6">
           <div className="max-w-2xl space-y-3">
-            <span className="font-helvetica text-[11px] uppercase tracking-widest text-graphite block">
+            <span className="font-helvetica text-[11px] uppercase tracking-widest text-graphite block font-medium">
               03 • Selected Repositories
             </span>
             <h2 className="font-davinci text-3xl sm:text-4xl md:text-[43px] font-normal leading-[1.1] tracking-[-0.215px] text-ink">
@@ -67,7 +67,7 @@ const Projects = () => {
               href="https://github.com/Sanjeevkadakol"
               target="_blank"
               rel="noopener noreferrer"
-              className="font-helvetica text-xs text-ink hover:underline flex items-center gap-1"
+              className="font-helvetica text-xs text-ink hover:underline flex items-center gap-1 font-medium"
             >
               <span>View All Repositories</span>
               <ArrowUpRight className="w-3.5 h-3.5" />
@@ -77,36 +77,30 @@ const Projects = () => {
 
         {/* 2x2 Grid of 9px Bone Cards */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-7">
-          {projects.map((project, idx) => (
+          {projects.map((project) => (
             <motion.div
               key={project.id}
               initial={{ opacity: 0, y: 15 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: idx * 0.08 }}
-              className="bg-bone rounded-cards overflow-hidden border border-vellum flex flex-col justify-between hover:border-graphite transition-all group"
+              transition={{ duration: 0.5 }}
+              className="bg-bone rounded-cards overflow-hidden border border-vellum flex flex-col justify-between hover:border-graphite transition-all group shadow-sm"
             >
               <div>
-                {/* 9px Framed Project Visual */}
+                {/* Clean Project Visual without blurry overlay badges */}
                 <div className="relative w-full h-56 sm:h-64 overflow-hidden border-b border-vellum bg-ash/20">
                   <img
                     src={project.image}
                     alt={project.title}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   />
-                  <div className="absolute top-3 right-3">
-                    <span className="font-helvetica text-[10px] px-2.5 py-1 rounded-full bg-putty/90 backdrop-blur-sm text-ink border border-vellum font-medium">
-                      {project.category}
-                    </span>
-                  </div>
                 </div>
 
                 <div className="p-7">
-                  <div className="flex items-center justify-between mb-2">
-                    <span className="font-helvetica text-[10px] uppercase tracking-wider text-graphite font-mono">
-                      PROJECT // 0{idx + 1}
-                    </span>
-                  </div>
+                  {/* Clean Category Subtitle */}
+                  <span className="font-helvetica text-[11px] uppercase tracking-wider text-graphite block mb-2 font-medium">
+                    {project.category}
+                  </span>
 
                   <h3 className="font-davinci text-xl sm:text-2xl text-ink font-normal mb-3 leading-snug">
                     {project.title}
@@ -121,7 +115,7 @@ const Projects = () => {
                     {project.tags.map((tag, tIdx) => (
                       <span
                         key={tIdx}
-                        className="font-helvetica text-[11px] px-2.5 py-0.5 rounded-cards border border-vellum bg-putty/40 text-graphite"
+                        className="font-helvetica text-[11px] px-2.5 py-0.5 rounded-cards border border-vellum bg-putty/40 text-graphite font-medium"
                       >
                         {tag}
                       </span>

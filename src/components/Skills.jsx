@@ -50,7 +50,7 @@ const Skills = () => {
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-14 gap-6">
           <div className="max-w-2xl space-y-3">
-            <span className="font-helvetica text-[11px] uppercase tracking-widest text-graphite block">
+            <span className="font-helvetica text-[11px] uppercase tracking-widest text-graphite block font-medium">
               05 • Technical Arsenal
             </span>
             <h2 className="font-davinci text-3xl sm:text-4xl md:text-[43px] font-normal leading-[1.1] tracking-[-0.215px] text-ink">
@@ -96,16 +96,14 @@ const Skills = () => {
               initial={{ opacity: 0, scale: 0.98 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.25, delay: idx * 0.03 }}
-              className="bg-bone rounded-cards p-6 border border-vellum flex flex-col justify-between hover:border-graphite transition-all group"
+              className="bg-bone rounded-cards p-6 border border-vellum flex flex-col justify-between hover:border-graphite transition-all group shadow-sm"
             >
               <div>
                 <div className="flex items-center justify-between mb-4">
                   <span className="text-2xl p-2 rounded-cards bg-putty/40 border border-vellum">
                     {tech.icon}
                   </span>
-                  <span className="font-helvetica text-[10px] text-graphite font-mono">
-                    // 0{idx + 1}
-                  </span>
+                  <span className="w-1.5 h-1.5 rounded-full bg-ink" />
                 </div>
 
                 <h3 className="font-davinci text-lg text-ink font-normal mb-1 group-hover:underline">
@@ -117,10 +115,9 @@ const Skills = () => {
               </div>
 
               <div className="pt-3 border-t border-vellum mt-4 flex items-center justify-between">
-                <span className="font-helvetica text-[10px] text-graphite/60 uppercase">
+                <span className="font-helvetica text-[10px] text-graphite uppercase tracking-wider font-medium">
                   Verified Tool
                 </span>
-                <span className="w-1.5 h-1.5 rounded-full bg-ink" />
               </div>
             </motion.div>
           ))}
