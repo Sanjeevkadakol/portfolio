@@ -130,7 +130,7 @@ const Projects = () => {
                   href={project.github}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="btn-pill-black"
+                  className="inline-flex items-center gap-2 bg-[#f4f780] hover:bg-[#e6eb5c] text-ink font-helvetica text-xs font-medium px-4 py-2 rounded-buttons border border-ink/15 shadow-sm transition-all hover:-translate-y-0.5"
                 >
                   <Github className="w-3.5 h-3.5" />
                   <span>GitHub Repository</span>
