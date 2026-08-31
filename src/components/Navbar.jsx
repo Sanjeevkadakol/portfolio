@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { Menu, X } from 'lucide-react'
 
 const Navbar = ({ activeSection }) => {
   const [isScrolled, setIsScrolled] = useState(false)
@@ -25,82 +26,88 @@ const Navbar = ({ activeSection }) => {
     { id: 'experience', label: 'Experience' },
     { id: 'projects', label: 'Projects' },
     { id: 'contributions', label: 'Contributions' },
-    { id: 'skills', label: 'Skills' },
+    { id: 'skills', label: 'Tech Stack' },
     { id: 'certifications', label: 'Certifications' },
     { id: 'contact', label: 'Contact' },
   ]
 
   return (
-    <header className={`fixed top-0 left-0 right-0 z-50 transition-colors duration-200 ${isScrolled ? 'bg-[#f7f6e3]/90 backdrop-blur-md border-b border-ink/10 shadow-sm' : 'bg-transparent'}`}>
-      <div className="max-w-page mx-auto px-6 md:px-12 h-20 flex items-center justify-between">
-        {/* Left: Wordmark in SuisseIntl ~21px */}
+    <header className={`fixed top-0 left-0 right-0 z-50 transition-colors duration-200 ${isScrolled ? 'bg-putty/95 backdrop-blur-sm border-b border-vellum' : 'bg-transparent'}`}>
+      <div className="max-w-page mx-auto px-6 md:px-12 h-16 sm:h-20 flex items-center justify-between">
+        {/* Left: 32px Circled 'S' Monogram */}
         <button
           onClick={() => scrollToSection('home')}
-          className="font-suisse text-xl sm:text-[21px] font-normal tracking-tight text-ink hover:opacity-80 transition-opacity focus:outline-none"
+          className="flex items-center gap-3 group focus:outline-none"
+          aria-label="Home"
         >
-          Portfolio
+          <div className="w-8 h-8 rounded-full border-[1.5px] border-ink flex items-center justify-center font-davinci text-sm font-medium transition-transform group-hover:scale-105">
+            S
+          </div>
+          <span className="font-helvetica text-xs uppercase tracking-wider text-ink font-medium hidden sm:inline-block">
+            Sanjeev Kadakol
+          </span>
         </button>
 
-        {/* Center/Right: Links with 4px circle outline dot + Filled Yellow CTA */}
-        <div className="hidden md:flex items-center gap-8">
-          <nav className="flex items-center gap-6">
+        {/* Center/Right: Clean Helvetica Now Links + Black Pill Button */}
+        <div className="hidden md:flex items-center gap-6">
+          <nav className="flex items-center gap-5">
             {navItems.map((item) => (
               <button
                 key={item.id}
                 onClick={() => scrollToSection(item.id)}
-                className="flex items-center gap-2 font-suisse-book text-[13px] text-ink/80 hover:text-ink transition-colors focus:outline-none py-2"
+                className={`font-helvetica text-xs transition-colors hover:underline underline-offset-4 focus:outline-none ${
+                  activeSection === item.id
+                    ? 'text-ink font-medium underline'
+                    : 'text-graphite hover:text-ink'
+                }`}
               >
-                {/* 4px Circle Outline Dot */}
-                <span className={`w-1.5 h-1.5 rounded-full border border-ink ${activeSection === item.id ? 'bg-lemon' : 'bg-transparent'}`} />
-                <span className={activeSection === item.id ? 'font-medium text-ink' : ''}>
-                  {item.label}
-                </span>
+                {item.label}
               </button>
             ))}
           </nav>
 
-          {/* Filled Electric Lemon Pill Button */}
           <button
             onClick={() => scrollToSection('contact')}
-            className="btn-lemon-pill"
+            className="btn-pill-black ml-2"
           >
-            Get in touch
+            Get In Touch
           </button>
         </div>
 
-        {/* Mobile Menu Toggle */}
+        {/* Mobile Menu Button */}
         <button
-          className="md:hidden p-2 text-ink focus:outline-none"
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-          aria-label="Toggle Menu"
+          className="md:hidden p-2 text-ink hover:opacity-75 focus:outline-none"
+          aria-label="Toggle menu"
         >
-          <div className="w-6 flex flex-col items-end gap-1.5">
-            <span className={`h-0.5 bg-ink transition-all duration-200 ${isMobileMenuOpen ? 'w-6 rotate-45 translate-y-2' : 'w-6'}`} />
-            <span className={`h-0.5 bg-ink transition-all duration-200 ${isMobileMenuOpen ? 'opacity-0' : 'w-4'}`} />
-            <span className={`h-0.5 bg-ink transition-all duration-200 ${isMobileMenuOpen ? 'w-6 -rotate-45 -translate-y-2' : 'w-6'}`} />
-          </div>
+          {isMobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
         </button>
       </div>
 
-      {/* Mobile Menu Dropdown */}
+      {/* Mobile Drawer */}
       {isMobileMenuOpen && (
-        <div className="md:hidden bg-cream border-b border-ink/10 px-6 py-6 space-y-4">
-          {navItems.map((item) => (
+        <div className="md:hidden bg-putty border-b border-vellum px-6 py-6 space-y-4">
+          <nav className="flex flex-col space-y-3">
+            {navItems.map((item) => (
+              <button
+                key={item.id}
+                onClick={() => scrollToSection(item.id)}
+                className={`font-helvetica text-left text-sm transition-colors py-1 ${
+                  activeSection === item.id ? 'text-ink font-medium' : 'text-graphite'
+                }`}
+              >
+                {item.label}
+              </button>
+            ))}
+          </nav>
+          <div className="pt-3 border-t border-vellum">
             <button
-              key={item.id}
-              onClick={() => scrollToSection(item.id)}
-              className="flex items-center gap-2.5 w-full text-left font-suisse-book text-sm text-ink py-1.5"
+              onClick={() => scrollToSection('contact')}
+              className="btn-pill-black w-full"
             >
-              <span className={`w-1.5 h-1.5 rounded-full border border-ink ${activeSection === item.id ? 'bg-lemon' : 'bg-transparent'}`} />
-              <span>{item.label}</span>
+              Get In Touch
             </button>
-          ))}
-          <button
-            onClick={() => scrollToSection('contact')}
-            className="btn-lemon-pill w-full mt-3"
-          >
-            Get in touch
-          </button>
+          </div>
         </div>
       )}
     </header>

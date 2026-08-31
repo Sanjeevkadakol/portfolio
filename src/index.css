@@ -4,27 +4,29 @@
 
 :root {
   /* Colors */
-  --color-parchment-cream: #f7f6e3;
-  --color-ink-black: #262d29;
-  --color-electric-lemon: #ffff48;
+  --color-putty: #c4c3b6;
+  --color-ink: #000000;
+  --color-bone: #e7e5e4;
+  --color-chalk: #ebebeb;
+  --color-vellum: #dfdcd5;
+  --color-graphite: #595855;
+  --color-ash: #808080;
+  --color-paper: #ffffff;
 
   /* Typography */
-  --font-prody: 'Playfair Display', 'Cormorant Garamond', Georgia, serif;
-  --font-suisseintl: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  --font-suisseintl-book: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-davinci: 'Playfair Display', 'Cormorant Garamond', Georgia, serif;
+  --font-helvetica-now: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 
   /* Surfaces */
-  --surface-canvas: #f7f6e3;
-  --surface-card-surface: #f7f6e3;
-  --surface-ink-surface: #262d29;
-  --surface-accent-surface: #ffff48;
+  --surface-putty-canvas: #c4c3b6;
+  --surface-bone-card: #e7e5e4;
+  --surface-chalk-footer: #ebebeb;
+  --surface-ink-room: #000000;
 
   /* Radii */
-  --radius-cards: 37px;
-  --radius-buttons: 18px;
-  --radius-pills: 9999px;
-  --radius-nav: 8px;
-  --radius-inputs: 8px;
+  --radius-cards: 9px;
+  --radius-links: 2px;
+  --radius-buttons: 28.8px;
 }
 
 * {
@@ -35,101 +37,99 @@
 
 html {
   scroll-behavior: smooth;
-  background-color: var(--color-parchment-cream);
-  color: var(--color-ink-black);
+  background-color: var(--color-putty);
+  color: var(--color-ink);
 }
 
 body {
-  font-family: var(--font-suisseintl);
-  background-color: var(--color-parchment-cream);
-  color: var(--color-ink-black);
+  font-family: var(--font-helvetica-now);
+  background-color: var(--color-putty);
+  color: var(--color-ink);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  line-height: 1.15;
+  line-height: 1.25;
   overflow-x: hidden;
 }
 
 ::selection {
-  background-color: #ffff48;
-  color: #262d29;
+  background-color: #000000;
+  color: #ffffff;
 }
 
 /* Typography Utility Classes */
-.font-prody {
-  font-family: var(--font-prody);
+.font-davinci {
+  font-family: var(--font-davinci);
 }
 
-.font-suisse {
-  font-family: var(--font-suisseintl);
+.font-helvetica {
+  font-family: var(--font-helvetica-now);
 }
 
-.font-suisse-book {
-  font-family: var(--font-suisseintl-book);
-}
-
-/* Button Presets */
-.btn-lemon-pill {
+/* Structured Button Presets */
+.btn-pill-black {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 8px;
-  background-color: #ffff48;
-  color: #262d29;
-  font-family: var(--font-suisseintl);
-  font-size: 14px;
-  font-weight: 500;
-  padding: 8px 18px;
-  border-radius: 9999px;
+  background-color: #000000;
+  color: #ffffff;
+  font-family: var(--font-helvetica-now);
+  font-size: 12px;
+  font-weight: 400;
+  padding: 9px 17px;
+  border-radius: 28.8px;
   text-decoration: none;
   border: none;
   cursor: pointer;
-  transition: transform 0.15s ease, opacity 0.15s ease;
+  transition: opacity 0.15s ease, transform 0.15s ease;
 }
 
-.btn-lemon-pill:hover {
+.btn-pill-black:hover {
+  opacity: 0.85;
   transform: translateY(-1px);
-  opacity: 0.95;
 }
 
-.btn-ghost-pill {
+.btn-pill-white {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 8px;
-  background-color: transparent;
-  color: #262d29;
-  font-family: var(--font-suisseintl-book);
-  font-size: 13px;
-  font-weight: 400;
-  padding: 8px 18px;
-  border-radius: 9999px;
-  border: 1px solid rgba(38, 45, 41, 0.35);
+  background-color: #ffffff;
+  color: #000000;
+  font-family: var(--font-helvetica-now);
+  font-size: 12px;
+  font-weight: 500;
+  padding: 9px 17px;
+  border-radius: 28.8px;
   text-decoration: none;
+  border: none;
   cursor: pointer;
-  transition: border-color 0.15s ease, background-color 0.15s ease;
+  transition: opacity 0.15s ease, transform 0.15s ease;
 }
 
-.btn-ghost-pill:hover {
-  border-color: #262d29;
-  background-color: rgba(38, 45, 41, 0.04);
+.btn-pill-white:hover {
+  opacity: 0.9;
+  transform: translateY(-1px);
 }
 
-/* Square 40x40 Carousel Arrow Button */
-.btn-carousel-arrow {
-  width: 40px;
-  height: 40px;
-  border-radius: 8px;
-  border: 1px solid #262d29;
-  background-color: transparent;
-  color: #262d29;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  transition: background-color 0.15s ease, color 0.15s ease;
+.btn-ghost-link {
+  color: #000000;
+  font-family: var(--font-helvetica-now);
+  font-size: 12px;
+  font-weight: 400;
+  text-decoration: none;
+  transition: opacity 0.15s ease;
 }
 
-.btn-carousel-arrow:hover {
-  background-color: #262d29;
-  color: #f7f6e3;
+.btn-ghost-link:hover {
+  text-decoration: underline;
+}
+
+#root {
+  width: 100%;
+  min-height: 100vh;
+}
+
+main {
+  width: 100%;
 }

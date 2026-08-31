@@ -37,7 +37,7 @@ function App() {
   }, [])
 
   return (
-    <div className="min-h-screen bg-cream text-ink antialiased flex flex-col font-suisse selection:bg-lemon selection:text-ink">
+    <div className="min-h-screen bg-putty text-ink antialiased flex flex-col font-helvetica selection:bg-ink selection:text-paper">
       <Background />
       <Navbar activeSection={activeSection} />
       <main className="flex-1 w-full">

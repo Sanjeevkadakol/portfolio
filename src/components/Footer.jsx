@@ -4,24 +4,26 @@ const Footer = () => {
   }
 
   return (
-    <footer className="w-full bg-transparent text-ink py-12 px-6 md:px-12 border-t border-ink/10 font-suisse-book text-xs selection:bg-lemon selection:text-ink">
+    <footer className="w-full bg-chalk text-ink py-10 px-6 md:px-12 border-t border-vellum font-helvetica text-xs selection:bg-ink selection:text-paper">
       <div className="max-w-page mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
-        {/* Left: Minimal Wordmark */}
-        <div className="flex items-center gap-2">
-          <span className="w-2 h-2 rounded-full bg-lemon border border-ink" />
-          <span className="font-suisse text-sm font-medium text-ink">
-            sanjeev kadakol
+        {/* Left: Circled 'S' Monogram & Name */}
+        <div className="flex items-center gap-3">
+          <div className="w-6 h-6 rounded-full border-[1.5px] border-ink flex items-center justify-center font-davinci text-xs font-medium">
+            S
+          </div>
+          <span className="font-helvetica text-xs font-medium text-ink">
+            Sanjeev Kadakol
           </span>
-          <span className="text-ink/40 ml-2">© 2026 • AI & ML Engineer</span>
+          <span className="text-graphite ml-1 text-[11px]">© 2026 • AI & ML Engineer</span>
         </div>
 
-        {/* Center: Clean Text Links */}
-        <div className="flex flex-wrap items-center justify-center gap-6 text-ink/75">
+        {/* Center: Clean Helvetica Now Links */}
+        <div className="flex flex-wrap items-center justify-center gap-5 text-graphite">
           <a
             href="https://github.com/Sanjeevkadakol"
             target="_blank"
             rel="noopener noreferrer"
-            className="hover:text-ink transition-colors"
+            className="hover:text-ink hover:underline transition-colors"
           >
             GitHub
           </a>
@@ -30,28 +32,37 @@ const Footer = () => {
             href="https://www.linkedin.com/in/sanjeev-kadakol"
             target="_blank"
             rel="noopener noreferrer"
-            className="hover:text-ink transition-colors"
+            className="hover:text-ink hover:underline transition-colors"
           >
             LinkedIn
           </a>
           <span>•</span>
           <a
+            href="https://leetcode.com/u/sanjeevpkadakol1/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:text-ink hover:underline transition-colors"
+          >
+            LeetCode
+          </a>
+          <span>•</span>
+          <a
             href="mailto:sanjeevpkadakol1@gmail.com"
-            className="hover:text-ink transition-colors"
+            className="hover:text-ink hover:underline transition-colors"
           >
             Email
           </a>
           <span>•</span>
           <button
             onClick={scrollToTop}
-            className="hover:text-ink transition-colors focus:outline-none"
+            className="hover:text-ink hover:underline transition-colors focus:outline-none"
           >
             Back To Top ↑
           </button>
         </div>
 
         {/* Right Note */}
-        <div className="text-ink/50 text-[11px]">
+        <div className="text-graphite text-[11px]">
           BMSIT&M • CGPA 8.10
         </div>
       </div>

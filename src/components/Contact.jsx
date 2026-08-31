@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { contactAPI } from '../services/api'
-import { ArrowUpRight, CheckCircle2, AlertCircle, Mail } from 'lucide-react'
+import { ArrowUpRight, CheckCircle2, AlertCircle, Github, Linkedin, Mail } from 'lucide-react'
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -24,11 +24,11 @@ const Contact = () => {
     setStatus('')
 
     try {
-      // Send directly to sanjeevpkadakol1@gmail.com via FormSubmit AJAX service
+      // Send directly to sanjeevpkadakol1@gmail.com via FormSubmit AJAX
       const payload = {
         name: formData.name,
         email: formData.email,
-        _subject: formData.subject ? `[Portfolio] ${formData.subject}` : `[Portfolio] New Message from ${formData.name}`,
+        _subject: formData.subject ? `[Structured Portfolio] ${formData.subject}` : `[Structured Portfolio] Message from ${formData.name}`,
         message: formData.message,
         _replyto: formData.email,
         _template: 'table',
@@ -44,11 +44,10 @@ const Contact = () => {
         body: JSON.stringify(payload)
       })
 
-      // Also record in backend API if available
       try {
         await contactAPI.submit(formData)
       } catch (err) {
-        // Backend logging is secondary to email delivery
+        // secondary logging
       }
 
       setStatus('success')
@@ -63,10 +62,6 @@ const Contact = () => {
     }
   }
 
-  const mailtoLink = `mailto:sanjeevpkadakol1@gmail.com?subject=${encodeURIComponent(formData.subject || 'Portfolio Inquiry')}&body=${encodeURIComponent(
-    `Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`
-  )}`
-
   const channels = [
     { label: "Email", value: "sanjeevpkadakol1@gmail.com", href: "mailto:sanjeevpkadakol1@gmail.com" },
     { label: "LinkedIn", value: "linkedin.com/in/sanjeev-kadakol", href: "https://www.linkedin.com/in/sanjeev-kadakol" },
@@ -74,45 +69,41 @@ const Contact = () => {
   ]
 
   return (
-    <section id="contact" className="w-full py-24 md:py-32 px-6 md:px-12 bg-transparent text-ink border-t border-ink/10 selection:bg-lemon selection:text-ink">
+    <section id="contact" className="w-full py-20 md:py-28 px-6 md:px-12 bg-ink text-paper selection:bg-paper selection:text-ink">
       <div className="max-w-page mx-auto">
-        {/* Section Header in Prody */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
-          <div className="max-w-2xl space-y-4">
-            <div className="inline-flex items-center gap-2">
-              <span className="w-2 h-2 rounded-full bg-lemon border border-ink" />
-              <span className="font-suisse-book text-xs uppercase tracking-widest text-ink/60">
-                06 • Direct Inquiries
-              </span>
-            </div>
-            <h2 className="font-prody text-4xl sm:text-5xl lg:text-[42px] font-normal leading-[1.15] text-ink">
-              Let’s Connect & Collaborate
+        {/* Section Header */}
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-14 gap-6">
+          <div className="max-w-2xl space-y-3">
+            <span className="font-helvetica text-[11px] uppercase tracking-widest text-ash block">
+              07 • Direct Inquiries
+            </span>
+            <h2 className="font-davinci text-3xl sm:text-4xl md:text-[43px] font-normal leading-[1.1] tracking-[-0.215px] text-paper">
+              Start a Conversation
             </h2>
-            <p className="font-suisse text-base text-ink/75 leading-relaxed">
-              Messages submitted here are delivered directly to <strong className="text-ink font-medium">sanjeevpkadakol1@gmail.com</strong>.
+            <p className="font-helvetica text-sm text-ash leading-relaxed">
+              Dispatches directly to <strong className="text-paper font-medium">sanjeevpkadakol1@gmail.com</strong> for RAG pipelines, machine learning systems, or engineering roles.
             </p>
           </div>
 
           <div className="text-right hidden md:block">
-            <span className="font-suisse-book text-xs text-ink/50 uppercase tracking-widest">
+            <span className="font-helvetica text-xs text-ash uppercase tracking-widest">
               Bengaluru, IN
             </span>
           </div>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-          {/* Left Column: Channels Information Card */}
-          <div className="lg:col-span-5 bg-cream rounded-cards p-8 sm:p-[37px] border border-ink/15 space-y-8">
+          {/* Left Column: Channels Directory in 9px Dark Card */}
+          <div className="lg:col-span-5 bg-[#111111] rounded-cards p-7 sm:p-8 border border-[#262626] space-y-6">
             <div>
-              <h3 className="font-prody text-2xl sm:text-3xl font-normal text-ink mb-3 leading-tight">
-                Start a Conversation
+              <h3 className="font-davinci text-2xl text-paper font-normal mb-2 leading-tight">
+                Direct Channels
               </h3>
-              <p className="font-suisse text-sm text-ink/70 leading-relaxed">
-                Whether you’d like to discuss RAG pipelines, machine learning systems, or engineering opportunities, feel free to reach out directly.
+              <p className="font-helvetica text-xs text-ash leading-relaxed">
+                Feel free to reach out directly via email or connect through professional networks.
               </p>
             </div>
 
-            {/* Channels Directory */}
             <div className="space-y-3">
               {channels.map((channel, idx) => {
                 const isExternal = channel.href.startsWith('http')
@@ -121,29 +112,29 @@ const Contact = () => {
                     key={idx}
                     href={channel.href}
                     {...(isExternal ? { target: "_blank", rel: "noopener noreferrer" } : {})}
-                    className="flex items-center justify-between p-4 bg-cream rounded-[18px] border border-ink/10 hover:border-ink/40 transition-all group"
+                    className="flex items-center justify-between p-4 bg-[#161616] rounded-cards border border-[#262626] hover:border-[#444444] transition-all group"
                   >
                     <div>
-                      <span className="font-suisse-book text-[11px] uppercase tracking-wider text-ink/50 block">
+                      <span className="font-helvetica text-[10px] uppercase tracking-wider text-ash block">
                         {channel.label}
                       </span>
-                      <span className="font-suisse text-sm font-medium text-ink">
+                      <span className="font-helvetica text-xs sm:text-sm font-medium text-paper">
                         {channel.value}
                       </span>
                     </div>
-                    <ArrowUpRight className="w-4 h-4 text-ink/40 group-hover:text-ink group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
+                    <ArrowUpRight className="w-3.5 h-3.5 text-ash group-hover:text-paper group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
                   </a>
                 )
               })}
             </div>
           </div>
 
-          {/* Right Column: 37px Rounded Form Card */}
-          <div className="lg:col-span-7 bg-cream rounded-cards p-8 sm:p-[37px] border border-ink/15">
-            <form onSubmit={handleSubmit} className="space-y-6">
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+          {/* Right Column: 9px Dark Form Card */}
+          <div className="lg:col-span-7 bg-[#111111] rounded-cards p-7 sm:p-8 border border-[#262626]">
+            <form onSubmit={handleSubmit} className="space-y-5">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                 <div>
-                  <label className="font-suisse text-xs uppercase tracking-wider text-ink/70 block mb-2 font-medium">
+                  <label className="font-helvetica text-[11px] uppercase tracking-wider text-ash block mb-2">
                     Your Name *
                   </label>
                   <input
@@ -153,11 +144,11 @@ const Contact = () => {
                     value={formData.name}
                     onChange={handleChange}
                     placeholder="Jane Doe"
-                    className="w-full bg-cream border border-ink/20 rounded-nav px-4 py-3 text-ink text-sm font-suisse-book focus:outline-none focus:border-ink transition-colors"
+                    className="w-full bg-[#161616] border border-[#262626] rounded-cards px-4 py-2.5 text-paper text-xs font-helvetica focus:outline-none focus:border-paper transition-colors"
                   />
                 </div>
                 <div>
-                  <label className="font-suisse text-xs uppercase tracking-wider text-ink/70 block mb-2 font-medium">
+                  <label className="font-helvetica text-[11px] uppercase tracking-wider text-ash block mb-2">
                     Email Address *
                   </label>
                   <input
@@ -167,13 +158,13 @@ const Contact = () => {
                     value={formData.email}
                     onChange={handleChange}
                     placeholder="jane@organization.com"
-                    className="w-full bg-cream border border-ink/20 rounded-nav px-4 py-3 text-ink text-sm font-suisse-book focus:outline-none focus:border-ink transition-colors"
+                    className="w-full bg-[#161616] border border-[#262626] rounded-cards px-4 py-2.5 text-paper text-xs font-helvetica focus:outline-none focus:border-paper transition-colors"
                   />
                 </div>
               </div>
 
               <div>
-                <label className="font-suisse text-xs uppercase tracking-wider text-ink/70 block mb-2 font-medium">
+                <label className="font-helvetica text-[11px] uppercase tracking-wider text-ash block mb-2">
                   Subject / Topic
                 </label>
                 <input
@@ -182,22 +173,22 @@ const Contact = () => {
                   value={formData.subject}
                   onChange={handleChange}
                   placeholder="Inquiry regarding AI/ML Engineering"
-                  className="w-full bg-cream border border-ink/20 rounded-nav px-4 py-3 text-ink text-sm font-suisse-book focus:outline-none focus:border-ink transition-colors"
+                  className="w-full bg-[#161616] border border-[#262626] rounded-cards px-4 py-2.5 text-paper text-xs font-helvetica focus:outline-none focus:border-paper transition-colors"
                 />
               </div>
 
               <div>
-                <label className="font-suisse text-xs uppercase tracking-wider text-ink/70 block mb-2 font-medium">
+                <label className="font-helvetica text-[11px] uppercase tracking-wider text-ash block mb-2">
                   Message Body *
                 </label>
                 <textarea
                   name="message"
                   required
-                  rows={5}
+                  rows={4}
                   value={formData.message}
                   onChange={handleChange}
                   placeholder="Tell me about your project, goals, or role..."
-                  className="w-full bg-cream border border-ink/20 rounded-nav px-4 py-3 text-ink text-sm font-suisse-book focus:outline-none focus:border-ink transition-colors resize-none"
+                  className="w-full bg-[#161616] border border-[#262626] rounded-cards px-4 py-2.5 text-paper text-xs font-helvetica focus:outline-none focus:border-paper transition-colors resize-none"
                 />
               </div>
 
@@ -205,27 +196,27 @@ const Contact = () => {
                 <button
                   type="submit"
                   disabled={loading}
-                  className="btn-lemon-pill"
+                  className="btn-pill-white"
                 >
                   {loading ? 'Transmitting...' : 'Send Message'}
                 </button>
 
-                <span className="font-suisse-book text-xs text-ink/50 hidden sm:inline-block">
+                <span className="font-helvetica text-[11px] text-ash">
                   Direct Response Guarantee
                 </span>
               </div>
 
               {status === 'success' && (
-                <div className="p-4 rounded-nav border border-ink bg-cream text-ink text-xs font-suisse flex items-center gap-2.5">
-                  <CheckCircle2 className="w-4 h-4 text-ink shrink-0" />
-                  <span>Your message has been dispatched directly to <strong>sanjeevpkadakol1@gmail.com</strong>. Thank you!</span>
+                <div className="p-3.5 rounded-cards border border-paper/40 bg-[#161616] text-paper text-xs font-helvetica flex items-center gap-2">
+                  <CheckCircle2 className="w-4 h-4 text-paper shrink-0" />
+                  <span>Your message has been dispatched directly to <strong>sanjeevpkadakol1@gmail.com</strong>.</span>
                 </div>
               )}
 
               {status === 'error' && (
-                <div className="p-4 rounded-nav border border-ink/30 bg-cream text-ink text-xs font-suisse flex items-center gap-2.5">
-                  <AlertCircle className="w-4 h-4 text-ink shrink-0" />
-                  <span>Submission encountered an issue. Please click "Or open in default mail app" or write directly to sanjeevpkadakol1@gmail.com</span>
+                <div className="p-3.5 rounded-cards border border-red-500/40 bg-[#161616] text-paper text-xs font-helvetica flex items-center gap-2">
+                  <AlertCircle className="w-4 h-4 text-red-400 shrink-0" />
+                  <span>Submission issue. Please email directly to sanjeevpkadakol1@gmail.com</span>
                 </div>
               )}
             </form>

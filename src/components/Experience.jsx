@@ -1,140 +1,132 @@
 import { motion } from 'framer-motion'
-import { ArrowUpRight } from 'lucide-react'
+import { Calendar, MapPin, ArrowUpRight } from 'lucide-react'
 
 const experiences = [
-  {
-    company: "Bluestock Fintech",
-    role: "Data Analyst Intern",
-    period: "Apr 2026 – May 2026",
-    location: "Bengaluru, IN • Remote",
-    tag: "Fintech & Data Analytics",
-    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=600&auto=format&fit=crop",
-    bullets: [
-      "Analyzed financial datasets using Python, SQL, Pandas, and Excel to generate business insights and automate reporting workflows.",
-      "Created interactive reports and visualizations to identify trends, improve decision-making, and optimize business performance."
-    ],
-    skills: ["Python", "SQL", "Pandas", "Excel", "Data Visualization"]
-  },
   {
     company: "HEProAI",
     role: "AI & Machine Learning Intern",
     period: "Feb 2026 – Mar 2026",
-    location: "Bengaluru, IN • Remote",
-    tag: "AI Modeling & Scoring",
-    image: "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?q=80&w=600&auto=format&fit=crop",
+    location: "Bengaluru, Karnataka, India",
+    tag: "AI Modeling & Analytics",
+    image: "https://images.unsplash.com/photo-1677442136019-21780efad99a?q=80&w=600&auto=format&fit=crop",
     bullets: [
-      "Developed AI-driven student analytics and recommendation models using Python, Pandas, NumPy, and Scikit-learn to support academic performance and personalized mentoring.",
-      "Built predictive scoring frameworks for academic performance, wellness, productivity, and career readiness using data-driven machine learning techniques."
+      "Engineered AI-driven student analytics and recommendation algorithms using Python, Pandas, NumPy, and Scikit-learn.",
+      "Formulated predictive scoring frameworks for academic performance, wellness index, productivity, and career readiness."
     ],
-    skills: ["Python", "Scikit-learn", "NumPy", "Pandas", "Predictive Analytics"]
+    skills: ["Python", "Scikit-learn", "Pandas", "Predictive Analytics"]
+  },
+  {
+    company: "Bluestock Fintech",
+    role: "Data Analyst Intern",
+    period: "Apr 2026 – May 2026",
+    location: "Bengaluru, Karnataka, India • Remote",
+    tag: "Financial Analytics & BI",
+    image: "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?q=80&w=600&auto=format&fit=crop",
+    bullets: [
+      "Evaluated financial market datasets using Python, SQL, and Pandas to automate analytical workflows and generate business intelligence.",
+      "Constructed interactive data reports and visual dashboards to detect trends, enhance risk management, and optimize strategies."
+    ],
+    skills: ["Python", "SQL", "Pandas", "Financial Analytics"]
   },
   {
     company: "Webstack Academy (WSA)",
     role: "Full stack Web Dev Intern",
     period: "Mar 2026 · 1 mo",
     location: "Bengaluru, Karnataka, India • Remote",
-    tag: "Full-Stack Web Engineering",
+    tag: "Full Stack Development",
     image: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=600&auto=format&fit=crop",
     bullets: [
-      "Engineered responsive full-stack web applications and interactive client interfaces using modern frontend and backend architectures.",
-      "Implemented RESTful API endpoints, component-driven layouts, and modular web features with robust performance and clean code standards."
+      "Engineered responsive full stack applications and interactive client interfaces using modern frontend and backend architectures.",
+      "Implemented RESTful API endpoints, component-driven layouts, and modular web features with robust performance standards."
     ],
-    skills: ["Full-Stack Development", "Frontend Dev", "Backend APIs", "Web Technologies"]
+    skills: ["Full Stack Development", "React", "APIs", "Web Technologies"]
   },
   {
     company: "EazyByts.com",
     role: "Web Developer Intern",
     period: "Jan 2026 · 1 mo",
     location: "Bengaluru, Karnataka, India • Remote",
-    tag: "UI Architecture & Development",
+    tag: "UI Architecture & Dev",
     image: "https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?q=80&w=600&auto=format&fit=crop",
     bullets: [
-      "Designed and implemented clean, responsive user interfaces focusing on user experience, cross-device responsiveness, and accessibility.",
+      "Designed and implemented clean, responsive user interfaces focusing on user experience, cross-device compatibility, and accessibility.",
       "Collaborated on frontend development workflows, component styling, and performance optimization for interactive web modules."
     ],
-    skills: ["User Interface Design", "Web Development", "Responsive UI", "JavaScript"]
+    skills: ["UI Architecture", "Web Development", "JavaScript", "HTML/CSS"]
   }
 ]
 
 const Experience = () => {
   return (
-    <section id="experience" className="w-full py-24 md:py-32 px-6 md:px-12 bg-transparent text-ink border-t border-ink/10 selection:bg-lemon selection:text-ink">
+    <section id="experience" className="w-full py-20 md:py-28 px-6 md:px-12 bg-ink text-paper selection:bg-paper selection:text-ink">
       <div className="max-w-page mx-auto">
-        {/* Section Header in Prody */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
-          <div className="max-w-2xl space-y-4">
-            <div className="inline-flex items-center gap-2">
-              <span className="w-2 h-2 rounded-full bg-lemon border border-ink" />
-              <span className="font-suisse-book text-xs uppercase tracking-widest text-ink/60">
-                02 • Experience & Trajectory
-              </span>
-            </div>
-            <h2 className="font-prody text-4xl sm:text-5xl lg:text-[42px] font-normal leading-[1.15] text-ink">
+        {/* Section Header in Davinci Display 43px/52px */}
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-14 gap-6">
+          <div className="max-w-2xl space-y-3">
+            <span className="font-helvetica text-[11px] uppercase tracking-widest text-ash block">
+              02 • Trajectory & Industry Roles
+            </span>
+            <h2 className="font-davinci text-3xl sm:text-4xl md:text-[43px] font-normal leading-[1.1] tracking-[-0.215px] text-paper">
               Work Experience & Internships
             </h2>
-            <p className="font-suisse text-base text-ink/75 leading-relaxed">
-              Real-world engineering contributions across fintech analytics, predictive AI systems, and full-stack software development.
+            <p className="font-helvetica text-sm text-ash leading-relaxed">
+              4 specialized internships across machine learning engineering, data analytics, and full-stack software development.
             </p>
           </div>
 
           <div className="text-right hidden md:block">
-            <span className="font-suisse-book text-xs text-ink/50 uppercase tracking-widest">
-              4 Roles Completed
+            <span className="font-helvetica text-xs text-ash uppercase tracking-widest">
+              04 Positions
             </span>
           </div>
         </div>
 
-        {/* 4 Cards Grid with 37px Radius */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch">
-          {experiences.map((exp, index) => (
+        {/* 2x2 Grid of 9px Dark Gallery Cards */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {experiences.map((exp, idx) => (
             <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 20 }}
+              key={idx}
+              initial={{ opacity: 0, y: 15 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
-              className="bg-cream rounded-cards p-8 sm:p-[37px] border border-ink/15 flex flex-col justify-between hover:border-ink/40 transition-all duration-200 group"
+              transition={{ duration: 0.5, delay: idx * 0.08 }}
+              className="bg-[#111111] rounded-cards p-7 border border-[#262626] flex flex-col justify-between hover:border-[#404040] transition-colors"
             >
               <div>
-                {/* Card Top Header */}
-                <div className="flex items-center justify-between border-b border-ink/10 pb-4 mb-6">
-                  <div>
-                    <h4 className="font-suisse text-base font-semibold text-ink">
-                      {exp.company}
-                    </h4>
-                    <span className="font-suisse-book text-xs text-ink/50">
-                      {exp.location}
-                    </span>
-                  </div>
-                  <span className="font-suisse-book text-xs text-ink/80 px-3 py-1 bg-cream rounded-full border border-ink/20">
-                    {exp.period}
+                {/* Header Meta */}
+                <div className="flex items-center justify-between pb-4 border-b border-[#222222] mb-5">
+                  <span className="font-helvetica text-[10px] uppercase tracking-wider text-ash font-mono">
+                    INDEX // 0{idx + 1}
                   </span>
-                </div>
-
-                {/* 37px Clipped Image Banner */}
-                <div className="w-full h-40 rounded-[24px] overflow-hidden mb-6 border border-ink/10 bg-ink/5">
-                  <img
-                    src={exp.image}
-                    alt={exp.company}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                  />
-                </div>
-
-                {/* Role Title in Prody/Suisse */}
-                <div className="mb-4">
-                  <span className="font-suisse-book text-xs uppercase tracking-wider text-ink/60 block mb-1">
+                  <span className="font-helvetica text-[11px] px-2.5 py-0.5 rounded-full border border-[#333333] bg-[#1a1a1a] text-ash">
                     {exp.tag}
                   </span>
-                  <h3 className="font-prody text-2xl sm:text-3xl text-ink font-normal leading-tight">
-                    {exp.role}
-                  </h3>
                 </div>
 
-                {/* Bullet Points */}
-                <ul className="space-y-2.5 font-suisse text-xs sm:text-sm text-ink/75 leading-relaxed mb-6">
+                <h3 className="font-davinci text-xl sm:text-2xl text-paper font-normal mb-1">
+                  {exp.role}
+                </h3>
+                <h4 className="font-helvetica text-sm text-paper/85 font-medium mb-3">
+                  {exp.company}
+                </h4>
+
+                <div className="flex flex-wrap items-center gap-4 text-xs font-helvetica text-ash mb-5">
+                  <div className="flex items-center gap-1.5">
+                    <Calendar className="w-3.5 h-3.5" />
+                    <span>{exp.period}</span>
+                  </div>
+                  <span>•</span>
+                  <div className="flex items-center gap-1.5">
+                    <MapPin className="w-3.5 h-3.5" />
+                    <span>{exp.location}</span>
+                  </div>
+                </div>
+
+                {/* Bullets */}
+                <ul className="space-y-2 mb-6">
                   {exp.bullets.map((bullet, bIdx) => (
-                    <li key={bIdx} className="flex items-start gap-2.5">
-                      <span className="text-ink/30 font-mono mt-0.5">•</span>
+                    <li key={bIdx} className="font-helvetica text-xs text-ash leading-relaxed flex items-start gap-2">
+                      <span className="text-paper/40 mt-0.5">—</span>
                       <span>{bullet}</span>
                     </li>
                   ))}
@@ -142,11 +134,11 @@ const Experience = () => {
               </div>
 
               {/* Skills Tags */}
-              <div className="pt-4 border-t border-ink/10 flex flex-wrap gap-2">
+              <div className="pt-4 border-t border-[#222222] flex flex-wrap gap-1.5">
                 {exp.skills.map((skill, sIdx) => (
                   <span
                     key={sIdx}
-                    className="font-suisse text-[11px] px-3 py-1 rounded-pills bg-cream border border-ink/15 text-ink/85"
+                    className="font-helvetica text-[11px] px-2.5 py-0.5 rounded-cards border border-[#2a2a2a] bg-[#161616] text-ash"
                   >
                     {skill}
                   </span>

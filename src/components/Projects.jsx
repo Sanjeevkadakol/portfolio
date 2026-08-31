@@ -1,130 +1,151 @@
 import { motion } from 'framer-motion'
-import { ArrowUpRight } from 'lucide-react'
+import { ArrowUpRight, Github } from 'lucide-react'
 
 const projects = [
   {
+    id: 1,
     title: "AI-Driven Zero-Day Attack Detection & Node Isolation",
     category: "Cybersecurity & Hybrid ML",
-    image: "https://images.unsplash.com/photo-1563986768609-322da13575f3?q=80&w=800&auto=format&fit=crop",
-    tech: ["FastAPI", "Isolation Forest", "XGBoost", "Python", "Pandas", "Network Security"],
-    description: "Hybrid ML intrusion mitigation system combining Isolation Forest anomaly pre-filtering with XGBoost worm classification for real-time embedded node isolation and interactive network simulation.",
-    link: "https://github.com/Sanjeevkadakol/AI-Driven-Zero-Day-Attack-Detection"
+    description: "Hybrid machine learning pipeline combining Isolation Forest for anomaly pre-filtering and XGBoost for precise worm classification. Includes FastAPI real-time inference and automatic node isolation.",
+    tags: ["Isolation Forest", "XGBoost", "FastAPI", "Python", "Incident Mitigation"],
+    github: "https://github.com/Sanjeevkadakol/AI-Driven-Zero-Day-Attack-Detection",
+    demo: "https://github.com/Sanjeevkadakol/AI-Driven-Zero-Day-Attack-Detection",
+    image: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=800&auto=format&fit=crop"
   },
   {
-    title: "DocInsight AI – RAG Chatbot",
-    category: "Vector Retrieval & Search",
-    image: "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?q=80&w=800&auto=format&fit=crop",
-    tech: ["Python", "FastAPI", "React", "LangChain", "FAISS", "Pinecone"],
-    description: "Semantic document search chatbot leveraging Retrieval-Augmented Generation for natural-language document interaction, vector embeddings, and contextual question answering.",
-    link: "https://github.com/Sanjeevkadakol/RAG-Chatbot"
-  },
-  {
-    title: "NeighborNode – Geofenced Community Platform",
-    category: "Full-Stack Security Architecture",
-    image: "https://images.unsplash.com/photo-1513694203232-719a280e022f?q=80&w=800&auto=format&fit=crop",
-    tech: ["Flask", "React", "Next.js", "SQLAlchemy", "SQLite"],
-    description: "Multi-tenant community management platform with GPS-based geofencing, role-based access control, and responsive web components for location-aware secure operations.",
-    link: "https://github.com/Sanjeevkadakol/Neighbour_node"
-  },
-  {
+    id: 2,
     title: "AI-Powered Comprehension Learning System",
-    category: "RAG & LLM Workflows",
-    image: "https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=800&auto=format&fit=crop",
-    tech: ["Python", "FastAPI", "React", "LangChain", "Pinecone", "RAG"],
-    description: "Adaptive educational platform using Retrieval-Augmented Generation (RAG) to generate personalized explanations from voice and text inputs with context-aware semantic retrieval.",
-    link: "https://github.com/Sanjeevkadakol/AI-Powered-Comprehension-Learning-System"
+    category: "Generative AI & Adaptive Learning",
+    description: "Adaptive learning platform leveraging Retrieval-Augmented Generation (RAG) to generate personalized explanations from voice and text student responses with semantic retrieval workflows.",
+    tags: ["LangChain", "FastAPI", "React", "Pinecone", "RAG", "Python"],
+    github: "https://github.com/Sanjeevkadakol/AI-Powered-Comprehension-Learning-System",
+    demo: "https://github.com/Sanjeevkadakol/AI-Powered-Comprehension-Learning-System",
+    image: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=800&auto=format&fit=crop"
+  },
+  {
+    id: 3,
+    title: "DocInsight AI – RAG Chatbot",
+    category: "Retrieval-Augmented Generation",
+    description: "Intelligent PDF and technical documentation chatbot utilizing LangChain, semantic vector search, and FAISS indexing for accurate contextual querying and zero-hallucination answers.",
+    tags: ["LangChain", "OpenAI", "FAISS", "Python", "FastAPI", "React"],
+    github: "https://github.com/Sanjeevkadakol/RAG-Chatbot",
+    demo: "https://github.com/Sanjeevkadakol/RAG-Chatbot",
+    image: "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?q=80&w=800&auto=format&fit=crop"
+  },
+  {
+    id: 4,
+    title: "NeighborNode – Geofenced Community Platform",
+    category: "Full-Stack Web Engineering",
+    description: "Multi-tenant community management platform featuring GPS-based geofencing, role-based access control, incident dispatch, and responsive Next.js frontend with Flask & SQLAlchemy APIs.",
+    tags: ["Flask", "React", "Next.js", "SQLAlchemy", "SQLite", "Geofencing"],
+    github: "https://github.com/Sanjeevkadakol/Neighbour_node",
+    demo: "https://github.com/Sanjeevkadakol/Neighbour_node",
+    image: "https://images.unsplash.com/photo-1577495508048-b635879837f1?q=80&w=800&auto=format&fit=crop"
   }
 ]
 
 const Projects = () => {
   return (
-    <section id="projects" className="w-full py-24 md:py-32 px-6 md:px-12 bg-transparent text-ink border-t border-ink/10 selection:bg-lemon selection:text-ink">
+    <section id="projects" className="w-full py-20 md:py-28 px-6 md:px-12 bg-putty text-ink border-b border-vellum selection:bg-ink selection:text-paper">
       <div className="max-w-page mx-auto">
-        {/* Section Header in Prody */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
-          <div className="max-w-2xl space-y-4">
-            <div className="inline-flex items-center gap-2">
-              <span className="w-2 h-2 rounded-full bg-lemon border border-ink" />
-              <span className="font-suisse-book text-xs uppercase tracking-widest text-ink/60">
-                03 • Featured Work
-              </span>
-            </div>
-            <h2 className="font-prody text-4xl sm:text-5xl lg:text-[42px] font-normal leading-[1.15] text-ink">
-              Selected Projects & Repositories
+        {/* Section Header */}
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-14 gap-6">
+          <div className="max-w-2xl space-y-3">
+            <span className="font-helvetica text-[11px] uppercase tracking-widest text-graphite block">
+              03 • Selected Repositories
+            </span>
+            <h2 className="font-davinci text-3xl sm:text-4xl md:text-[43px] font-normal leading-[1.1] tracking-[-0.215px] text-ink">
+              Featured Engineering Projects
             </h2>
-            <p className="font-suisse text-base text-ink/75 leading-relaxed">
-              Open-source applications, hybrid ML pipelines, security architectures, and full-stack software systems.
+            <p className="font-helvetica text-sm text-graphite leading-relaxed">
+              Open-source applications spanning hybrid machine learning, RAG pipelines, and full-stack software systems.
             </p>
           </div>
 
           <div className="text-right hidden md:block">
-            <span className="font-suisse-book text-xs text-ink/50 uppercase tracking-widest">
-              4 Featured Works
-            </span>
+            <a
+              href="https://github.com/Sanjeevkadakol"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-helvetica text-xs text-ink hover:underline flex items-center gap-1"
+            >
+              <span>View All Repositories</span>
+              <ArrowUpRight className="w-3.5 h-3.5" />
+            </a>
           </div>
         </div>
 
-        {/* 2x2 Grid of Image-First Cards with 37px Radius */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch">
-          {projects.map((project, index) => (
+        {/* 2x2 Grid of 9px Bone Cards */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-7">
+          {projects.map((project, idx) => (
             <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 20 }}
+              key={project.id}
+              initial={{ opacity: 0, y: 15 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
-              className="bg-cream rounded-cards p-7 sm:p-8 border border-ink/15 flex flex-col justify-between hover:border-ink/40 transition-all duration-200 group"
+              transition={{ duration: 0.5, delay: idx * 0.08 }}
+              className="bg-bone rounded-cards overflow-hidden border border-vellum flex flex-col justify-between hover:border-graphite transition-all group"
             >
               <div>
-                {/* Edge-to-Edge Image with 28px Inner Clip */}
-                <div className="relative w-full h-56 rounded-[28px] overflow-hidden mb-6 border border-ink/10 bg-ink/5">
+                {/* 9px Framed Project Visual */}
+                <div className="relative w-full h-56 sm:h-64 overflow-hidden border-b border-vellum bg-ash/20">
                   <img
                     src={project.image}
                     alt={project.title}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   />
-                  {/* Overlay Category Tag Bottom-Left */}
-                  <div className="absolute bottom-3 left-3 bg-cream/90 backdrop-blur-sm px-3.5 py-1 rounded-full border border-ink/15">
-                    <span className="font-suisse text-xs text-ink font-medium">
+                  <div className="absolute top-3 right-3">
+                    <span className="font-helvetica text-[10px] px-2.5 py-1 rounded-full bg-putty/90 backdrop-blur-sm text-ink border border-vellum font-medium">
                       {project.category}
                     </span>
                   </div>
                 </div>
 
-                {/* Project Title in Prody */}
-                <h3 className="font-prody text-2xl sm:text-3xl font-normal text-ink mb-3 leading-snug">
-                  {project.title}
-                </h3>
+                <div className="p-7">
+                  <div className="flex items-center justify-between mb-2">
+                    <span className="font-helvetica text-[10px] uppercase tracking-wider text-graphite font-mono">
+                      PROJECT // 0{idx + 1}
+                    </span>
+                  </div>
 
-                {/* Description */}
-                <p className="font-suisse text-xs sm:text-sm text-ink/75 leading-relaxed mb-6">
-                  {project.description}
-                </p>
+                  <h3 className="font-davinci text-xl sm:text-2xl text-ink font-normal mb-3 leading-snug">
+                    {project.title}
+                  </h3>
+
+                  <p className="font-helvetica text-xs sm:text-sm text-graphite leading-relaxed mb-6">
+                    {project.description}
+                  </p>
+
+                  {/* Tech Tags */}
+                  <div className="flex flex-wrap gap-1.5 mb-6">
+                    {project.tags.map((tag, tIdx) => (
+                      <span
+                        key={tIdx}
+                        className="font-helvetica text-[11px] px-2.5 py-0.5 rounded-cards border border-vellum bg-putty/40 text-graphite"
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                </div>
               </div>
 
-              <div>
-                {/* Tech Badges */}
-                <div className="flex flex-wrap gap-1.5 mb-6 pt-4 border-t border-ink/10">
-                  {project.tech.map((t, tIdx) => (
-                    <span
-                      key={tIdx}
-                      className="font-suisse text-[11px] px-3 py-1 rounded-pills bg-cream border border-ink/15 text-ink/85"
-                    >
-                      {t}
-                    </span>
-                  ))}
-                </div>
-
-                {/* Action CTA Pill */}
+              {/* Action Button Footer */}
+              <div className="p-7 pt-0 flex items-center justify-between border-t border-vellum mt-auto">
                 <a
-                  href={project.link}
+                  href={project.github}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="btn-lemon-pill w-full text-xs sm:text-sm"
+                  className="btn-pill-black"
                 >
-                  <span>View Repository</span>
-                  <ArrowUpRight className="w-4 h-4" />
+                  <Github className="w-3.5 h-3.5" />
+                  <span>GitHub Repository</span>
+                  <ArrowUpRight className="w-3.5 h-3.5" />
                 </a>
+
+                <span className="font-helvetica text-xs text-graphite">
+                  Open Source
+                </span>
               </div>
             </motion.div>
           ))}

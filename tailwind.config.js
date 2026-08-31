@@ -7,39 +7,32 @@ export default {
   theme: {
     extend: {
       colors: {
-        'parchment-cream': '#f7f6e3',
-        'cream': '#f7f6e3',
-        'ink-black': '#262d29',
-        'ink': '#262d29',
-        'electric-lemon': '#ffff48',
-        'lemon': '#ffff48',
+        putty: '#c4c3b6',
+        ink: '#000000',
+        bone: '#e7e5e4',
+        chalk: '#ebebeb',
+        vellum: '#dfdcd5',
+        graphite: '#595855',
+        ash: '#808080',
+        paper: '#ffffff',
       },
       fontFamily: {
-        prody: ['"Playfair Display"', '"Cormorant Garamond"', 'Georgia', 'serif'],
-        suisse: ['"Inter"', '-apple-system', 'BlinkMacSystemFont', '"Segoe UI"', 'Roboto', 'sans-serif'],
-        'suisse-book': ['"Inter"', '-apple-system', 'BlinkMacSystemFont', '"Segoe UI"', 'Roboto', 'sans-serif'],
+        davinci: ['Playfair Display', 'Cormorant Garamond', 'Cinzel', 'Georgia', 'serif'],
+        helvetica: ['Inter', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
       },
       borderRadius: {
-        cards: '37px',
-        buttons: '18px',
-        pills: '9999px',
-        nav: '8px',
-        inputs: '8px',
-        '3xl': '37px',
-      },
-      spacing: {
-        '8': '8px',
-        '12': '12px',
-        '20': '20px',
-        '28': '28px',
-        '37': '37px',
-        '112': '112px',
+        cards: '9px',
+        buttons: '28.8px',
+        links: '2px',
+        pill: '9999px',
       },
       maxWidth: {
-        'page': '1280px',
+        page: '1280px',
       },
-      lineHeight: {
-        tight: '1.15',
+      letterSpacing: {
+        tighter: '-0.05em',
+        davinci: '-0.02em',
+        wordmark: '-0.035em',
       }
     },
   },

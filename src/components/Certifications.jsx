@@ -60,78 +60,82 @@ const certifications = [
 
 const Certifications = () => {
   return (
-    <section id="certifications" className="w-full py-24 md:py-32 px-6 md:px-12 bg-transparent text-ink border-t border-ink/10 selection:bg-lemon selection:text-ink">
+    <section id="certifications" className="w-full py-20 md:py-28 px-6 md:px-12 bg-putty text-ink border-b border-vellum selection:bg-ink selection:text-paper">
       <div className="max-w-page mx-auto">
-        {/* Section Header in Prody */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
-          <div className="max-w-2xl space-y-4">
-            <div className="inline-flex items-center gap-2">
-              <span className="w-2 h-2 rounded-full bg-lemon border border-ink" />
-              <span className="font-suisse-book text-xs uppercase tracking-widest text-ink/60">
-                05 • Accreditations
-              </span>
-            </div>
-            <h2 className="font-prody text-4xl sm:text-5xl lg:text-[42px] font-normal leading-[1.15] text-ink">
+        {/* Section Header */}
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-14 gap-6">
+          <div className="max-w-2xl space-y-3">
+            <span className="font-helvetica text-[11px] uppercase tracking-widest text-graphite block">
+              06 • Accreditations
+            </span>
+            <h2 className="font-davinci text-3xl sm:text-4xl md:text-[43px] font-normal leading-[1.1] tracking-[-0.215px] text-ink">
               Certifications & Qualifications
             </h2>
-            <p className="font-suisse text-base text-ink/75 leading-relaxed">
-              Verified credentials from AWS, IBM Developer Skills Network, and specialized full stack development programs.
+            <p className="font-helvetica text-sm text-graphite leading-relaxed">
+              Verified credentials from AWS, IBM Developer Skills Network, and specialized engineering programs.
             </p>
           </div>
 
           <div className="text-right hidden md:block">
-            <span className="font-suisse-book text-xs text-ink/50 uppercase tracking-widest">
-              6 Verified Credentials
+            <span className="font-helvetica text-xs text-graphite uppercase tracking-widest">
+              06 Credentials
             </span>
           </div>
         </div>
 
-        {/* 6 Cards Grid (3 Columns) with 37px Radius */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {certifications.map((cert, index) => (
+        {/* 3x2 Grid of 9px Bone Cards */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {certifications.map((cert, idx) => (
             <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 16 }}
+              key={idx}
+              initial={{ opacity: 0, y: 15 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="bg-cream rounded-cards p-8 border border-ink/15 flex flex-col justify-between hover:border-ink/40 transition-colors group"
+              transition={{ duration: 0.5, delay: idx * 0.06 }}
+              className="bg-bone rounded-cards p-6 border border-vellum flex flex-col justify-between hover:border-graphite transition-all group"
             >
               <div>
-                <div className="flex items-center justify-between mb-4">
-                  <span className="font-suisse-book text-xs text-ink/50">
-                    Credential 0{index + 1}
+                <div className="flex items-center justify-between pb-3 border-b border-vellum mb-4">
+                  <span className="font-helvetica text-[10px] text-graphite uppercase tracking-wider font-mono">
+                    INDEX // 0{idx + 1}
                   </span>
-                  <span className="font-suisse-book text-xs text-ink/70 px-2.5 py-0.5 rounded-full border border-ink/15 bg-cream">
+                  <span className="font-helvetica text-[11px] text-graphite font-medium">
                     {cert.date}
                   </span>
                 </div>
 
-                <span className="font-suisse-book text-[11px] text-ink/60 uppercase tracking-wider block mb-1">
+                <span className="font-helvetica text-[10px] uppercase tracking-wider text-graphite/70 block mb-1">
                   {cert.issuer}
                 </span>
-                <h3 className="font-prody text-2xl font-normal text-ink mb-3 leading-snug">
+
+                <h3 className="font-davinci text-lg sm:text-xl text-ink font-normal mb-2 leading-snug">
                   {cert.title}
                 </h3>
-                <p className="font-suisse text-xs sm:text-sm text-ink/70 leading-relaxed mb-6">
+
+                <p className="font-helvetica text-xs text-graphite leading-relaxed mb-4">
                   {cert.description}
                 </p>
               </div>
 
-              <div className="border-t border-ink/10 pt-4 flex items-center justify-between">
-                <span className="font-suisse text-xs font-medium text-ink">
-                  Verified Credential
+              <div className="pt-4 border-t border-vellum flex items-center justify-between">
+                <span className="font-helvetica text-[11px] px-2.5 py-0.5 rounded-cards border border-vellum bg-putty/30 text-graphite">
+                  {cert.category}
                 </span>
-                {cert.link && (
+
+                {cert.link ? (
                   <a
                     href={cert.link}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1 font-suisse-book text-xs text-ink hover:underline"
+                    className="font-helvetica text-xs text-ink hover:underline flex items-center gap-1 font-medium"
                   >
-                    <span>Verify Link</span>
+                    <span>Verify</span>
                     <ArrowUpRight className="w-3.5 h-3.5" />
                   </a>
+                ) : (
+                  <span className="font-helvetica text-[11px] text-graphite/60">
+                    Verified
+                  </span>
                 )}
               </div>
             </motion.div>
