@@ -137,30 +137,30 @@ const Contributions = () => {
   }
 
   return (
-    <section id="contributions" className="w-full py-20 md:py-28 px-6 md:px-12 bg-[#000000] text-paper border-b border-[#222222] selection:bg-paper selection:text-ink">
+    <section id="contributions" className="w-full py-20 md:py-28 px-6 md:px-12 bg-putty text-ink border-b border-vellum selection:bg-ink selection:text-paper">
       <div className="max-w-page mx-auto">
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-14 gap-6">
           <div className="max-w-2xl space-y-3">
-            <span className="font-helvetica text-[11px] uppercase tracking-widest text-[#8b949e] block font-medium">
+            <span className="font-helvetica text-[11px] uppercase tracking-widest text-graphite block font-medium">
               04 • Code Activity & Problem Solving
             </span>
-            <h2 className="font-davinci text-3xl sm:text-4xl md:text-[43px] font-normal leading-[1.1] tracking-[-0.215px] text-[#ffffff]">
+            <h2 className="font-davinci text-3xl sm:text-4xl md:text-[43px] font-normal leading-[1.1] tracking-[-0.215px] text-ink">
               Open Source & Problem Solving
             </h2>
-            <p className="font-helvetica text-sm text-[#8b949e] leading-relaxed">
+            <p className="font-helvetica text-sm text-graphite leading-relaxed">
               Continuous commit history, open-source repositories, and algorithmic data structure mastery.
             </p>
           </div>
 
           {/* Toggle Switcher */}
-          <div className="flex items-center gap-1.5 p-1 rounded-full border border-[#30363d] bg-[#161b22]">
+          <div className="flex items-center gap-1.5 p-1 rounded-full border border-vellum bg-bone shadow-sm">
             <button
               onClick={() => setActiveTab('github')}
               className={`flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-helvetica transition-all ${
                 activeTab === 'github'
-                  ? 'bg-[#f0f6fc] text-[#0d1117] font-medium shadow-sm'
-                  : 'text-[#8b949e] hover:text-white'
+                  ? 'bg-[#e5a910] text-ink font-semibold border border-ink/15 shadow-sm'
+                  : 'text-graphite hover:text-ink'
               }`}
             >
               <Github className="w-3.5 h-3.5" />
@@ -170,8 +170,8 @@ const Contributions = () => {
               onClick={() => setActiveTab('leetcode')}
               className={`flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-helvetica transition-all ${
                 activeTab === 'leetcode'
-                  ? 'bg-[#f0f6fc] text-[#0d1117] font-medium shadow-sm'
-                  : 'text-[#8b949e] hover:text-white'
+                  ? 'bg-[#e5a910] text-ink font-semibold border border-ink/15 shadow-sm'
+                  : 'text-graphite hover:text-ink'
               }`}
             >
               <Code2 className="w-3.5 h-3.5" />
@@ -298,7 +298,7 @@ const Contributions = () => {
 
             {/* Pinned Repos Grid (Authentic Dark Theme) */}
             <div className="space-y-4">
-              <span className="font-helvetica text-[11px] text-[#8b949e] uppercase tracking-widest block font-medium">
+              <span className="font-helvetica text-[11px] text-graphite uppercase tracking-widest block font-medium">
                 Pinned Public Repositories
               </span>
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
