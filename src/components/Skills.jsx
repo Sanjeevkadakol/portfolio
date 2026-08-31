@@ -1,57 +1,41 @@
 import { useState } from 'react'
 import { motion } from 'framer-motion'
-import {
-  Code,
-  Terminal,
-  Database,
-  Cpu,
-  Layers,
-  Server,
-  Workflow,
-  Wrench,
-  Boxes,
-  FileCode,
-  Cloud,
-  Container,
-  GitBranch,
-  Sparkles
-} from 'lucide-react'
 
 const Skills = () => {
   const [activeTab, setActiveTab] = useState('languages')
 
   const techArsenal = {
     languages: [
-      { name: "Python", category: "Core Backend & AI", icon: "🐍", level: "Advanced" },
-      { name: "C", category: "Systems & Algorithms", icon: "⚙️", level: "Proficient" },
-      { name: "SQL", category: "Querying & Relational", icon: "🗄️", level: "Advanced" },
-      { name: "JavaScript", category: "Full-Stack Scripting", icon: "⚡", level: "Advanced" },
-      { name: "TypeScript", category: "Type-Safe Full-Stack", icon: "🔷", level: "Intermediate" },
-      { name: "HTML5", category: "Semantic Web Structure", icon: "🌐", level: "Advanced" },
-      { name: "CSS3", category: "Responsive UI & Styling", icon: "🎨", level: "Advanced" }
+      { name: "Python", category: "Core Backend & AI", icon: "🐍" },
+      { name: "C", category: "Systems & Algorithms", icon: "⚙️" },
+      { name: "SQL", category: "Querying & Relational", icon: "🗄️" },
+      { name: "JavaScript", category: "Full-Stack Scripting", icon: "⚡" },
+      { name: "TypeScript", category: "Type-Safe Full-Stack", icon: "🔷" },
+      { name: "HTML5", category: "Semantic Web Structure", icon: "🌐" },
+      { name: "CSS3", category: "Responsive UI & Styling", icon: "🎨" }
     ],
     frameworks: [
-      { name: "PyTorch", category: "Deep Learning & Tensors", icon: "🔥", level: "Proficient" },
-      { name: "TensorFlow", category: "Machine Learning Models", icon: "🧠", level: "Proficient" },
-      { name: "Scikit-Learn", category: "Predictive ML & Scoring", icon: "📊", level: "Advanced" },
-      { name: "LangChain", category: "RAG & LLM Orchestration", icon: "🦜", level: "Advanced" },
-      { name: "FastAPI", category: "High-Throughput APIs", icon: "🚀", level: "Advanced" },
-      { name: "React", category: "Component UI Architecture", icon: "⚛️", level: "Advanced" },
-      { name: "Next.js", category: "Server-Side & Web Apps", icon: "▲", level: "Proficient" },
-      { name: "Flask", category: "Python Web Framework", icon: "🧪", level: "Advanced" },
-      { name: "Pandas", category: "Data Manipulation", icon: "🐼", level: "Advanced" },
-      { name: "NumPy", category: "Numerical Operations", icon: "🔢", level: "Advanced" }
+      { name: "PyTorch", category: "Deep Learning & Tensors", icon: "🔥" },
+      { name: "TensorFlow", category: "Machine Learning Models", icon: "🧠" },
+      { name: "Scikit-Learn", category: "Predictive ML & Scoring", icon: "📊" },
+      { name: "LangChain", category: "RAG & LLM Orchestration", icon: "🦜" },
+      { name: "FastAPI", category: "High-Throughput APIs", icon: "🚀" },
+      { name: "React", category: "Component UI Architecture", icon: "⚛️" },
+      { name: "Next.js", category: "Server-Side & Web Apps", icon: "▲" },
+      { name: "Flask", category: "Python Web Framework", icon: "🧪" },
+      { name: "Pandas", category: "Data Manipulation", icon: "🐼" },
+      { name: "NumPy", category: "Numerical Operations", icon: "🔢" }
     ],
     tools: [
-      { name: "Git", category: "Version Control", icon: "🌱", level: "Advanced" },
-      { name: "GitHub", category: "Collaboration & CI/CD", icon: "🐙", level: "Advanced" },
-      { name: "Docker", category: "Containerization", icon: "🐳", level: "Proficient" },
-      { name: "Pinecone", category: "Managed Vector Database", icon: "🌲", level: "Advanced" },
-      { name: "FAISS", category: "Vector Similarity Search", icon: "🔍", level: "Advanced" },
-      { name: "NeonDB", category: "Serverless PostgreSQL", icon: "🐘", level: "Proficient" },
-      { name: "Vercel", category: "Cloud Edge Hosting", icon: "▲", level: "Advanced" },
-      { name: "Jupyter", category: "Interactive Data Notebooks", icon: "🪐", level: "Advanced" },
-      { name: "SQLAlchemy", category: "Python ORM & SQLite", icon: "🔗", level: "Proficient" }
+      { name: "Git", category: "Version Control", icon: "🌱" },
+      { name: "GitHub", category: "Collaboration & CI/CD", icon: "🐙" },
+      { name: "Docker", category: "Containerization", icon: "🐳" },
+      { name: "Pinecone", category: "Managed Vector Database", icon: "🌲" },
+      { name: "FAISS", category: "Vector Similarity Search", icon: "🔍" },
+      { name: "NeonDB", category: "Serverless PostgreSQL", icon: "🐘" },
+      { name: "Vercel", category: "Cloud Edge Hosting", icon: "▲" },
+      { name: "Jupyter", category: "Interactive Data Notebooks", icon: "🪐" },
+      { name: "SQLAlchemy", category: "Python ORM & SQLite", icon: "🔗" }
     ]
   }
 
@@ -119,14 +103,12 @@ const Skills = () => {
               className="bg-cream rounded-[28px] p-6 border border-ink/15 flex flex-col justify-between hover:border-ink/40 hover:-translate-y-1 transition-all duration-200 group"
             >
               <div>
-                {/* Icon & Category Header */}
+                {/* Icon Header */}
                 <div className="flex items-center justify-between mb-4">
                   <span className="text-2xl sm:text-3xl p-2.5 rounded-[18px] bg-ink/5 border border-ink/10 group-hover:scale-110 transition-transform">
                     {tech.icon}
                   </span>
-                  <span className="font-suisse text-[10px] px-2.5 py-0.5 rounded-full border border-ink/15 bg-cream text-ink/70">
-                    {tech.level}
-                  </span>
+                  <span className="w-2 h-2 rounded-full bg-lemon border border-ink opacity-0 group-hover:opacity-100 transition-opacity" />
                 </div>
 
                 {/* Tech Title */}
