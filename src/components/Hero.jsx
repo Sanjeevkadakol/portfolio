@@ -12,40 +12,40 @@ const Hero = () => {
   return (
     <section
       id="home"
-      className="relative w-full min-h-[80vh] pt-32 pb-24 md:pt-44 md:pb-32 px-6 md:px-12 bg-putty text-ink flex flex-col items-center justify-center text-center selection:bg-ink selection:text-paper border-b border-vellum"
+      className="relative w-full min-h-[80vh] pt-32 pb-20 md:pt-40 md:pb-28 px-6 md:px-12 bg-putty text-ink flex flex-col items-center justify-center text-center selection:bg-ink selection:text-paper border-b border-vellum"
     >
       <div className="max-w-page mx-auto w-full flex flex-col items-center text-center my-auto">
-        {/* Top Minimal Label */}
+        {/* Category Badge */}
         <motion.div
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="font-helvetica text-[11px] sm:text-xs tracking-widest uppercase text-graphite mb-5"
+          className="font-helvetica text-[11px] tracking-widest uppercase text-graphite mb-6"
         >
           Engineering Portfolio • Bengaluru, India
         </motion.div>
 
-        {/* Name Headline in Davinci Serif */}
+        {/* Main Line: Sanjeev Kadakol */}
         <motion.h1
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.1 }}
-          className="font-davinci text-4xl sm:text-6xl md:text-7xl font-normal leading-[1.1] tracking-[-0.02em] text-ink mb-4"
+          className="font-davinci text-5xl sm:text-7xl md:text-8xl font-normal leading-[1.05] tracking-[-0.03em] text-ink mb-4"
         >
           Sanjeev Kadakol
         </motion.h1>
 
-        {/* Role & Degree */}
+        {/* Subtitle Lines: Role & Degree Specification */}
         <motion.div
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="space-y-1.5 mb-8 max-w-xl"
+          className="space-y-2 mb-8 max-w-2xl"
         >
-          <p className="font-davinci text-xl sm:text-2xl text-ink font-normal">
+          <p className="font-helvetica text-lg sm:text-xl md:text-2xl text-ink font-medium tracking-tight">
             AI/ML & Full Stack Developer
           </p>
-          <p className="font-helvetica text-xs sm:text-sm text-graphite">
+          <p className="font-helvetica text-sm sm:text-base text-graphite font-normal">
             B.E. in AIML from BMS Institute of Technology & Management
           </p>
         </motion.div>
@@ -55,7 +55,7 @@ const Hero = () => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8, delay: 0.3 }}
-          className="flex flex-wrap items-center justify-center gap-5 sm:gap-7 font-helvetica text-xs sm:text-sm font-medium text-ink mb-9"
+          className="flex flex-wrap items-center justify-center gap-5 sm:gap-8 font-helvetica text-xs sm:text-sm font-medium text-ink mb-10 pb-6 border-b border-vellum/60 w-full max-w-md"
         >
           <div>
             <span className="text-graphite mr-1.5 font-normal uppercase text-[10px]">DEGREE:</span>
