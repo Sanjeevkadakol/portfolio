@@ -66,50 +66,6 @@ const Contributions = () => {
 
   const contributionDays = generateContributionDays()
 
-  const pinnedRepos = [
-    {
-      name: "AI-Driven-Zero-Day-Attack-Detection",
-      lang: "Python",
-      langColor: "bg-[#3572A5]",
-      desc: "Hybrid ML intrusion detection & mitigation system with Isolation Forest & XGBoost.",
-      link: "https://github.com/Sanjeevkadakol/AI-Driven-Zero-Day-Attack-Detection"
-    },
-    {
-      name: "AI-Powered-Comprehension-Learning-System",
-      lang: "TypeScript",
-      langColor: "bg-[#3178c6]",
-      desc: "Adaptive RAG learning platform generating personalized explanations from voice/text.",
-      link: "https://github.com/Sanjeevkadakol/AI-Powered-Comprehension-Learning-System"
-    },
-    {
-      name: "RAG-Chatbot",
-      lang: "TypeScript",
-      langColor: "bg-[#3178c6]",
-      desc: "Semantic document search chatbot using LangChain, vector retrieval, and OpenAI APIs.",
-      link: "https://github.com/Sanjeevkadakol/RAG-Chatbot"
-    },
-    {
-      name: "Neighbour_node",
-      lang: "JavaScript",
-      langColor: "bg-[#f1e05a]",
-      desc: "Secure multi-tenant community platform with GPS-based geofencing and role permissions.",
-      link: "https://github.com/Sanjeevkadakol/Neighbour_node"
-    },
-    {
-      name: "Spotter_Trip_planner",
-      lang: "JavaScript",
-      langColor: "bg-[#f1e05a]",
-      desc: "Intelligent travel itinerary generator and route planning web application.",
-      link: "https://github.com/Sanjeevkadakol"
-    },
-    {
-      name: "portfolio",
-      lang: "JavaScript",
-      langColor: "bg-[#f1e05a]",
-      desc: "Personal portfolio website engineered with React, Tailwind CSS, and Vite.",
-      link: "https://github.com/Sanjeevkadakol/portfolio"
-    }
-  ]
 
   const leetcodeStats = {
     totalSolved: 89,
@@ -288,52 +244,6 @@ const Contributions = () => {
               </div>
             </div>
 
-            {/* Pinned Repos Grid (Clean Bone Style matching Certifications) */}
-            <div className="space-y-4">
-              <span className="font-helvetica text-[11px] text-graphite uppercase tracking-widest block font-medium">
-                Pinned Public Repositories
-              </span>
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-                {pinnedRepos.map((repo, idx) => (
-                  <a
-                    key={idx}
-                    href={repo.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="bg-bone rounded-cards p-6 border border-vellum flex flex-col justify-between hover:border-graphite transition-all group shadow-sm"
-                  >
-                    <div>
-                      <div className="flex items-center justify-between pb-3 border-b border-vellum mb-4">
-                        <span className="font-helvetica text-[11px] uppercase tracking-wider text-ink font-medium">
-                          PUBLIC REPOSITORY
-                        </span>
-                        <span className="font-helvetica text-[11px] text-graphite font-medium">
-                          GitHub
-                        </span>
-                      </div>
-
-                      <h3 className="font-davinci text-lg sm:text-xl text-ink font-normal mb-2 leading-snug group-hover:underline">
-                        {repo.name}
-                      </h3>
-
-                      <p className="font-helvetica text-xs text-graphite leading-relaxed mb-4">
-                        {repo.desc}
-                      </p>
-                    </div>
-
-                    <div className="pt-4 border-t border-vellum flex items-center justify-between">
-                      <span className="font-helvetica text-[11px] px-2.5 py-0.5 rounded-cards border border-vellum bg-putty/30 text-graphite font-medium">
-                        {repo.lang}
-                      </span>
-                      <span className="font-helvetica text-xs text-ink hover:underline flex items-center gap-1 font-medium">
-                        <span>View Code</span>
-                        <ArrowUpRight className="w-3.5 h-3.5" />
-                      </span>
-                    </div>
-                  </a>
-                ))}
-              </div>
-            </div>
           </motion.div>
         )}
 
