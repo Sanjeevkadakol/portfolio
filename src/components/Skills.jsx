@@ -69,12 +69,12 @@ const Skills = () => {
                 onClick={() => setActiveTab(tab.id)}
                 className={`flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-helvetica transition-all ${
                   activeTab === tab.id
-                    ? 'bg-ink text-paper font-medium shadow-sm'
+                    ? 'bg-[#f4f780] text-ink font-semibold border border-ink/15 shadow-sm'
                     : 'text-graphite hover:text-ink'
                 }`}
               >
                 <span>{tab.label}</span>
-                <span className={`text-[10px] px-1.5 py-0.2 rounded-full ${activeTab === tab.id ? 'bg-paper/20 text-paper' : 'bg-putty text-graphite'}`}>
+                <span className={`text-[10px] px-1.5 py-0.2 rounded-full font-mono ${activeTab === tab.id ? 'bg-ink/10 text-ink font-bold' : 'bg-putty text-graphite'}`}>
                   {tab.count}
                 </span>
               </button>
