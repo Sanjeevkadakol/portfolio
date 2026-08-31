@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import { ArrowDown, Download } from 'lucide-react'
+import { Download } from 'lucide-react'
 
 const Hero = () => {
   const scrollToSection = (sectionId) => {
@@ -12,7 +12,7 @@ const Hero = () => {
   return (
     <section
       id="home"
-      className="relative w-full min-h-[90vh] pt-32 pb-16 md:pt-40 md:pb-24 px-6 md:px-12 bg-putty text-ink flex flex-col justify-between overflow-hidden selection:bg-ink selection:text-paper border-b border-vellum"
+      className="relative w-full min-h-[80vh] pt-32 pb-24 md:pt-44 md:pb-32 px-6 md:px-12 bg-putty text-ink flex flex-col items-center justify-center text-center selection:bg-ink selection:text-paper border-b border-vellum"
     >
       <div className="max-w-page mx-auto w-full flex flex-col items-center text-center my-auto">
         {/* Top Minimal Label */}
@@ -20,60 +20,65 @@ const Hero = () => {
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="font-helvetica text-[11px] sm:text-xs tracking-widest uppercase text-graphite mb-6"
+          className="font-helvetica text-[11px] sm:text-xs tracking-widest uppercase text-graphite mb-5"
         >
           Engineering Portfolio • Bengaluru, India
         </motion.div>
 
-        {/* Display Subheading in Davinci 43px/52px */}
-        <motion.h2
+        {/* Name Headline in Davinci Serif */}
+        <motion.h1
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.1 }}
-          className="font-davinci text-3xl sm:text-5xl md:text-[52px] font-normal leading-[1.08] tracking-[-0.47px] text-ink mb-4 max-w-3xl"
+          className="font-davinci text-4xl sm:text-6xl md:text-7xl font-normal leading-[1.1] tracking-[-0.02em] text-ink mb-4"
         >
-          AI/ML & Full Stack Development
-        </motion.h2>
+          Sanjeev Kadakol
+        </motion.h1>
 
-        {/* Subtitle / Academic Line */}
-        <motion.p
+        {/* Role & Degree */}
+        <motion.div
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="font-helvetica text-sm sm:text-base text-graphite mb-8 max-w-xl leading-relaxed"
+          className="space-y-1.5 mb-8 max-w-xl"
         >
-          B.E. in AIML from BMS Institute of Technology & Management
-        </motion.p>
+          <p className="font-davinci text-xl sm:text-2xl text-ink font-normal">
+            AI/ML & Full Stack Developer
+          </p>
+          <p className="font-helvetica text-xs sm:text-sm text-graphite">
+            B.E. in AIML from BMS Institute of Technology & Management
+          </p>
+        </motion.div>
 
-        {/* Inline Stat Pairs in Structured Style (TVL / APY layout) */}
+        {/* Inline Stat Pairs */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8, delay: 0.3 }}
-          className="flex flex-wrap items-center justify-center gap-6 sm:gap-8 font-helvetica text-xs sm:text-sm font-medium text-ink mb-8"
+          className="flex flex-wrap items-center justify-center gap-5 sm:gap-7 font-helvetica text-xs sm:text-sm font-medium text-ink mb-9"
         >
           <div>
-            <span className="text-graphite mr-2 font-normal uppercase text-[11px]">DEGREE:</span>
+            <span className="text-graphite mr-1.5 font-normal uppercase text-[10px]">DEGREE:</span>
             <span>B.E. AI & ML</span>
           </div>
           <span className="text-vellum hidden sm:inline">|</span>
           <div>
-            <span className="text-graphite mr-2 font-normal uppercase text-[11px]">CGPA:</span>
+            <span className="text-graphite mr-1.5 font-normal uppercase text-[10px]">CGPA:</span>
             <span>8.10 / 10.0</span>
           </div>
           <span className="text-vellum hidden sm:inline">|</span>
           <div>
-            <span className="text-graphite mr-2 font-normal uppercase text-[11px]">STATUS:</span>
+            <span className="text-graphite mr-1.5 font-normal uppercase text-[10px]">STATUS:</span>
             <span>Open for Roles</span>
           </div>
         </motion.div>
 
-        {/* Action Button & Ghost Link */}
+        {/* Action Buttons */}
         <motion.div
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.4 }}
-          className="flex items-center gap-6"
+          className="flex flex-wrap items-center justify-center gap-5"
         >
           <button
             onClick={() => scrollToSection('projects')}
@@ -92,18 +97,6 @@ const Hero = () => {
             <span>Download Resume</span>
           </a>
         </motion.div>
-      </div>
-
-      {/* Signature Monumental 374px Davinci Hero Wordmark */}
-      <div className="w-full overflow-hidden text-center select-none pt-12 md:pt-16">
-        <motion.h1
-          initial={{ opacity: 0, scale: 0.98 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 1, delay: 0.2 }}
-          className="font-davinci text-[58px] sm:text-[110px] md:text-[160px] lg:text-[220px] xl:text-[280px] font-normal leading-[0.84] tracking-[-3.37px] text-ink whitespace-nowrap opacity-95"
-        >
-          SANJEEV KADAKOL
-        </motion.h1>
       </div>
     </section>
   )
