@@ -37,9 +37,9 @@ const About = () => {
           }}
         />
 
-        {/* Warm Glaze & Vignette Overlays */}
-        <div className="absolute inset-0 bg-putty/20 mix-blend-multiply pointer-events-none" />
-        <div className="absolute inset-0 bg-black/40 pointer-events-none" />
+        {/* Warm Glaze & Dark Vignette for High Contrast */}
+        <div className="absolute inset-0 bg-putty/10 mix-blend-multiply pointer-events-none" />
+        <div className="absolute inset-0 bg-black/45 pointer-events-none" />
 
         {/* Floating Exhibit Cards Container */}
         <div className="relative z-10 max-w-page mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
@@ -49,64 +49,65 @@ const About = () => {
             whileInView={{ opacity: 1, scale: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.7 }}
-            className="lg:col-span-7 bg-[#000000] text-paper p-8 sm:p-10 rounded-cards border border-[#333333] shadow-2xl flex flex-col justify-between"
+            className="lg:col-span-7 bg-[#000000] text-[#ffffff] p-8 sm:p-10 rounded-cards border border-white/20 shadow-[0_20px_50px_rgba(0,0,0,0.8)] flex flex-col justify-between"
             style={{
               clipPath: 'polygon(0 0, 100% 0, 100% calc(100% - 14px), calc(100% - 14px) 100%, 0 100%)'
             }}
           >
             <div className="space-y-6">
               {/* Header Badge */}
-              <div className="flex items-center justify-between border-b border-[#222222] pb-4">
-                <span className="font-helvetica text-[10px] uppercase tracking-widest text-ash">
+              <div className="flex items-center justify-between border-b border-white/15 pb-4">
+                <span className="font-helvetica text-[10px] uppercase tracking-widest text-[#a3a3a3] font-medium">
                   01 • FOUNDATION & VISION
                 </span>
-                <span className="font-helvetica text-[10px] text-ash font-mono">
+                <span className="font-helvetica text-[10px] text-[#a3a3a3] font-mono">
                   BMSIT&M • 2023–2027
                 </span>
               </div>
 
-              {/* Manifesto Headline in Davinci Serif */}
-              <h3 className="font-davinci text-2xl sm:text-3xl md:text-4xl text-paper font-normal leading-[1.12] tracking-[-0.3px]">
+              {/* Manifesto Headline in Crisp Pure White Davinci Serif */}
+              <h3 className="font-davinci text-2xl sm:text-3xl md:text-4xl text-[#ffffff] font-normal leading-[1.15] tracking-[-0.02em]">
                 Combining intelligent machine learning with clean full stack engineering
               </h3>
 
-              <div className="space-y-3 font-helvetica text-xs sm:text-sm text-ash leading-relaxed">
+              {/* Body Narrative in Bright High-Contrast Text */}
+              <div className="space-y-3 font-helvetica text-xs sm:text-sm text-[#d4d4d4] leading-relaxed">
                 <p>
                   I am an AI & Machine Learning engineer based in Bengaluru. Across internships spanning data analytics, predictive modeling, and full-stack web development, I’ve specialized in converting complex algorithms and data pipelines into production-ready software.
                 </p>
                 <p>
-                  Experience across <strong className="text-paper font-medium">HEProAI</strong>, <strong className="text-paper font-medium">Bluestock Fintech</strong>, <strong className="text-paper font-medium">Webstack Academy</strong>, and <strong className="text-paper font-medium">EazyByts</strong>.
+                  Experience completed across <strong className="text-[#ffffff] font-semibold">HEProAI</strong>, <strong className="text-[#ffffff] font-semibold">Bluestock Fintech</strong>, <strong className="text-[#ffffff] font-semibold">Webstack Academy</strong>, and <strong className="text-[#ffffff] font-semibold">EazyByts</strong>.
                 </p>
               </div>
 
-              {/* Stats Row */}
-              <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-4 border-t border-[#222222]">
+              {/* Stats Row in Bright White */}
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-5 border-t border-white/15">
                 <div>
-                  <span className="font-davinci text-2xl text-paper block">04</span>
-                  <span className="font-helvetica text-[10px] text-ash">Internships Done</span>
+                  <span className="font-davinci text-2xl sm:text-3xl text-[#ffffff] font-normal block">04</span>
+                  <span className="font-helvetica text-[11px] text-[#a3a3a3]">Internships Done</span>
                 </div>
                 <div>
-                  <span className="font-davinci text-2xl text-paper block">04</span>
-                  <span className="font-helvetica text-[10px] text-ash">Projects Shipped</span>
+                  <span className="font-davinci text-2xl sm:text-3xl text-[#ffffff] font-normal block">04</span>
+                  <span className="font-helvetica text-[11px] text-[#a3a3a3]">Projects Shipped</span>
                 </div>
                 <div>
-                  <span className="font-davinci text-2xl text-paper block">06</span>
-                  <span className="font-helvetica text-[10px] text-ash">Certifications</span>
+                  <span className="font-davinci text-2xl sm:text-3xl text-[#ffffff] font-normal block">06</span>
+                  <span className="font-helvetica text-[11px] text-[#a3a3a3]">Certifications</span>
                 </div>
                 <div>
-                  <span className="font-davinci text-2xl text-paper block">8.10</span>
-                  <span className="font-helvetica text-[10px] text-ash">CGPA</span>
+                  <span className="font-davinci text-2xl sm:text-3xl text-[#ffffff] font-normal block">8.10</span>
+                  <span className="font-helvetica text-[11px] text-[#a3a3a3]">CGPA</span>
                 </div>
               </div>
             </div>
 
             {/* Bottom Action Row with 'SCROLL' and Resume CTA */}
-            <div className="pt-6 border-t border-[#222222] mt-6 flex flex-wrap items-center justify-between gap-4">
+            <div className="pt-6 border-t border-white/15 mt-6 flex flex-wrap items-center justify-between gap-4">
               <div className="flex items-center gap-3">
-                <span className="font-helvetica text-[10px] uppercase tracking-[0.25em] text-paper font-medium">
+                <span className="font-helvetica text-[10px] uppercase tracking-[0.25em] text-[#ffffff] font-semibold">
                   SCROLL
                 </span>
-                <span className="text-ash text-xs tracking-widest">— — —</span>
+                <span className="text-[#888888] text-xs tracking-widest">— — —</span>
               </div>
 
               <a
@@ -114,7 +115,7 @@ const About = () => {
                 download="Sanjeev_Kadakol_Resume.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="btn-pill-white"
+                className="btn-pill-white font-medium"
               >
                 <Download className="w-3.5 h-3.5" />
                 <span>Download Resume (PDF)</span>
@@ -128,14 +129,14 @@ const About = () => {
             whileInView={{ opacity: 1, scale: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.7, delay: 0.15 }}
-            className="lg:col-span-5 bg-[#000000] text-paper p-8 rounded-cards border border-[#333333] shadow-2xl flex flex-col justify-between"
+            className="lg:col-span-5 bg-[#000000] text-[#ffffff] p-8 rounded-cards border border-white/20 shadow-[0_20px_50px_rgba(0,0,0,0.8)] flex flex-col justify-between"
             style={{
               clipPath: 'polygon(0 0, 100% 0, 100% calc(100% - 14px), calc(100% - 14px) 100%, 0 100%)'
             }}
           >
             <div>
               {/* Photo Frame */}
-              <div className="relative w-full h-64 sm:h-72 rounded-[9px] overflow-hidden border border-[#333333] bg-[#111111] mb-5">
+              <div className="relative w-full h-64 sm:h-72 rounded-[9px] overflow-hidden border border-white/20 bg-[#111111] mb-5">
                 <img
                   src="/sanjeev.jpg"
                   alt="Sanjeev Kadakol"
@@ -143,33 +144,33 @@ const About = () => {
                 />
               </div>
 
-              {/* Profile Details */}
+              {/* Profile Details in Bright High-Contrast White */}
               <div className="space-y-1">
-                <h4 className="font-davinci text-2xl font-normal text-paper">
+                <h4 className="font-davinci text-2xl font-normal text-[#ffffff]">
                   Sanjeev Kadakol
                 </h4>
-                <p className="font-helvetica text-xs text-ash">
+                <p className="font-helvetica text-xs text-[#d4d4d4] font-medium">
                   AI/ML & Full Stack Developer
                 </p>
-                <p className="font-helvetica text-[11px] text-ash/70">
+                <p className="font-helvetica text-[11px] text-[#a3a3a3]">
                   BMSIT&M • Bengaluru, India
                 </p>
               </div>
             </div>
 
             {/* Status & Social Networks */}
-            <div className="pt-4 border-t border-[#222222] mt-6 flex items-center justify-between">
-              <div className="flex items-center gap-2 font-helvetica text-xs text-paper">
-                <span className="w-1.5 h-1.5 rounded-full bg-paper animate-pulse" />
-                <span>Open for Roles</span>
+            <div className="pt-4 border-t border-white/15 mt-6 flex items-center justify-between">
+              <div className="flex items-center gap-2 font-helvetica text-xs text-[#ffffff]">
+                <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+                <span className="font-medium">Open for Roles</span>
               </div>
 
-              <div className="flex items-center gap-2 text-paper">
+              <div className="flex items-center gap-2 text-[#ffffff]">
                 <a
                   href="https://github.com/Sanjeevkadakol"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="p-2 rounded-cards border border-[#333333] hover:border-paper hover:bg-[#161616] transition-colors"
+                  className="p-2 rounded-cards border border-white/20 hover:border-white hover:bg-white/10 transition-colors"
                   aria-label="GitHub"
                 >
                   <Github className="w-3.5 h-3.5" />
@@ -178,14 +179,14 @@ const About = () => {
                   href="https://www.linkedin.com/in/sanjeev-kadakol"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="p-2 rounded-cards border border-[#333333] hover:border-paper hover:bg-[#161616] transition-colors"
+                  className="p-2 rounded-cards border border-white/20 hover:border-white hover:bg-white/10 transition-colors"
                   aria-label="LinkedIn"
                 >
                   <Linkedin className="w-3.5 h-3.5" />
                 </a>
                 <a
                   href="mailto:sanjeevpkadakol1@gmail.com"
-                  className="p-2 rounded-cards border border-[#333333] hover:border-paper hover:bg-[#161616] transition-colors"
+                  className="p-2 rounded-cards border border-white/20 hover:border-white hover:bg-white/10 transition-colors"
                   aria-label="Email"
                 >
                   <Mail className="w-3.5 h-3.5" />
@@ -199,7 +200,7 @@ const About = () => {
       {/* 2. 4 Foundation Pillars Grid on Putty Canvas */}
       <div className="py-20 md:py-24 px-6 md:px-12 max-w-page mx-auto">
         <div className="mb-10">
-          <span className="font-helvetica text-[11px] uppercase tracking-widest text-graphite block mb-2">
+          <span className="font-helvetica text-[11px] uppercase tracking-widest text-graphite block mb-2 font-medium">
             CORE CAPABILITIES
           </span>
           <h4 className="font-davinci text-2xl sm:text-3xl text-ink font-normal">
@@ -215,7 +216,7 @@ const About = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: idx * 0.08 }}
-              className="bg-bone rounded-cards p-6 border border-vellum flex flex-col justify-between hover:border-graphite transition-colors"
+              className="bg-bone rounded-cards p-6 border border-vellum flex flex-col justify-between hover:border-graphite transition-colors shadow-sm"
             >
               <div>
                 <span className="font-helvetica text-[11px] text-graphite/60 font-mono block mb-3">
