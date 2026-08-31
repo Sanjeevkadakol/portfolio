@@ -140,18 +140,10 @@ const Contributions = () => {
     <section id="contributions" className="w-full py-20 md:py-28 px-6 md:px-12 bg-putty text-ink border-b border-vellum selection:bg-ink selection:text-paper">
       <div className="max-w-page mx-auto">
         {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-14 gap-6">
-          <div className="max-w-2xl space-y-3">
-            <span className="font-helvetica text-[11px] uppercase tracking-widest text-graphite block font-medium">
-              04 • Code Activity & Problem Solving
-            </span>
-            <h2 className="font-davinci text-3xl sm:text-4xl md:text-[43px] font-normal leading-[1.1] tracking-[-0.215px] text-ink">
-              Open Source & Problem Solving
-            </h2>
-            <p className="font-helvetica text-sm text-graphite leading-relaxed">
-              Continuous commit history, open-source repositories, and algorithmic data structure mastery.
-            </p>
-          </div>
+        <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-14 gap-6">
+          <h2 className="font-davinci text-3xl sm:text-4xl md:text-[43px] font-normal leading-[1.1] tracking-[-0.215px] text-ink">
+            Open Source & Problem Solving
+          </h2>
 
           {/* Toggle Switcher */}
           <div className="flex items-center gap-1.5 p-1 rounded-full border border-vellum bg-bone shadow-sm">

@@ -55,7 +55,7 @@ const About = () => {
           {/* Card Top Meta Header */}
           <div className="flex items-center justify-between border-b border-white/15 pb-4 mb-6">
             <span className="font-helvetica text-[10px] uppercase tracking-widest text-[#a3a3a3] font-medium">
-              01 • FOUNDATION & PROFILE
+              FOUNDATION & PROFILE
             </span>
             <span className="font-helvetica text-[10px] text-[#a3a3a3] font-mono">
               BMSIT&M • 2023–2027

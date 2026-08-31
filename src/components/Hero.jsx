@@ -15,16 +15,6 @@ const Hero = () => {
       className="relative w-full min-h-[80vh] pt-32 pb-20 md:pt-40 md:pb-28 px-6 md:px-12 bg-putty text-ink flex flex-col items-center justify-center text-center selection:bg-ink selection:text-paper border-b border-vellum"
     >
       <div className="max-w-page mx-auto w-full flex flex-col items-center text-center my-auto">
-        {/* Category Badge */}
-        <motion.div
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="font-helvetica text-[11px] tracking-widest uppercase text-graphite mb-6"
-        >
-          Engineering Portfolio • Bengaluru, India
-        </motion.div>
-
         {/* Main Line: Sanjeev Kadakol */}
         <motion.h1
           initial={{ opacity: 0, y: 16 }}

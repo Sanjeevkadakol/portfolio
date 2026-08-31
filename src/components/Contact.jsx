@@ -72,24 +72,10 @@ const Contact = () => {
     <section id="contact" className="w-full py-20 md:py-28 px-6 md:px-12 bg-putty text-ink border-b border-vellum selection:bg-ink selection:text-paper">
       <div className="max-w-page mx-auto">
         {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-14 gap-6">
-          <div className="max-w-2xl space-y-3">
-            <span className="font-helvetica text-[11px] uppercase tracking-widest text-graphite block">
-              07 • Direct Inquiries
-            </span>
-            <h2 className="font-davinci text-3xl sm:text-4xl md:text-[43px] font-normal leading-[1.1] tracking-[-0.215px] text-ink">
-              Start a Conversation
-            </h2>
-            <p className="font-helvetica text-sm text-graphite leading-relaxed">
-              Dispatches directly to <strong className="text-ink font-medium">sanjeevpkadakol1@gmail.com</strong> for RAG pipelines, machine learning systems, or engineering roles.
-            </p>
-          </div>
-
-          <div className="text-right hidden md:block">
-            <span className="font-helvetica text-xs text-graphite uppercase tracking-widest">
-              Bengaluru, IN
-            </span>
-          </div>
+        <div className="mb-14">
+          <h2 className="font-davinci text-3xl sm:text-4xl md:text-[43px] font-normal leading-[1.1] tracking-[-0.215px] text-ink">
+            Start a Conversation
+          </h2>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">

@@ -57,24 +57,10 @@ const Certifications = () => {
     <section id="certifications" className="w-full py-20 md:py-28 px-6 md:px-12 bg-putty text-ink border-b border-vellum selection:bg-ink selection:text-paper">
       <div className="max-w-page mx-auto">
         {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-14 gap-6">
-          <div className="max-w-2xl space-y-3">
-            <span className="font-helvetica text-[11px] uppercase tracking-widest text-graphite block font-medium">
-              06 • Accreditations
-            </span>
-            <h2 className="font-davinci text-3xl sm:text-4xl md:text-[43px] font-normal leading-[1.1] tracking-[-0.215px] text-ink">
-              Certifications & Qualifications
-            </h2>
-            <p className="font-helvetica text-sm text-graphite leading-relaxed">
-              Verified credentials from AWS, IBM Developer Skills Network, and specialized engineering programs.
-            </p>
-          </div>
-
-          <div className="text-right hidden md:block">
-            <span className="font-helvetica text-xs text-graphite uppercase tracking-widest font-medium">
-              06 Credentials
-            </span>
-          </div>
+        <div className="mb-14">
+          <h2 className="font-davinci text-3xl sm:text-4xl md:text-[43px] font-normal leading-[1.1] tracking-[-0.215px] text-ink">
+            Certifications & Qualifications
+          </h2>
         </div>
 
         {/* 3x2 Grid of 9px Bone Cards */}
