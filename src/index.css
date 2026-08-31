@@ -3,13 +3,13 @@
 @tailwind utilities;
 
 :root {
-  /* Colors */
-  --color-putty: #c4c3b6;
-  --color-ink: #000000;
-  --color-bone: #e7e5e4;
-  --color-chalk: #ebebeb;
-  --color-vellum: #dfdcd5;
-  --color-graphite: #595855;
+  /* Colors - Warm Ivory Cream Canvas (Image 2) */
+  --color-putty: #f7f6e3;
+  --color-ink: #111111;
+  --color-bone: #ffffff;
+  --color-chalk: #faf9ee;
+  --color-vellum: #e6e4ce;
+  --color-graphite: #57564e;
   --color-ash: #808080;
   --color-paper: #ffffff;
 
@@ -18,9 +18,9 @@
   --font-helvetica-now: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 
   /* Surfaces */
-  --surface-putty-canvas: #c4c3b6;
-  --surface-bone-card: #e7e5e4;
-  --surface-chalk-footer: #ebebeb;
+  --surface-putty-canvas: #f7f6e3;
+  --surface-bone-card: #ffffff;
+  --surface-chalk-footer: #faf9ee;
   --surface-ink-room: #000000;
 
   /* Radii */
@@ -52,8 +52,8 @@ body {
 }
 
 ::selection {
-  background-color: #000000;
-  color: #ffffff;
+  background-color: #e5a910;
+  color: #000000;
 }
 
 /* Typography Utility Classes */

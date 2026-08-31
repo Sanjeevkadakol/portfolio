@@ -7,12 +7,12 @@ export default {
   theme: {
     extend: {
       colors: {
-        putty: '#c4c3b6',
-        ink: '#000000',
-        bone: '#e7e5e4',
-        chalk: '#ebebeb',
-        vellum: '#dfdcd5',
-        graphite: '#595855',
+        putty: '#f7f6e3', // Warm ivory cream matching image 2
+        ink: '#111111',
+        bone: '#ffffff',
+        chalk: '#faf9ee',
+        vellum: '#e6e4ce',
+        graphite: '#57564e',
         ash: '#808080',
         paper: '#ffffff',
       },
