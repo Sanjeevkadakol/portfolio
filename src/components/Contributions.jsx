@@ -296,7 +296,7 @@ const Contributions = () => {
               </div>
             </div>
 
-            {/* Pinned Repos Grid (Authentic Dark Theme) */}
+            {/* Pinned Repos Grid (Clean Bone Style matching Certifications) */}
             <div className="space-y-4">
               <span className="font-helvetica text-[11px] text-graphite uppercase tracking-widest block font-medium">
                 Pinned Public Repositories
@@ -308,28 +308,35 @@ const Contributions = () => {
                     href={repo.link}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="bg-[#0d1117] rounded-cards p-6 border border-[#30363d] flex flex-col justify-between hover:border-[#58a6ff] transition-all group shadow-sm"
+                    className="bg-bone rounded-cards p-6 border border-vellum flex flex-col justify-between hover:border-graphite transition-all group shadow-sm"
                   >
                     <div>
-                      <div className="flex items-center justify-between mb-3">
-                        <span className="font-helvetica text-xs font-semibold text-[#58a6ff] group-hover:underline line-clamp-1">
-                          {repo.name}
+                      <div className="flex items-center justify-between pb-3 border-b border-vellum mb-4">
+                        <span className="font-helvetica text-[11px] uppercase tracking-wider text-ink font-medium">
+                          PUBLIC REPOSITORY
                         </span>
-                        <span className="font-helvetica text-[10px] px-2 py-0.5 rounded-full border border-[#30363d] bg-[#161b22] text-[#7d8590]">
-                          Public
+                        <span className="font-helvetica text-[11px] text-graphite font-medium">
+                          GitHub
                         </span>
                       </div>
-                      <p className="font-helvetica text-xs text-[#7d8590] leading-relaxed mb-4 line-clamp-2">
+
+                      <h3 className="font-davinci text-lg sm:text-xl text-ink font-normal mb-2 leading-snug group-hover:underline">
+                        {repo.name}
+                      </h3>
+
+                      <p className="font-helvetica text-xs text-graphite leading-relaxed mb-4">
                         {repo.desc}
                       </p>
                     </div>
 
-                    <div className="flex items-center justify-between pt-3 border-t border-[#21262d] text-xs font-helvetica text-[#7d8590]">
-                      <div className="flex items-center gap-1.5">
-                        <span className={`w-2.5 h-2.5 rounded-full ${repo.langColor}`} />
-                        <span>{repo.lang}</span>
-                      </div>
-                      <ArrowUpRight className="w-3.5 h-3.5 text-[#7d8590] group-hover:text-[#58a6ff] transition-transform" />
+                    <div className="pt-4 border-t border-vellum flex items-center justify-between">
+                      <span className="font-helvetica text-[11px] px-2.5 py-0.5 rounded-cards border border-vellum bg-putty/30 text-graphite font-medium">
+                        {repo.lang}
+                      </span>
+                      <span className="font-helvetica text-xs text-ink hover:underline flex items-center gap-1 font-medium">
+                        <span>View Code</span>
+                        <ArrowUpRight className="w-3.5 h-3.5" />
+                      </span>
                     </div>
                   </a>
                 ))}
@@ -338,7 +345,7 @@ const Contributions = () => {
           </motion.div>
         )}
 
-        {/* Tab 2: LeetCode View */}
+        {/* Tab 2: LeetCode View (Clean Bone Card Style) */}
         {activeTab === 'leetcode' && (
           <motion.div
             initial={{ opacity: 0, y: 15 }}
@@ -346,13 +353,13 @@ const Contributions = () => {
             transition={{ duration: 0.4 }}
             className="space-y-8"
           >
-            <div className="bg-[#1a1a1a] text-white rounded-cards p-7 sm:p-8 border border-[#2e2e2e] shadow-xl">
-              <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-5 border-b border-[#2e2e2e] gap-4 mb-8">
+            <div className="bg-bone text-ink rounded-cards p-7 sm:p-8 border border-vellum shadow-sm">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-5 border-b border-vellum gap-4 mb-8">
                 <div>
-                  <span className="font-helvetica text-[10px] text-[#8a8a8a] uppercase tracking-wider block mb-1">
+                  <span className="font-helvetica text-[10px] text-graphite uppercase tracking-wider block mb-1">
                     ALGORITHMIC SOLVING
                   </span>
-                  <h3 className="font-davinci text-2xl text-white font-normal">
+                  <h3 className="font-davinci text-2xl text-ink font-normal">
                     LeetCode Profile • @sanjeevpkadakol1
                   </h3>
                 </div>
@@ -360,7 +367,7 @@ const Contributions = () => {
                   href="https://leetcode.com/u/sanjeevpkadakol1/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="btn-pill-white shrink-0 font-medium"
+                  className="btn-pill-black shrink-0 font-medium"
                 >
                   <Code2 className="w-3.5 h-3.5" />
                   <span>leetcode.com/u/sanjeevpkadakol1</span>
@@ -370,19 +377,19 @@ const Contributions = () => {
 
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
                 {/* Total Solved Box */}
-                <div className="lg:col-span-4 flex flex-col items-center justify-center p-8 bg-[#242424] rounded-cards border border-[#333333] text-center">
-                  <span className="font-helvetica text-[11px] uppercase tracking-wider text-[#8a8a8a] mb-2">
+                <div className="lg:col-span-4 flex flex-col items-center justify-center p-8 bg-putty/30 rounded-cards border border-vellum text-center">
+                  <span className="font-helvetica text-[11px] uppercase tracking-wider text-graphite mb-2 font-medium">
                     Total Solved
                   </span>
-                  <span className="font-davinci text-5xl sm:text-6xl text-white font-normal mb-1">
+                  <span className="font-davinci text-5xl sm:text-6xl text-ink font-normal mb-1">
                     {leetcodeStats.totalSolved}
                   </span>
-                  <span className="font-helvetica text-xs text-[#8a8a8a]">
+                  <span className="font-helvetica text-xs text-graphite">
                     / {leetcodeStats.totalQuestions} Questions
                   </span>
-                  <div className="mt-4 pt-4 border-t border-[#333333] w-full flex items-center justify-center gap-2">
-                    <span className="font-helvetica text-xs text-[#8a8a8a]">Global Rank:</span>
-                    <span className="font-helvetica text-xs font-medium text-[#ffa116]">
+                  <div className="mt-4 pt-4 border-t border-vellum w-full flex items-center justify-center gap-2">
+                    <span className="font-helvetica text-xs text-graphite">Global Rank:</span>
+                    <span className="font-helvetica text-xs font-semibold text-ink">
                       #{leetcodeStats.ranking}
                     </span>
                   </div>
@@ -390,76 +397,76 @@ const Contributions = () => {
 
                 {/* Difficulty Cards */}
                 <div className="lg:col-span-8 grid grid-cols-1 sm:grid-cols-3 gap-5">
-                  <div className="bg-[#242424] p-6 rounded-cards border border-[#333333] flex flex-col justify-between space-y-4">
+                  <div className="bg-putty/30 p-6 rounded-cards border border-vellum flex flex-col justify-between space-y-4">
                     <div className="flex items-center justify-between">
-                      <span className="font-helvetica text-xs font-medium uppercase text-[#00b8a3]">
+                      <span className="font-helvetica text-xs font-semibold uppercase text-emerald-700">
                         Easy
                       </span>
-                      <span className="text-xs font-helvetica text-[#8a8a8a] font-mono">
+                      <span className="text-xs font-helvetica text-graphite font-mono">
                         {Math.round((leetcodeStats.easy.solved / leetcodeStats.easy.total) * 100)}%
                       </span>
                     </div>
                     <div>
-                      <span className="font-davinci text-3xl text-white block">
+                      <span className="font-davinci text-3xl text-ink block font-normal">
                         {leetcodeStats.easy.solved}
                       </span>
-                      <span className="font-helvetica text-[11px] text-[#8a8a8a]">
+                      <span className="font-helvetica text-[11px] text-graphite">
                         / {leetcodeStats.easy.total} Solved
                       </span>
                     </div>
-                    <div className="w-full h-1.5 bg-[#1a1a1a] rounded-full overflow-hidden">
+                    <div className="w-full h-1.5 bg-vellum rounded-full overflow-hidden">
                       <div
-                        className="h-full bg-[#00b8a3] rounded-full"
+                        className="h-full bg-emerald-600 rounded-full"
                         style={{ width: `${(leetcodeStats.easy.solved / leetcodeStats.easy.total) * 100}%` }}
                       />
                     </div>
                   </div>
 
-                  <div className="bg-[#242424] p-6 rounded-cards border border-[#333333] flex flex-col justify-between space-y-4">
+                  <div className="bg-putty/30 p-6 rounded-cards border border-vellum flex flex-col justify-between space-y-4">
                     <div className="flex items-center justify-between">
-                      <span className="font-helvetica text-xs font-medium uppercase text-[#ffc01e]">
+                      <span className="font-helvetica text-xs font-semibold uppercase text-amber-700">
                         Medium
                       </span>
-                      <span className="text-xs font-helvetica text-[#8a8a8a] font-mono">
+                      <span className="text-xs font-helvetica text-graphite font-mono">
                         {Math.round((leetcodeStats.medium.solved / leetcodeStats.medium.total) * 100)}%
                       </span>
                     </div>
                     <div>
-                      <span className="font-davinci text-3xl text-white block">
+                      <span className="font-davinci text-3xl text-ink block font-normal">
                         {leetcodeStats.medium.solved}
                       </span>
-                      <span className="font-helvetica text-[11px] text-[#8a8a8a]">
+                      <span className="font-helvetica text-[11px] text-graphite">
                         / {leetcodeStats.medium.total} Solved
                       </span>
                     </div>
-                    <div className="w-full h-1.5 bg-[#1a1a1a] rounded-full overflow-hidden">
+                    <div className="w-full h-1.5 bg-vellum rounded-full overflow-hidden">
                       <div
-                        className="h-full bg-[#ffc01e] rounded-full"
+                        className="h-full bg-[#e5a910] rounded-full"
                         style={{ width: `${(leetcodeStats.medium.solved / leetcodeStats.medium.total) * 100}%` }}
                       />
                     </div>
                   </div>
 
-                  <div className="bg-[#242424] p-6 rounded-cards border border-[#333333] flex flex-col justify-between space-y-4">
+                  <div className="bg-putty/30 p-6 rounded-cards border border-vellum flex flex-col justify-between space-y-4">
                     <div className="flex items-center justify-between">
-                      <span className="font-helvetica text-xs font-medium uppercase text-[#ff375f]">
+                      <span className="font-helvetica text-xs font-semibold uppercase text-red-700">
                         Hard
                       </span>
-                      <span className="text-xs font-helvetica text-[#8a8a8a] font-mono">
+                      <span className="text-xs font-helvetica text-graphite font-mono">
                         {Math.round((leetcodeStats.hard.solved / leetcodeStats.hard.total) * 100)}%
                       </span>
                     </div>
                     <div>
-                      <span className="font-davinci text-3xl text-white block">
+                      <span className="font-davinci text-3xl text-ink block font-normal">
                         {leetcodeStats.hard.solved}
                       </span>
-                      <span className="font-helvetica text-[11px] text-[#8a8a8a]">
+                      <span className="font-helvetica text-[11px] text-graphite">
                         / {leetcodeStats.hard.total} Solved
                       </span>
                     </div>
-                    <div className="w-full h-1.5 bg-[#1a1a1a] rounded-full overflow-hidden">
+                    <div className="w-full h-1.5 bg-vellum rounded-full overflow-hidden">
                       <div
-                        className="h-full bg-[#ff375f] rounded-full"
+                        className="h-full bg-red-600 rounded-full"
                         style={{ width: `${(leetcodeStats.hard.solved / leetcodeStats.hard.total) * 100}%` }}
                       />
                     </div>
