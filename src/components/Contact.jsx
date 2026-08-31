@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { contactAPI } from '../services/api'
-import { ArrowUpRight, CheckCircle2, AlertCircle, Github, Linkedin, Mail } from 'lucide-react'
+import { ArrowUpRight, CheckCircle2, AlertCircle } from 'lucide-react'
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -69,37 +69,37 @@ const Contact = () => {
   ]
 
   return (
-    <section id="contact" className="w-full py-20 md:py-28 px-6 md:px-12 bg-ink text-paper selection:bg-paper selection:text-ink">
+    <section id="contact" className="w-full py-20 md:py-28 px-6 md:px-12 bg-putty text-ink border-b border-vellum selection:bg-ink selection:text-paper">
       <div className="max-w-page mx-auto">
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-14 gap-6">
           <div className="max-w-2xl space-y-3">
-            <span className="font-helvetica text-[11px] uppercase tracking-widest text-ash block">
+            <span className="font-helvetica text-[11px] uppercase tracking-widest text-graphite block">
               07 • Direct Inquiries
             </span>
-            <h2 className="font-davinci text-3xl sm:text-4xl md:text-[43px] font-normal leading-[1.1] tracking-[-0.215px] text-paper">
+            <h2 className="font-davinci text-3xl sm:text-4xl md:text-[43px] font-normal leading-[1.1] tracking-[-0.215px] text-ink">
               Start a Conversation
             </h2>
-            <p className="font-helvetica text-sm text-ash leading-relaxed">
-              Dispatches directly to <strong className="text-paper font-medium">sanjeevpkadakol1@gmail.com</strong> for RAG pipelines, machine learning systems, or engineering roles.
+            <p className="font-helvetica text-sm text-graphite leading-relaxed">
+              Dispatches directly to <strong className="text-ink font-medium">sanjeevpkadakol1@gmail.com</strong> for RAG pipelines, machine learning systems, or engineering roles.
             </p>
           </div>
 
           <div className="text-right hidden md:block">
-            <span className="font-helvetica text-xs text-ash uppercase tracking-widest">
+            <span className="font-helvetica text-xs text-graphite uppercase tracking-widest">
               Bengaluru, IN
             </span>
           </div>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-          {/* Left Column: Channels Directory in 9px Dark Card */}
-          <div className="lg:col-span-5 bg-[#111111] rounded-cards p-7 sm:p-8 border border-[#262626] space-y-6">
+          {/* Left Column: Channels Directory in 9px Bone Card */}
+          <div className="lg:col-span-5 bg-bone rounded-cards p-7 sm:p-8 border border-vellum space-y-6">
             <div>
-              <h3 className="font-davinci text-2xl text-paper font-normal mb-2 leading-tight">
+              <h3 className="font-davinci text-2xl text-ink font-normal mb-2 leading-tight">
                 Direct Channels
               </h3>
-              <p className="font-helvetica text-xs text-ash leading-relaxed">
+              <p className="font-helvetica text-xs text-graphite leading-relaxed">
                 Feel free to reach out directly via email or connect through professional networks.
               </p>
             </div>
@@ -112,29 +112,29 @@ const Contact = () => {
                     key={idx}
                     href={channel.href}
                     {...(isExternal ? { target: "_blank", rel: "noopener noreferrer" } : {})}
-                    className="flex items-center justify-between p-4 bg-[#161616] rounded-cards border border-[#262626] hover:border-[#444444] transition-all group"
+                    className="flex items-center justify-between p-4 bg-putty/30 rounded-cards border border-vellum hover:border-graphite transition-all group"
                   >
                     <div>
-                      <span className="font-helvetica text-[10px] uppercase tracking-wider text-ash block">
+                      <span className="font-helvetica text-[10px] uppercase tracking-wider text-graphite block">
                         {channel.label}
                       </span>
-                      <span className="font-helvetica text-xs sm:text-sm font-medium text-paper">
+                      <span className="font-helvetica text-xs sm:text-sm font-medium text-ink">
                         {channel.value}
                       </span>
                     </div>
-                    <ArrowUpRight className="w-3.5 h-3.5 text-ash group-hover:text-paper group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
+                    <ArrowUpRight className="w-3.5 h-3.5 text-graphite group-hover:text-ink group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
                   </a>
                 )
               })}
             </div>
           </div>
 
-          {/* Right Column: 9px Dark Form Card */}
-          <div className="lg:col-span-7 bg-[#111111] rounded-cards p-7 sm:p-8 border border-[#262626]">
+          {/* Right Column: 9px Bone Form Card */}
+          <div className="lg:col-span-7 bg-bone rounded-cards p-7 sm:p-8 border border-vellum">
             <form onSubmit={handleSubmit} className="space-y-5">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                 <div>
-                  <label className="font-helvetica text-[11px] uppercase tracking-wider text-ash block mb-2">
+                  <label className="font-helvetica text-[11px] uppercase tracking-wider text-graphite block mb-2">
                     Your Name *
                   </label>
                   <input
@@ -144,11 +144,11 @@ const Contact = () => {
                     value={formData.name}
                     onChange={handleChange}
                     placeholder="Jane Doe"
-                    className="w-full bg-[#161616] border border-[#262626] rounded-cards px-4 py-2.5 text-paper text-xs font-helvetica focus:outline-none focus:border-paper transition-colors"
+                    className="w-full bg-putty/30 border border-vellum rounded-cards px-4 py-2.5 text-ink text-xs font-helvetica focus:outline-none focus:border-ink transition-colors"
                   />
                 </div>
                 <div>
-                  <label className="font-helvetica text-[11px] uppercase tracking-wider text-ash block mb-2">
+                  <label className="font-helvetica text-[11px] uppercase tracking-wider text-graphite block mb-2">
                     Email Address *
                   </label>
                   <input
@@ -158,13 +158,13 @@ const Contact = () => {
                     value={formData.email}
                     onChange={handleChange}
                     placeholder="jane@organization.com"
-                    className="w-full bg-[#161616] border border-[#262626] rounded-cards px-4 py-2.5 text-paper text-xs font-helvetica focus:outline-none focus:border-paper transition-colors"
+                    className="w-full bg-putty/30 border border-vellum rounded-cards px-4 py-2.5 text-ink text-xs font-helvetica focus:outline-none focus:border-ink transition-colors"
                   />
                 </div>
               </div>
 
               <div>
-                <label className="font-helvetica text-[11px] uppercase tracking-wider text-ash block mb-2">
+                <label className="font-helvetica text-[11px] uppercase tracking-wider text-graphite block mb-2">
                   Subject / Topic
                 </label>
                 <input
@@ -173,12 +173,12 @@ const Contact = () => {
                   value={formData.subject}
                   onChange={handleChange}
                   placeholder="Inquiry regarding AI/ML Engineering"
-                  className="w-full bg-[#161616] border border-[#262626] rounded-cards px-4 py-2.5 text-paper text-xs font-helvetica focus:outline-none focus:border-paper transition-colors"
+                  className="w-full bg-putty/30 border border-vellum rounded-cards px-4 py-2.5 text-ink text-xs font-helvetica focus:outline-none focus:border-ink transition-colors"
                 />
               </div>
 
               <div>
-                <label className="font-helvetica text-[11px] uppercase tracking-wider text-ash block mb-2">
+                <label className="font-helvetica text-[11px] uppercase tracking-wider text-graphite block mb-2">
                   Message Body *
                 </label>
                 <textarea
@@ -188,7 +188,7 @@ const Contact = () => {
                   value={formData.message}
                   onChange={handleChange}
                   placeholder="Tell me about your project, goals, or role..."
-                  className="w-full bg-[#161616] border border-[#262626] rounded-cards px-4 py-2.5 text-paper text-xs font-helvetica focus:outline-none focus:border-paper transition-colors resize-none"
+                  className="w-full bg-putty/30 border border-vellum rounded-cards px-4 py-2.5 text-ink text-xs font-helvetica focus:outline-none focus:border-ink transition-colors resize-none"
                 />
               </div>
 
@@ -196,26 +196,26 @@ const Contact = () => {
                 <button
                   type="submit"
                   disabled={loading}
-                  className="btn-pill-white"
+                  className="btn-pill-black"
                 >
                   {loading ? 'Transmitting...' : 'Send Message'}
                 </button>
 
-                <span className="font-helvetica text-[11px] text-ash">
+                <span className="font-helvetica text-[11px] text-graphite">
                   Direct Response Guarantee
                 </span>
               </div>
 
               {status === 'success' && (
-                <div className="p-3.5 rounded-cards border border-paper/40 bg-[#161616] text-paper text-xs font-helvetica flex items-center gap-2">
-                  <CheckCircle2 className="w-4 h-4 text-paper shrink-0" />
+                <div className="p-3.5 rounded-cards border border-ink/40 bg-putty/40 text-ink text-xs font-helvetica flex items-center gap-2">
+                  <CheckCircle2 className="w-4 h-4 text-ink shrink-0" />
                   <span>Your message has been dispatched directly to <strong>sanjeevpkadakol1@gmail.com</strong>.</span>
                 </div>
               )}
 
               {status === 'error' && (
-                <div className="p-3.5 rounded-cards border border-red-500/40 bg-[#161616] text-paper text-xs font-helvetica flex items-center gap-2">
-                  <AlertCircle className="w-4 h-4 text-red-400 shrink-0" />
+                <div className="p-3.5 rounded-cards border border-red-500/40 bg-putty/40 text-ink text-xs font-helvetica flex items-center gap-2">
+                  <AlertCircle className="w-4 h-4 text-red-600 shrink-0" />
                   <span>Submission issue. Please email directly to sanjeevpkadakol1@gmail.com</span>
                 </div>
               )}

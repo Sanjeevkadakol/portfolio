@@ -3,6 +3,7 @@ import Background from './components/Background'
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
 import About from './components/About'
+import PaintingPanel from './components/PaintingPanel'
 import Experience from './components/Experience'
 import Projects from './components/Projects'
 import Contributions from './components/Contributions'
@@ -43,6 +44,7 @@ function App() {
       <main className="flex-1 w-full">
         <Hero />
         <About />
+        <PaintingPanel />
         <Experience />
         <Projects />
         <Contributions />
