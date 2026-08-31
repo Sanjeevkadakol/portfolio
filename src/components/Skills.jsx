@@ -30,7 +30,6 @@ const Skills = () => {
       { name: "Git", category: "Version Control", icon: "🌱" },
       { name: "GitHub", category: "Collaboration & CI/CD", icon: "🐙" },
       { name: "Docker", category: "Containerization", icon: "🐳" },
-      { name: "Pinecone", category: "Managed Vector Database", icon: "🌲" },
       { name: "FAISS", category: "Vector Similarity Search", icon: "🔍" },
       { name: "NeonDB", category: "Serverless PostgreSQL", icon: "🐘" },
       { name: "Vercel", category: "Cloud Edge Hosting", icon: "▲" },
