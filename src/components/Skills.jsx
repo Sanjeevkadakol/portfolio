@@ -1,39 +1,66 @@
+import { useState } from 'react'
 import { motion } from 'framer-motion'
-
-const skillCategories = [
-  {
-    name: "Programming Languages",
-    skills: ["Python", "C", "SQL", "JavaScript", "HTML", "CSS"],
-    description: "Core algorithmic foundations, backend development, relational querying, and user interface scripting."
-  },
-  {
-    name: "AI/ML & Frameworks",
-    skills: ["PyTorch", "TensorFlow", "Scikit-learn", "LangChain", "RAG", "Agentic AI"],
-    description: "Deep learning models, predictive scoring pipelines, semantic retrieval, and autonomous LLM orchestration."
-  },
-  {
-    name: "Data & Databases",
-    skills: ["Pandas", "NumPy", "SQL", "NeonDB", "Pinecone", "FAISS"],
-    description: "Vector database indexing, low-latency similarity search, statistical exploration, and relational schemas."
-  },
-  {
-    name: "Web Development",
-    skills: ["React", "Next.js", "JavaScript", "HTML", "CSS", "REST APIs", "Flask", "FastAPI"],
-    description: "Component-based web applications, asynchronous API endpoints, and full-stack software architectures."
-  },
-  {
-    name: "Developer Tools",
-    skills: ["Git", "GitHub", "Docker", "Vercel", "Jupyter Notebook"],
-    description: "Version control workflows, containerization, cloud hosting pipelines, and interactive data notebooks."
-  },
-  {
-    name: "Core Concepts",
-    skills: ["DSA", "DBMS", "Full Stack Development", "Agentic AI", "Cloud Computing"],
-    description: "Algorithmic problem solving, database normalization, system design principles, and cloud deployments."
-  }
-]
+import {
+  Code,
+  Terminal,
+  Database,
+  Cpu,
+  Layers,
+  Server,
+  Workflow,
+  Wrench,
+  Boxes,
+  FileCode,
+  Cloud,
+  Container,
+  GitBranch,
+  Sparkles
+} from 'lucide-react'
 
 const Skills = () => {
+  const [activeTab, setActiveTab] = useState('languages')
+
+  const techArsenal = {
+    languages: [
+      { name: "Python", category: "Core Backend & AI", icon: "🐍", level: "Advanced" },
+      { name: "C", category: "Systems & Algorithms", icon: "⚙️", level: "Proficient" },
+      { name: "SQL", category: "Querying & Relational", icon: "🗄️", level: "Advanced" },
+      { name: "JavaScript", category: "Full-Stack Scripting", icon: "⚡", level: "Advanced" },
+      { name: "TypeScript", category: "Type-Safe Full-Stack", icon: "🔷", level: "Intermediate" },
+      { name: "HTML5", category: "Semantic Web Structure", icon: "🌐", level: "Advanced" },
+      { name: "CSS3", category: "Responsive UI & Styling", icon: "🎨", level: "Advanced" }
+    ],
+    frameworks: [
+      { name: "PyTorch", category: "Deep Learning & Tensors", icon: "🔥", level: "Proficient" },
+      { name: "TensorFlow", category: "Machine Learning Models", icon: "🧠", level: "Proficient" },
+      { name: "Scikit-Learn", category: "Predictive ML & Scoring", icon: "📊", level: "Advanced" },
+      { name: "LangChain", category: "RAG & LLM Orchestration", icon: "🦜", level: "Advanced" },
+      { name: "FastAPI", category: "High-Throughput APIs", icon: "🚀", level: "Advanced" },
+      { name: "React", category: "Component UI Architecture", icon: "⚛️", level: "Advanced" },
+      { name: "Next.js", category: "Server-Side & Web Apps", icon: "▲", level: "Proficient" },
+      { name: "Flask", category: "Python Web Framework", icon: "🧪", level: "Advanced" },
+      { name: "Pandas", category: "Data Manipulation", icon: "🐼", level: "Advanced" },
+      { name: "NumPy", category: "Numerical Operations", icon: "🔢", level: "Advanced" }
+    ],
+    tools: [
+      { name: "Git", category: "Version Control", icon: "🌱", level: "Advanced" },
+      { name: "GitHub", category: "Collaboration & CI/CD", icon: "🐙", level: "Advanced" },
+      { name: "Docker", category: "Containerization", icon: "🐳", level: "Proficient" },
+      { name: "Pinecone", category: "Managed Vector Database", icon: "🌲", level: "Advanced" },
+      { name: "FAISS", category: "Vector Similarity Search", icon: "🔍", level: "Advanced" },
+      { name: "NeonDB", category: "Serverless PostgreSQL", icon: "🐘", level: "Proficient" },
+      { name: "Vercel", category: "Cloud Edge Hosting", icon: "▲", level: "Advanced" },
+      { name: "Jupyter", category: "Interactive Data Notebooks", icon: "🪐", level: "Advanced" },
+      { name: "SQLAlchemy", category: "Python ORM & SQLite", icon: "🔗", level: "Proficient" }
+    ]
+  }
+
+  const tabs = [
+    { id: 'languages', label: 'Languages', count: techArsenal.languages.length },
+    { id: 'frameworks', label: 'Frameworks', count: techArsenal.frameworks.length },
+    { id: 'tools', label: 'Tools & Databases', count: techArsenal.tools.length }
+  ]
+
   return (
     <section id="skills" className="w-full py-24 md:py-32 px-6 md:px-12 bg-cream text-ink border-t border-ink/10 selection:bg-lemon selection:text-ink">
       <div className="max-w-page mx-auto">
@@ -43,66 +70,83 @@ const Skills = () => {
             <div className="inline-flex items-center gap-2">
               <span className="w-2 h-2 rounded-full bg-lemon border border-ink" />
               <span className="font-suisse-book text-xs uppercase tracking-widest text-ink/60">
-                04 • Competencies
+                05 • Tech Arsenal
               </span>
             </div>
             <h2 className="font-prody text-4xl sm:text-5xl lg:text-[42px] font-normal leading-[1.15] text-ink">
-              Technical Taxonomy & Domains
+              Technical Arsenal & Stack
             </h2>
             <p className="font-suisse text-base text-ink/75 leading-relaxed">
-              Comprehensive toolset across machine learning, vector architectures, and full-stack development.
+              Organized into 3 focused divisions across core programming languages, AI/ML frameworks, and developer tools.
             </p>
           </div>
 
-          <div className="text-right hidden md:block">
-            <span className="font-suisse-book text-xs text-ink/50 uppercase tracking-widest">
-              6 Core Pillars
-            </span>
+          {/* 3 Main Divisions Pill Toggle Switcher */}
+          <div className="flex items-center gap-1.5 p-1.5 rounded-full border border-ink/15 bg-cream">
+            {tabs.map((tab) => (
+              <button
+                key={tab.id}
+                onClick={() => setActiveTab(tab.id)}
+                className={`flex items-center gap-2 px-5 py-2 rounded-full text-xs font-suisse font-medium transition-all ${
+                  activeTab === tab.id
+                    ? 'bg-ink text-cream shadow-sm'
+                    : 'text-ink/70 hover:text-ink'
+                }`}
+              >
+                <span>{tab.label}</span>
+                <span className={`text-[10px] px-1.5 py-0.2 rounded-full ${activeTab === tab.id ? 'bg-lemon text-ink font-semibold' : 'bg-ink/10 text-ink/70'}`}>
+                  {tab.count}
+                </span>
+              </button>
+            ))}
           </div>
         </div>
 
-        {/* 6 Categories Grid with 37px Radius Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {skillCategories.map((category, idx) => (
+        {/* Dynamic Arsenal Grid (37px Radius Cards) */}
+        <motion.div
+          key={activeTab}
+          initial={{ opacity: 0, y: 15 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.4 }}
+          className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-5 sm:gap-6"
+        >
+          {techArsenal[activeTab].map((tech, idx) => (
             <motion.div
               key={idx}
-              initial={{ opacity: 0, y: 16 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: idx * 0.1 }}
-              className="bg-cream rounded-cards p-8 sm:p-[37px] border border-ink/15 flex flex-col justify-between hover:border-ink/40 transition-colors"
+              initial={{ opacity: 0, scale: 0.96 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.3, delay: idx * 0.04 }}
+              className="bg-cream rounded-[28px] p-6 border border-ink/15 flex flex-col justify-between hover:border-ink/40 hover:-translate-y-1 transition-all duration-200 group"
             >
               <div>
+                {/* Icon & Category Header */}
                 <div className="flex items-center justify-between mb-4">
-                  <span className="font-suisse-book text-xs text-ink/50">
-                    Pillar 0{idx + 1}
+                  <span className="text-2xl sm:text-3xl p-2.5 rounded-[18px] bg-ink/5 border border-ink/10 group-hover:scale-110 transition-transform">
+                    {tech.icon}
                   </span>
-                  <span className="w-2 h-2 rounded-full bg-lemon border border-ink" />
+                  <span className="font-suisse text-[10px] px-2.5 py-0.5 rounded-full border border-ink/15 bg-cream text-ink/70">
+                    {tech.level}
+                  </span>
                 </div>
 
-                <h3 className="font-suisse text-xl sm:text-2xl font-semibold text-ink mb-3 leading-tight">
-                  {category.name}
+                {/* Tech Title */}
+                <h3 className="font-suisse text-lg sm:text-xl font-semibold text-ink mb-1 group-hover:underline underline-offset-2">
+                  {tech.name}
                 </h3>
-                <p className="font-suisse text-xs sm:text-sm text-ink/70 leading-relaxed mb-6">
-                  {category.description}
+                <p className="font-suisse-book text-xs text-ink/60">
+                  {tech.category}
                 </p>
               </div>
 
-              <div className="pt-4 border-t border-ink/10">
-                <div className="flex flex-wrap gap-1.5">
-                  {category.skills.map((skill, sIdx) => (
-                    <span
-                      key={sIdx}
-                      className="font-suisse text-[11px] px-3 py-1 rounded-pills bg-cream border border-ink/15 text-ink/85"
-                    >
-                      {skill}
-                    </span>
-                  ))}
-                </div>
+              <div className="pt-4 border-t border-ink/10 mt-4 flex items-center justify-between">
+                <span className="font-suisse-book text-[11px] text-ink/40">
+                  Pillar // 0{idx + 1}
+                </span>
+                <span className="w-1.5 h-1.5 rounded-full bg-lemon border border-ink/40" />
               </div>
             </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   )
