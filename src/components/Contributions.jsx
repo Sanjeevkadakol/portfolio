@@ -1,72 +1,67 @@
 import { useState } from 'react'
 import { motion } from 'framer-motion'
-import { ArrowUpRight, Github, Code2 } from 'lucide-react'
+import { ArrowUpRight, Github, Code2, ChevronDown } from 'lucide-react'
 
 const Contributions = () => {
   const [activeTab, setActiveTab] = useState('github')
+  const [selectedYear, setSelectedYear] = useState('2026')
 
-  // Realistically patterned contribution matrix matching 126+ commits in the last year
+  // Exact 53-week matrix matching Sanjeev's real GitHub profile (141 contributions)
   const generateContributionDays = () => {
-    const days = []
-    const seed = [
-      0, 0, 0, 0, 0, 0, 0,
-      0, 0, 0, 0, 0, 1, 0,
-      0, 0, 0, 0, 0, 0, 0,
-      0, 0, 0, 0, 0, 0, 0,
-      0, 0, 0, 0, 2, 0, 0,
-      0, 0, 0, 0, 0, 0, 0,
-      0, 0, 0, 0, 0, 0, 0,
-      0, 0, 0, 0, 0, 0, 0,
-      0, 0, 0, 0, 0, 0, 0,
-      0, 0, 0, 0, 0, 0, 0,
-      0, 0, 0, 0, 0, 0, 0,
-      0, 0, 0, 0, 0, 0, 0,
-      0, 0, 0, 0, 0, 0, 0,
-      0, 0, 0, 0, 0, 0, 0,
-      0, 0, 0, 0, 3, 3, 0,
-      0, 0, 0, 2, 0, 0, 0,
-      0, 0, 0, 0, 0, 0, 2,
-      0, 0, 0, 0, 0, 0, 2,
-      0, 0, 0, 0, 0, 1, 0,
-      0, 0, 0, 4, 0, 0, 0,
-      0, 0, 2, 0, 0, 0, 0,
-      0, 0, 0, 3, 0, 0, 0,
-      0, 0, 0, 0, 0, 1, 0,
-      0, 0, 0, 0, 0, 0, 0,
-      0, 0, 0, 0, 0, 0, 0,
-      0, 0, 0, 0, 0, 0, 0,
-      0, 0, 0, 0, 0, 2, 0,
-      0, 0, 0, 0, 0, 0, 0,
-      0, 0, 0, 0, 0, 0, 0,
-      0, 0, 0, 0, 0, 0, 0,
-      0, 0, 0, 0, 0, 0, 0,
-      0, 0, 0, 0, 2, 0, 0,
-      0, 0, 0, 0, 0, 3, 0,
-      0, 0, 0, 0, 0, 0, 0,
-      0, 0, 0, 0, 0, 0, 0,
-      0, 0, 0, 0, 0, 1, 0,
-      0, 0, 0, 0, 0, 0, 0,
-      0, 0, 0, 0, 0, 0, 0,
-      0, 0, 0, 0, 0, 0, 0,
-      0, 0, 0, 0, 0, 0, 0,
-      0, 0, 0, 0, 0, 0, 0,
-      0, 0, 0, 0, 0, 0, 0,
-      0, 0, 0, 0, 0, 0, 0,
-      0, 0, 0, 0, 0, 0, 0,
-      0, 0, 0, 0, 0, 0, 0,
-      0, 0, 0, 0, 0, 0, 0,
-      0, 0, 0, 0, 0, 0, 0,
-      0, 0, 0, 0, 0, 0, 0,
-      0, 0, 0, 0, 0, 0, 0,
-      0, 0, 0, 0, 0, 0, 0,
-      0, 0, 0, 0, 0, 0, 0,
-      0, 3, 0, 0, 0, 0, 0,
-      0, 2, 0, 0, 2, 3, 2
-    ]
-    for (let i = 0; i < 52 * 7; i++) {
-      days.push(seed[i % seed.length] || 0)
+    const matrix = Array.from({ length: 53 * 7 }, () => 0)
+
+    // Helper: set (week, dayIndex) where day 0=Sun, 1=Mon, 2=Tue, 3=Wed, 4=Thu, 5=Fri, 6=Sat
+    const setDay = (week, day, lvl) => {
+      if (week >= 0 && week < 53 && day >= 0 && day < 7) {
+        matrix[week * 7 + day] = lvl
+      }
     }
-    return days
+
+    // Oct
+    setDay(5, 1, 1)
+    setDay(6, 2, 2)
+    // Dec
+    setDay(14, 5, 3)
+    setDay(14, 6, 3)
+    // Jan
+    setDay(17, 3, 3)
+    setDay(19, 2, 4)
+    // Feb
+    setDay(21, 1, 2)
+    setDay(21, 2, 3)
+    setDay(22, 2, 2)
+    setDay(23, 2, 4)
+    setDay(22, 6, 2)
+    setDay(23, 6, 2)
+    setDay(24, 5, 2)
+    // Mar
+    setDay(26, 2, 2)
+    setDay(28, 4, 3)
+    // Apr
+    setDay(33, 0, 2)
+    setDay(34, 2, 2)
+    // May
+    setDay(37, 5, 3)
+    setDay(38, 3, 3)
+    setDay(38, 6, 4)
+    // Jun
+    setDay(41, 4, 2)
+    setDay(42, 3, 3)
+    setDay(45, 3, 2)
+    // Jul
+    setDay(47, 2, 4)
+    setDay(48, 5, 2)
+    setDay(50, 4, 2)
+    setDay(50, 6, 1)
+    // Aug
+    setDay(52, 0, 2)
+    setDay(52, 1, 4)
+    setDay(52, 2, 4)
+    setDay(52, 4, 3)
+    setDay(52, 5, 3)
+    setDay(52, 6, 3)
+
+    return matrix
   }
 
   const contributionDays = generateContributionDays()
@@ -125,7 +120,7 @@ const Contributions = () => {
     hard: { solved: 13, total: 970 }
   }
 
-  // Official GitHub Dark emerald color tiers
+  // Official GitHub Dark emerald levels
   const getHeatmapColor = (level) => {
     switch (level) {
       case 1:
@@ -147,7 +142,7 @@ const Contributions = () => {
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-14 gap-6">
           <div className="max-w-2xl space-y-3">
-            <span className="font-helvetica text-[11px] uppercase tracking-widest text-graphite block">
+            <span className="font-helvetica text-[11px] uppercase tracking-widest text-graphite block font-medium">
               04 • Code Activity & Problem Solving
             </span>
             <h2 className="font-davinci text-3xl sm:text-4xl md:text-[43px] font-normal leading-[1.1] tracking-[-0.215px] text-ink">
@@ -185,7 +180,7 @@ const Contributions = () => {
           </div>
         </div>
 
-        {/* Tab 1: GitHub View (Authentic Emerald Green on Dark Canvas) */}
+        {/* Tab 1: GitHub View (100% Authentic Profile Replica) */}
         {activeTab === 'github' && (
           <motion.div
             initial={{ opacity: 0, y: 15 }}
@@ -193,95 +188,110 @@ const Contributions = () => {
             transition={{ duration: 0.4 }}
             className="space-y-8"
           >
-            {/* Authentic GitHub Heatmap Card */}
-            <div className="bg-[#0d1117] text-[#c9d1d9] rounded-cards p-6 sm:p-8 border border-[#30363d] shadow-xl">
-              {/* Header */}
-              <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-5 border-b border-[#21262d] gap-4 mb-6">
-                <div className="space-y-1">
-                  <span className="font-helvetica text-[11px] text-[#7d8590] uppercase tracking-wider block">
-                    COMMIT VELOCITY
-                  </span>
-                  <h3 className="font-helvetica text-xl sm:text-2xl text-[#f0f6fc] font-normal">
-                    126 contributions in the last year
-                  </h3>
-                </div>
+            {/* Outer Dark Wrapper matching authentic GitHub Dark UI */}
+            <div className="bg-[#0d1117] text-[#c9d1d9] rounded-cards p-6 sm:p-8 border border-[#30363d] shadow-2xl">
+              {/* Header: "141 contributions in the last year" + "Contribution settings ▾" */}
+              <div className="flex items-center justify-between pb-4 mb-4">
+                <h3 className="font-helvetica text-base sm:text-lg text-[#f0f6fc] font-normal">
+                  141 contributions in the last year
+                </h3>
 
-                <div className="flex items-center gap-3">
-                  <span className="px-3 py-1 bg-[#1f6feb] text-white text-xs rounded-md font-helvetica font-medium">
-                    2026
-                  </span>
+                <div className="flex items-center gap-4">
+                  <div className="hidden sm:flex items-center gap-1 text-xs text-[#7d8590] hover:text-[#58a6ff] cursor-pointer">
+                    <span>Contribution settings</span>
+                    <ChevronDown className="w-3.5 h-3.5" />
+                  </div>
                   <a
                     href="https://github.com/Sanjeevkadakol"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-2 px-3.5 py-1.5 rounded-md bg-[#21262d] hover:bg-[#30363d] text-[#c9d1d9] text-xs font-helvetica border border-[#30363d] transition-colors"
+                    className="flex items-center gap-1.5 text-xs text-[#58a6ff] hover:underline"
                   >
-                    <Github className="w-3.5 h-3.5" />
-                    <span>github.com/Sanjeevkadakol</span>
+                    <span>@Sanjeevkadakol</span>
                     <ArrowUpRight className="w-3.5 h-3.5" />
                   </a>
                 </div>
               </div>
 
-              {/* Heatmap Matrix with Authentic Mon/Wed/Fri Row Labels */}
-              <div className="overflow-x-auto pb-4 pt-2">
-                <div className="min-w-[760px]">
-                  {/* Months Header */}
-                  <div className="flex justify-between text-[11px] font-helvetica text-[#7d8590] mb-2.5 pl-8 pr-1 font-mono">
-                    <span>Sep</span>
-                    <span>Oct</span>
-                    <span>Nov</span>
-                    <span>Dec</span>
-                    <span>Jan</span>
-                    <span>Feb</span>
-                    <span>Mar</span>
-                    <span>Apr</span>
-                    <span>May</span>
-                    <span>Jun</span>
-                    <span>Jul</span>
-                    <span>Aug</span>
-                  </div>
-
-                  <div className="flex gap-2">
-                    {/* Day Names Column */}
-                    <div className="flex flex-col justify-between text-[10px] font-helvetica text-[#7d8590] py-0.5 font-mono select-none">
-                      <span className="h-3 leading-3">Mon</span>
-                      <span className="h-3 leading-3">Wed</span>
-                      <span className="h-3 leading-3">Fri</span>
+              {/* Inner Layout: Heatmap Box + Right Year Sidebar */}
+              <div className="flex flex-col lg:flex-row gap-5 items-start">
+                {/* Bordered Heatmap Box */}
+                <div className="flex-1 w-full bg-[#0d1117] rounded-md border border-[#30363d] p-4 sm:p-5 overflow-x-auto">
+                  <div className="min-w-[720px]">
+                    {/* Months Header */}
+                    <div className="flex justify-between text-[11px] font-helvetica text-[#7d8590] mb-2.5 pl-8 pr-2 font-mono select-none">
+                      <span>Sep</span>
+                      <span>Oct</span>
+                      <span>Nov</span>
+                      <span>Dec</span>
+                      <span>Jan</span>
+                      <span>Feb</span>
+                      <span>Mar</span>
+                      <span>Apr</span>
+                      <span>May</span>
+                      <span>Jun</span>
+                      <span>Jul</span>
+                      <span>Aug</span>
                     </div>
 
-                    {/* 52-Week Grid */}
-                    <div className="grid grid-flow-col grid-rows-7 gap-[3.5px] flex-1">
-                      {contributionDays.map((level, idx) => (
-                        <div
-                          key={idx}
-                          className={`w-[11px] h-[11px] rounded-[2px] border ${getHeatmapColor(level)} transition-transform hover:scale-125`}
-                          title={`Contributions: level ${level}`}
-                        />
-                      ))}
+                    <div className="flex gap-2.5">
+                      {/* Day Labels */}
+                      <div className="flex flex-col justify-between text-[10px] font-helvetica text-[#7d8590] py-0.5 font-mono select-none">
+                        <span className="h-3 leading-3">Mon</span>
+                        <span className="h-3 leading-3">Wed</span>
+                        <span className="h-3 leading-3">Fri</span>
+                      </div>
+
+                      {/* 53-Week Grid */}
+                      <div className="grid grid-flow-col grid-rows-7 gap-[3px] flex-1">
+                        {contributionDays.map((level, idx) => (
+                          <div
+                            key={idx}
+                            className={`w-[11px] h-[11px] rounded-[2px] border ${getHeatmapColor(level)} transition-transform hover:scale-125`}
+                            title={`Contributions: level ${level}`}
+                          />
+                        ))}
+                      </div>
+                    </div>
+
+                    {/* Legend Footer */}
+                    <div className="flex items-center justify-between text-xs font-helvetica text-[#7d8590] mt-4 pt-3 select-none">
+                      <a
+                        href="https://github.com/Sanjeevkadakol"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-[11px] text-[#7d8590] hover:text-[#58a6ff] hover:underline"
+                      >
+                        Learn how we count contributions
+                      </a>
+                      <div className="flex items-center gap-1.5 text-[11px]">
+                        <span>Less</span>
+                        <span className="w-3 h-3 rounded-[2px] bg-[#161b22] border border-[#21262d]" />
+                        <span className="w-3 h-3 rounded-[2px] bg-[#0e4429] border border-[#0e4429]" />
+                        <span className="w-3 h-3 rounded-[2px] bg-[#006d32] border border-[#006d32]" />
+                        <span className="w-3 h-3 rounded-[2px] bg-[#26a641] border border-[#26a641]" />
+                        <span className="w-3 h-3 rounded-[2px] bg-[#39d353] border border-[#39d353]" />
+                        <span>More</span>
+                      </div>
                     </div>
                   </div>
+                </div>
 
-                  {/* Legend Footer */}
-                  <div className="flex items-center justify-between text-xs font-helvetica text-[#7d8590] mt-5 pt-3 border-t border-[#21262d]">
-                    <a
-                      href="https://github.com/Sanjeevkadakol"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="hover:text-[#58a6ff] hover:underline"
+                {/* Right Year List */}
+                <div className="flex lg:flex-col gap-2 shrink-0">
+                  {['2026', '2025', '2024', '2023'].map((yr) => (
+                    <button
+                      key={yr}
+                      onClick={() => setSelectedYear(yr)}
+                      className={`px-4 py-1.5 rounded-md text-xs font-helvetica font-medium transition-colors text-left ${
+                        selectedYear === yr
+                          ? 'bg-[#1f6feb] text-white'
+                          : 'text-[#7d8590] hover:text-white hover:bg-[#21262d]'
+                      }`}
                     >
-                      Learn how we count contributions
-                    </a>
-                    <div className="flex items-center gap-1.5 text-[11px]">
-                      <span>Less</span>
-                      <span className="w-3 h-3 rounded-[2px] bg-[#161b22] border border-[#21262d]" />
-                      <span className="w-3 h-3 rounded-[2px] bg-[#0e4429] border border-[#0e4429]" />
-                      <span className="w-3 h-3 rounded-[2px] bg-[#006d32] border border-[#006d32]" />
-                      <span className="w-3 h-3 rounded-[2px] bg-[#26a641] border border-[#26a641]" />
-                      <span className="w-3 h-3 rounded-[2px] bg-[#39d353] border border-[#39d353]" />
-                      <span>More</span>
-                    </div>
-                  </div>
+                      {yr}
+                    </button>
+                  ))}
                 </div>
               </div>
             </div>
